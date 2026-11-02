@@ -1,7 +1,7 @@
 "use client";
 import { api } from "@/lib/client";
 import { ArrowRight, ShieldCheck } from "lucide-react";
-import { signIn } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useState } from "react";
@@ -23,6 +23,7 @@ export function Access({ error }: { error: string }) {
     setMessage("");
     const f = new FormData(e.currentTarget),
       d = Object.fromEntries(f);
+    let accountCreated = false;
     try {
       if (reset) {
         await api("/api/account", {
@@ -39,6 +40,14 @@ export function Access({ error }: { error: string }) {
           "Si existe una cuenta, recibirás un enlace de recuperación.",
         );
       } else {
+        const providersResponse = await fetch("/api/auth/providers", {
+          cache: "no-store",
+        });
+        const providers = await providersResponse.json();
+        if (!providersResponse.ok || !providers.credentials)
+          throw new Error(
+            "No se puede iniciar sesión en este momento. El servidor necesita revisar su configuración de autenticación.",
+          );
         if (mode === "register") {
           if (d.password !== d.confirm)
             throw new Error("Las contraseñas no coinciden");
@@ -47,19 +56,25 @@ export function Access({ error }: { error: string }) {
             action: "register",
             consent: f.get("consent") === "on",
           });
+          accountCreated = true;
         }
         const r = await signIn("credentials", {
           email: d.email,
           password: d.password,
           redirect: false,
         });
-        if (r?.error)
+        if (!r?.ok || r.error || !(await getSession())?.user)
           throw new Error("No pudimos iniciar sesión. Revisá tus datos.");
         router.push("/");
         router.refresh();
       }
     } catch (e) {
-      setMessage((e as Error).message);
+      if (accountCreated) {
+        setMode("login");
+        setMessage(
+          "Tu cuenta fue creada, pero no pudimos abrir la sesión. Ingresá con el mismo correo y contraseña; no necesitás registrarte otra vez.",
+        );
+      } else setMessage((e as Error).message);
     } finally {
       setBusy(false);
     }

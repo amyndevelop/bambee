@@ -1,6 +1,7 @@
 import { databaseDiagnostic } from "@/lib/database-diagnostics";
 import { passwordSchema } from "@/lib/validation";
 import { throttle } from "@/lib/auth";
+import { authReadiness } from "@/lib/auth-readiness";
 import { db } from "@/lib/db";
 import { publicError } from "@/lib/errors";
 import { sendMail } from "@/lib/mail";
@@ -14,6 +15,14 @@ export async function POST(req: Request) {
     sameOrigin(req);
     const body = await req.json();
     if (body.action === "register") {
+      if (!authReadiness().sessionConfigured)
+        return NextResponse.json(
+          {
+            error:
+              "El registro está temporalmente fuera de servicio. Falta configurar las sesiones del servidor.",
+          },
+          { status: 503 },
+        );
       const d = z
         .object({
           name: z.string().min(1).max(100),
@@ -23,15 +32,20 @@ export async function POST(req: Request) {
         })
         .parse(body);
       await throttle("register:" + d.email, 4);
-      const u = await db.user.create({
-        data: {
-          name: d.name,
-          email: d.email,
-          passwordHash: await hash(d.password, 12),
-          consents: { create: { version: "health-v1" } },
-        },
+      const passwordHash = await hash(d.password, 12);
+      await db.$transaction(async (tx) => {
+        const u = await tx.user.create({
+          data: {
+            name: d.name,
+            email: d.email,
+            passwordHash,
+            consents: { create: { version: "health-v1" } },
+          },
+        });
+        await tx.auditLog.create({
+          data: { actorId: u.id, action: "REGISTER" },
+        });
       });
-      await db.auditLog.create({ data: { actorId: u.id, action: "REGISTER" } });
       return NextResponse.json({ ok: true });
     }
     if (body.action === "forgot") {

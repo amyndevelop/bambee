@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start --hostname 0.0.0.0",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test tests/gestation.test.ts tests/cron-auth.test.ts tests/origin.test.ts tests/database-diagnostics.test.ts tests/baseline-migrations.test.ts tests/weekly-content.test.ts",
+    "test": "tsx --test tests/gestation.test.ts tests/cron-auth.test.ts tests/origin.test.ts tests/database-diagnostics.test.ts tests/baseline-migrations.test.ts tests/weekly-content.test.ts tests/auth-readiness.test.ts",
     "db:generate": "node scripts/generate.cjs",
     "db:migrate": "node scripts/migrate.mjs",
     "worker": "tsx --env-file=.env scripts/worker.ts",

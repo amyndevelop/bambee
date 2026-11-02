@@ -1,10 +1,12 @@
 import { hasMedicalReview, isWeeklyContentVisible } from "@/lib/weekly-content";
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { authReadiness } from "@/lib/auth-readiness";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 /** Public deployment verification; does not read or return user/pregnancy records. */
 export async function GET() {
+  const authentication = authReadiness();
   const release = {
     commit: process.env.VERCEL_GIT_COMMIT_SHA || null,
     font: "Inter",
@@ -33,9 +35,13 @@ export async function GET() {
     ).length;
     return NextResponse.json(
       {
-        status: complete && published === 42 ? "ok" : "pending",
+        status:
+          complete && published === 42 && authentication.sessionConfigured
+            ? "ok"
+            : "pending",
         scope: "branding-and-weekly-library",
         release,
+        authentication,
         weeklyContent: {
           total: rows.length,
           complete,
@@ -47,7 +53,10 @@ export async function GET() {
         },
       },
       {
-        status: complete && published === 42 ? 200 : 503,
+        status:
+          complete && published === 42 && authentication.sessionConfigured
+            ? 200
+            : 503,
         headers: { "Cache-Control": "no-store" },
       },
     );
@@ -57,6 +66,7 @@ export async function GET() {
         status: "unavailable",
         scope: "branding-and-weekly-library",
         release,
+        authentication,
         error: "No se pudo verificar la biblioteca semanal.",
       },
       { status: 503, headers: { "Cache-Control": "no-store" } },

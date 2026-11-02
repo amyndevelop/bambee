@@ -43,6 +43,12 @@ APP_URL=https://bambee-eta.vercel.app
 
 Luego redeployar para aplicar las variables. Si cambia el dominio, actualizar ambas. La validación de origen también permite los hosts exactos de `VERCEL_PROJECT_PRODUCTION_URL` y `VERCEL_URL` provistos por la plataforma. No confía en `Host`, `X-Forwarded-Host` ni en todos los subdominios de vercel.app. Las solicitudes sin un origen permitido continúan rechazadas.
 
+## Diagnóstico de registro y sesiones
+
+`/api/health` incluye `authentication.sessionConfigured`: comprueba únicamente la presencia del secreto que utiliza Auth.js, sin devolver su valor ni garantizar una sesión real. Si es falso en Production, configurar `NEXTAUTH_SECRET` (o `AUTH_SECRET` si el primero no existe) con un secreto aleatorio persistente y redeployar. No generar un secreto distinto por petición ni publicarlo en Git o en el chat. No dejar `NEXTAUTH_SECRET` vacío si se utiliza `AUTH_SECRET`.
+
+El formulario comprueba `/api/auth/providers` antes de registrar para evitar crear cuentas cuando Auth.js no está disponible. El servidor rechaza el registro con 503 si falta el secreto de sesión en producción. Usuario, consentimiento y auditoría de registro se guardan en una sola transacción. Si la cuenta se crea pero falla la apertura de sesión, el formulario pasa a ingreso e informa que no hace falta volver a registrarse. Una prueba local exitosa no confirma la configuración de Vercel: revisar también sus logs de `/api/account` y `/api/auth/*`, sin compartir datos personales ni secretos.
+
 ## Comprobar identidad y biblioteca después del deploy
 
 Abrir `https://bambee-eta.vercel.app/api/health` después de Ready. Debe informar 42 semanas completas, fuente Inter y marca `original-pdf-2026-11-02`; el commit permite distinguir un deployment anterior. Las 42 semanas de origen deben aparecer como publicación educativa con aviso de revisión pendiente. `weeklyContent.published` debe ser 42 y `publicationComplete` verdadero. La revisión médica se informa por separado. La verificación del endpoint requiere acceso de red al dominio; una compilación local no demuestra que el deployment remoto finalizó.
