@@ -5,13 +5,15 @@ import { hasMedicalReview } from "@/lib/weekly-content";
 import { reviewLabels } from "@/lib/weekly-content";
 import { api, type Row } from "@/lib/client";
 import { useEffect, useState, useRef } from "react";
-import { formatGestationalAge } from "@/lib/gestation";
+import { formatGestationalAge, formatWeekRange } from "@/lib/gestation";
 import { Empty } from "./ui";
 export function Weekly({
   current,
   age,
+  dueDate,
 }: {
   current: number;
+  dueDate: string;
   age: { completedWeeks: number; days: number; trimester: number };
 }) {
   const [weeks, setWeeks] = useState<Row[]>([]),
@@ -45,12 +47,16 @@ export function Weekly({
           >
             Sem {n}
             {n === current ? " · Hoy" : ""}
+            <span className="week-nav-dates" aria-hidden="true">
+              {formatWeekRange(dueDate, n, true)}
+            </span>
           </button>
         ))}
       </div>
       <EditorialNotice content={content} />
       <section className="card">
         <p className="eyebrow">SEMANA {week}</p>
+        <p className="week-date-range">{formatWeekRange(dueDate, week)}</p>
         {content ? (
           <>
             <h2>

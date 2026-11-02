@@ -34,6 +34,28 @@ export function gestationalAgeFromDays(elapsed: number) {
 export function formatGestationalAge(completedWeeks: number, days: number) {
   return `${completedWeeks} ${completedWeeks === 1 ? "semana" : "semanas"} y ${days} ${days === 1 ? "día" : "días"}`;
 }
+/** Inclusive dates for the app's display-week convention (exact multiples stay in that week). */
+export function gestationalWeekRange(due: string, week: number) {
+  if (!Number.isInteger(week) || week < 1) throw new Error("Semana inválida");
+  const reference = addDays(due, -280);
+  return {
+    start: addDays(reference, week === 1 ? 0 : (week - 1) * 7 + 1),
+    end: addDays(reference, week * 7),
+  };
+}
+export function formatWeekRange(due: string, week: number, compact = false) {
+  const { start, end } = gestationalWeekRange(due, week);
+  const format = (date: string) =>
+    new Intl.DateTimeFormat("es-AR", {
+      timeZone: "UTC",
+      day: "2-digit",
+      month: compact ? "2-digit" : "long",
+      ...(compact ? {} : { year: "numeric" as const }),
+    }).format(new Date(date + "T12:00:00Z"));
+  return compact
+    ? `${format(start)} – ${format(end)}`
+    : `Del ${format(start)} al ${format(end)}`;
+}
 export function gestation(due: string, today: string) {
   const remaining = dayNumber(due) - dayNumber(today),
     elapsed = 280 - remaining;

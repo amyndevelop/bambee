@@ -221,6 +221,7 @@ export function App() {
               key={data.pregnancy.id}
               current={data.gestation.currentWeek}
               age={data.gestation}
+              dueDate={data.pregnancy.dueDate.slice(0, 10)}
             />
           ) : path === "/agenda" ? (
             <Agenda pregnancyId={data.pregnancy.id} save={save} />

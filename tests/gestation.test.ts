@@ -8,7 +8,47 @@ import {
   canAccess,
   gestationalAgeFromDays,
   formatGestationalAge,
+  gestationalWeekRange,
+  formatWeekRange,
 } from "../src/lib/gestation";
+test("rangos inclusivos coinciden con cada semana en curso, incluidos 4+6, 5+0 y 5+1", () => {
+  const due = addDays("2026-09-29", 280);
+  assert.deepEqual(gestationalWeekRange(due, 5), {
+    start: "2026-10-28",
+    end: "2026-11-03",
+  });
+  for (let elapsed = 0; elapsed <= 294; elapsed++) {
+    const date = addDays("2026-09-29", elapsed);
+    const { start, end } = gestationalWeekRange(
+      due,
+      gestation(due, date).currentWeek,
+    );
+    assert.ok(date >= start && date <= end);
+  }
+  assert.deepEqual(gestationalWeekRange(due, 1), {
+    start: "2026-09-29",
+    end: "2026-10-06",
+  });
+  assert.match(
+    formatWeekRange(due, 5),
+    /28 de octubre de 2026.*03 de noviembre de 2026/,
+  );
+});
+test("rangos calendario atraviesan año, bisiestos y cambios de horario sin desplazar fechas", () => {
+  for (const reference of [
+    "2024-02-25",
+    "2026-12-28",
+    "2026-03-07",
+    "2026-10-31",
+  ]) {
+    const due = addDays(reference, 280);
+    const previous = gestationalWeekRange(due, 1);
+    const next = gestationalWeekRange(due, 2);
+    assert.equal(next.start, addDays(previous.end, 1));
+    assert.equal(dayNumber(next.end) - dayNumber(next.start), 6);
+  }
+  assert.throws(() => gestationalWeekRange("2026-11-02", 0));
+});
 test("FPP a 280 días, incluyendo año bisiesto", () => {
   assert.equal(addDays("2024-02-01", 280), "2024-11-07");
   assert.equal(addDays("2026-01-01", 280), "2026-10-08");

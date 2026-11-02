@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { randomBytes } from "node:crypto";
+import { formatWeekRange } from "../../src/lib/gestation";
 test("registro, onboarding, dashboard y diario en móvil", async ({
   page,
 }, testInfo) => {
@@ -107,6 +108,9 @@ test("registro, onboarding, dashboard y diario en móvil", async ({
   await expect(
     page.getByRole("heading", { name: "Semana 21", exact: true }),
   ).toBeVisible();
+  await expect(page.locator(".week-date-range")).toHaveText(
+    formatWeekRange(due.toISOString().slice(0, 10), 21),
+  );
   await expect(
     page.getByText("20 semanas y 3 días", { exact: true }),
   ).toBeVisible();
@@ -134,6 +138,9 @@ test("registro, onboarding, dashboard y diario en móvil", async ({
     0,
   );
   await page.getByRole("button", { name: "Sem 19", exact: true }).click();
+  await expect(page.locator(".week-date-range")).toHaveText(
+    formatWeekRange(due.toISOString().slice(0, 10), 19),
+  );
   await expect(
     page.getByRole("button", { name: "Sem 19", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");

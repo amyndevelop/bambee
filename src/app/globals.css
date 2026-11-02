@@ -825,6 +825,16 @@ footer {
 .week-nav button {
   white-space: nowrap;
 }
+.week-nav-dates {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  margin-top: 4px;
+}
+.week-date-range {
+  font-size: 12px;
+  margin: 6px 0 14px;
+}
 .selected {
   background: #f7d2c6 !important;
   border-color: #e6b1a2 !important;

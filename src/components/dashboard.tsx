@@ -1,7 +1,7 @@
 "use client";
 import { EditorialNotice } from "./editorial-notice";
 import { FruitComparison } from "./fruit-comparison";
-import { formatGestationalAge } from "@/lib/gestation";
+import { formatGestationalAge, formatWeekRange } from "@/lib/gestation";
 import { type Row } from "@/lib/client";
 import {
   ArrowRight,
@@ -33,6 +33,12 @@ export function Dashboard({ data: d }: { data: Row }) {
               <h2>Semana {g.currentWeek}</h2>
               <p className="exact-gestational-age">
                 {formatGestationalAge(g.completedWeeks, g.days)}
+              </p>
+              <p className="week-date-range">
+                {formatWeekRange(
+                  d.pregnancy.dueDate.slice(0, 10),
+                  g.currentWeek,
+                )}
               </p>
               <p>
                 Estás en tu {["", "primer", "segundo", "tercer"][g.trimester]}{" "}
