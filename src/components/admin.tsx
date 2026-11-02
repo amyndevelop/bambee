@@ -273,8 +273,9 @@ function BrandManager() {
     <section className="card">
       <h2>Recursos gráficos aprobados</h2>
       <p>
-        Subí exclusivamente originales autorizados. Usá el identificador logo o
-        bee para la identidad principal.
+        El logo y el isotipo oficiales se incluyen con la aplicación. Subí otros
+        recursos autorizados; usá bee para la mascota y nombres específicos para
+        las ilustraciones semanales.
       </p>
       <form
         onSubmit={async (e) => {
@@ -300,7 +301,7 @@ function BrandManager() {
         }}
       >
         <Field
-          label="Identificador (logo, bee o nombre de recurso)"
+          label="Identificador (bee o nombre de recurso)"
           name="slug"
           required
           pattern="[a-z0-9-]{1,64}"

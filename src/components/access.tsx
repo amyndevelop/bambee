@@ -1,11 +1,11 @@
 "use client";
 import { api } from "@/lib/client";
-import { ArrowRight, Heart, ShieldCheck } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useState } from "react";
-import { BrandGraphic, Field, Logo } from "./ui";
+import { BrandGraphic, BrandIsotype, Field, Logo } from "./ui";
 export function Access({ error }: { error: string }) {
   const router = useRouter();
   const [mode, setMode] = useState("welcome"),
@@ -70,10 +70,7 @@ export function Access({ error }: { error: string }) {
         <section className="welcome-art">
           <Logo />
           <div className="welcome-circle">
-            <BrandGraphic
-              slug="bee"
-              fallback={<Heart size={115} strokeWidth={1} />}
-            />
+            <BrandGraphic slug="bee" fallback={<BrandIsotype />} />
           </div>
           <p className="eyebrow">PASO 1 DE 5 · BIENVENIDA</p>
           <h1>
@@ -117,10 +114,7 @@ export function Access({ error }: { error: string }) {
       <section className="welcome-art">
         <Logo />
         <div className="welcome-circle">
-          <BrandGraphic
-            slug="bee"
-            fallback={<Heart size={115} strokeWidth={1} />}
-          />
+          <BrandGraphic slug="bee" fallback={<BrandIsotype />} />
         </div>
         <p className="eyebrow">UN NUEVO CAPÍTULO</p>
         <h1>

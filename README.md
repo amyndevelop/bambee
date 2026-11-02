@@ -65,7 +65,7 @@ No hay credenciales administrativas predeterminadas. `/admin` autoriza cada oper
 
 La biblioteca incorpora los 42 textos aportados por el usuario como borradores no publicados y sin revisión médica atribuida. Ver [fuente y política del seed](content/pregnancy/README.md). Consultar [proceso editorial](docs/EDITORIAL.md). Sin contenido revisado para una semana, la interfaz presenta un estado neutral. No se muestran medidas o frutas inventadas.
 
-Los originales de marca no estaban disponibles como archivos en el checkout. El administrador permite cargar los originales aprobados con identificadores `logo` y `bee`; se muestran automáticamente en bienvenida y mensajes. Los recursos publicados son gráficos de marca visibles a todas las personas, nunca archivos médicos. Los iconos de instalación actuales y el texto de marca deben reemplazarse por los originales aprobados antes de publicar.
+El logo y el isotipo oficiales provienen de los PDF suministrados por el usuario: se conservan en `design/brand/` y se exportaron a SVG sin redibujar. La identidad está en `public/brand/` y no depende de S3 ni de una consulta a la base. El isotipo también se utiliza en favicon, iconos PWA y apple-touch-icon. La interfaz usa Inter variable, con Regular 400, Medium 500, SemiBold 600, Bold 700 y ExtraBold 800, más variante itálica; el wordmark conserva sus trazos originales. Los recursos editoriales y la mascota pueden administrarse por separado. Ver [procedencia de la marca](design/brand/README.md).
 
 ## Verificación y producción
 
@@ -97,3 +97,7 @@ Ver [publicación en GitHub y Vercel](docs/DEPLOYMENT.md). El build de Vercel ge
 El día civil se obtiene en la zona configurada por la titular del embarazo, también al verlo desde una cuenta familiar. La FPP guardada conserva la datación médica confirmada. Dashboard, biblioteca, fruta, navegador, recuerdos y notificaciones usan `currentWeek` para el rótulo y conservan la edad exacta aparte. Navegar otras semanas no altera la datación.
 
 Con PostgreSQL local y el build preparado, `npm run test:weekly-workflow` crea una base temporal separada, comprueba el seed y los permisos, ejecuta las pruebas HTTP y de navegador, y elimina únicamente esa base al finalizar. Rechaza bases remotas.
+
+## Verificar esta entrega en producción
+
+Después de que el deployment de main quede Ready, abrir `/api/health`. El alcance del verificador es la identidad de esta entrega y la biblioteca semanal: debe devolver `status: "ok"`, `weeklyContent.total: 42`, `weeklyContent.complete: true`, `release.font: "Inter"` y `release.brand: "original-pdf-2026-11-02"`. Cuando Vercel expone `VERCEL_GIT_COMMIT_SHA`, también informa el commit desplegado. No devuelve usuarios, embarazos ni archivos personales. El número de textos publicados se informa por separado: cargar los 42 borradores no los aprueba médicamente. Este endpoint no certifica SMTP, S3 ni la totalidad del producto.

@@ -42,3 +42,7 @@ APP_URL=https://bambee-eta.vercel.app
 ```
 
 Luego redeployar para aplicar las variables. Si cambia el dominio, actualizar ambas. La validación de origen también permite los hosts exactos de `VERCEL_PROJECT_PRODUCTION_URL` y `VERCEL_URL` provistos por la plataforma. No confía en `Host`, `X-Forwarded-Host` ni en todos los subdominios de vercel.app. Las solicitudes sin un origen permitido continúan rechazadas.
+
+## Comprobar identidad y biblioteca después del deploy
+
+Abrir `https://bambee-eta.vercel.app/api/health` después de Ready. Debe informar 42 semanas completas, fuente Inter y marca `original-pdf-2026-11-02`; el commit permite distinguir un deployment anterior. Las semanas pendientes de revisión permanecen sin publicar. La verificación del endpoint requiere acceso de red al dominio; una compilación local no demuestra que el deployment remoto finalizó.

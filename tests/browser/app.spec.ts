@@ -6,7 +6,49 @@ test("registro, onboarding, dashboard y diario en móvil", async ({
   const email = `browser-${Date.now()}@example.test`,
     password = randomBytes(20).toString("hex");
   await page.goto("/acceso");
+  const wordmark = page.locator(".logo-wordmark:visible").first();
+  await expect(wordmark).toHaveAttribute("src", "/brand/wordmark.svg");
+  await expect
+    .poll(() =>
+      wordmark.evaluate(
+        (image) =>
+          (image as HTMLImageElement).complete &&
+          (image as HTMLImageElement).naturalWidth > 0,
+      ),
+    )
+    .toBe(true);
+  await expect(page.locator(".logo-isotype:visible").first()).toHaveAttribute(
+    "src",
+    "/brand/isotype.svg",
+  );
+  await page.evaluate(() => document.fonts.ready);
+  expect(
+    await page.evaluate(() => getComputedStyle(document.body).fontFamily),
+  ).toContain("Inter Variable");
+  expect(
+    await page.evaluate(() =>
+      Array.from(document.fonts).some(
+        (font) => font.family.includes("Inter") && font.status === "loaded",
+      ),
+    ),
+  ).toBe(true);
   await page.getByRole("button", { name: "Crear mi cuenta" }).click();
+  expect(
+    await page
+      .getByRole("heading", { name: "Pequeños latidos. Un amor enorme." })
+      .evaluate((element) => getComputedStyle(element).fontWeight),
+  ).toBe("800");
+  expect(
+    await page
+      .getByLabel("Tu nombre")
+      .locator("..")
+      .evaluate((element) => getComputedStyle(element).fontWeight),
+  ).toBe("500");
+  expect(
+    await page
+      .getByRole("button", { name: "Crear mi cuenta", exact: true })
+      .evaluate((element) => getComputedStyle(element).fontWeight),
+  ).toBe("600");
   await page.getByLabel("Tu nombre").fill("Lucía");
   await page.getByLabel("Correo electrónico").fill(email);
   await page.getByLabel("Contraseña ·").fill(password);

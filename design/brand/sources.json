@@ -1,0 +1,16 @@
+{
+  "isotype": {
+    "pdf": "design/brand/bambee-isotype.pdf",
+    "svg": "public/brand/isotype.svg",
+    "sourceSha256": "a55f7d50a471812aaf331de03cc4b79d9e4cfb4799f33924834f8a07406ed235",
+    "pageWidth": 562.0869140625,
+    "pageHeight": 598.1336059570312
+  },
+  "wordmark": {
+    "pdf": "design/brand/bambee-wordmark.pdf",
+    "svg": "public/brand/wordmark.svg",
+    "sourceSha256": "2a1e8aff0b73ba0e9523282a5f3b2e5462a308e828a0f015564e209fb5d7ef18",
+    "pageWidth": 1446.9039306640625,
+    "pageHeight": 338.3695068359375
+  }
+}

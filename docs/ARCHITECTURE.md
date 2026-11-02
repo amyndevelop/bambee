@@ -29,6 +29,8 @@ Solo se devuelven semanas con publicación y revisión registrada. Los cambios e
 
 La traducción inicial está en español argentino; `src/lib/i18n.ts` define idioma/catálogo. Aún debe migrarse el resto de textos de componentes a catálogos para incorporar un segundo idioma. No se afirma cobertura multilingüe terminada.
 
-La app necesita conexión para operar. La PWA incluye manifest, iconos PNG, apple-touch-icon y service worker sin caché de datos. El sistema operativo genera la pantalla de lanzamiento a partir de los metadatos; no hay splash con originales de marca. Web Push y generación de video están fuera de esta versión.
+La app necesita conexión para operar. La PWA incluye manifest, iconos PNG, apple-touch-icon y service worker sin caché de datos. El sistema operativo genera la pantalla de lanzamiento a partir de los metadatos; la identidad de instalación utiliza el isotipo oficial exportado de su PDF. Web Push y generación de video están fuera de esta versión.
 
 La edad exacta (`completedWeeks`, `days`) se mantiene separada de `currentWeek`. El contenido y la fruta se seleccionan por `currentWeek`; la fecha civil del embarazo usa la zona de la titular para evitar discrepancias entre familiares. La historia de datación mantiene la FPP médica como referencia hasta una corrección explícita.
+
+Logo e isotipo se sirven como SVG estáticos de los originales en `public/brand`, sin depender de la API editorial. La interfaz usa Inter variable autoalojada. `/api/health` realiza una comprobación acotada de biblioteca/entrega y nunca consulta tablas de usuarios o embarazos.

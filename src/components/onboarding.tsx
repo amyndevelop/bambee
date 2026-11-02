@@ -1,8 +1,8 @@
 "use client";
 import { type Row } from "@/lib/client";
-import { ArrowRight, Heart } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { type FormEvent, useState } from "react";
-import { BrandGraphic, Field, Logo } from "./ui";
+import { BrandGraphic, BrandIsotype, Field, Logo } from "./ui";
 export function Onboarding({
   save,
   error,
@@ -139,10 +139,7 @@ export function Onboarding({
           </>
         ) : (
           <div className="onboarding-celebration">
-            <BrandGraphic
-              slug="bee"
-              fallback={<Heart size={72} strokeWidth={1} />}
-            />
+            <BrandGraphic slug="bee" fallback={<BrandIsotype />} />
             <p>
               {draft.babyName
                 ? `Un espacio para vos y ${draft.babyName}.`

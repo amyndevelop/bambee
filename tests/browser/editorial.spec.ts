@@ -66,6 +66,14 @@ test("administración: 42 borradores editables sin publicar ni exigir un embaraz
     expect(updated.published).toBe(false);
     expect(updated.reviewStatus).toBe("PENDING_REVIEW");
     expect(updated.reviewedAt).toBeNull();
+    const health = await page.request.get("/api/health");
+    expect(health.status()).toBe(200);
+    const readiness = await health.json();
+    expect(readiness.weeklyContent.total).toBe(42);
+    expect(readiness.weeklyContent.complete).toBe(true);
+    expect(readiness.weeklyContent.published).toBe(0);
+    expect(readiness.release.font).toBe("Inter");
+    expect(readiness.release.brand).toBe("original-pdf-2026-11-02");
     const publicWeeks = await page.request.get("/api/data?kind=weeks");
     expect(await publicWeeks.json()).toEqual([]);
   } finally {

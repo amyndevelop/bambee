@@ -1,23 +1,42 @@
 "use client";
 import { api, type Row } from "@/lib/client";
-import { Flower2, Heart } from "lucide-react";
+import { Flower2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 export function Logo() {
   return (
-    <Link href="/" className="logo">
-      <BrandGraphic
-        slug="logo"
-        fallback={
-          <>
-            <span className="logo-mark">
-              b<Heart size={13} />
-            </span>
-            bambee<span className="logo-dot">♥</span>
-          </>
-        }
+    <Link href="/" className="logo" aria-label="BAMBEE · Inicio">
+      <img
+        className="logo-isotype"
+        src="/brand/isotype.svg"
+        width={38}
+        height={41}
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        className="logo-wordmark"
+        src="/brand/wordmark.svg"
+        width={145}
+        height={34}
+        alt="BAMBEE"
       />
     </Link>
+  );
+}
+export function BrandIsotype({
+  className = "brand-isotype",
+}: {
+  className?: string;
+}) {
+  return (
+    <img
+      src="/brand/isotype.svg"
+      className={className}
+      alt="Isotipo BAMBEE"
+      width={160}
+      height={170}
+    />
   );
 }
 export function Empty({ title, text }: { title: string; text: string }) {

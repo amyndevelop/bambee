@@ -68,6 +68,19 @@ async function login(user: number) {
 test("Flujo integrado sobre HTTP, Auth.js y PostgreSQL", async (t) => {
   try {
     await t.test(
+      "el verificador de producción detecta una biblioteca aún no cargada sin exponer datos personales",
+      async () => {
+        const response = await request("/api/health");
+        assert.equal(response.status, 503);
+        const result = await response.json();
+        assert.equal(result.weeklyContent.total, 0);
+        assert.equal(result.weeklyContent.complete, false);
+        assert.equal(result.release.font, "Inter");
+        assert.ok(!JSON.stringify(result).includes("password"));
+        assert.ok(!JSON.stringify(result).includes("DATABASE_URL"));
+      },
+    );
+    await t.test(
       "registro requiere consentimiento y contraseña segura",
       async () => {
         const r = await request("/api/account", {
