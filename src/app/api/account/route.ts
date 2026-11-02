@@ -1,3 +1,4 @@
+import { databaseDiagnostic } from "@/lib/database-diagnostics";
 import { passwordSchema } from "@/lib/validation";
 import { throttle } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -89,6 +90,8 @@ export async function POST(req: Request) {
     }
     throw new Error("Acción inválida");
   } catch (e) {
+    const diagnostic = databaseDiagnostic(e);
+    if (diagnostic) console.error("BAMBEE_ACCOUNT_DATABASE_ERROR", diagnostic);
     return NextResponse.json(
       {
         error:
