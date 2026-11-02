@@ -32,7 +32,7 @@
 1. **S3 privado:** no hay endpoint, bucket ni credenciales configurados. Los intentos de obtener MinIO desde Docker Hub y Quay fueron rechazados. El código está implementado, pero carga/descarga/borrado extremo a extremo de objetos reales no se validaron. La prueba de propiedad de archivos sí se ejecutó con metadatos de prueba en PostgreSQL. Configurar el servicio y ejecutar esa validación antes de usar archivos reales.
 2. **SMTP:** faltan transporte y remitente. No se enviaron correos. El canje de tokens sí se probó, con tokens temporales creados en la base de pruebas; eso no demuestra entrega de invitaciones o recuperación por correo.
 3. **Contenido clínico:** hay 42 textos educativos publicados con aviso de revisión profesional pendiente; no se atribuye revisión médica real. Un profesional debe preparar y aprobar el contenido siguiendo `EDITORIAL.md`. Las frutas, medidas y textos provienen del adjunto y están pendientes de contraste; no se presentaron como clínicamente validados.
-4. **Recursos gráficos:** logo e isotipo oficiales ya incorporados desde los PDF del usuario, incluidos los iconos de instalación. Las ilustraciones de frutas y la mascota definitiva siguen pendientes como recursos separados; no se presentan sus marcadores como arte final.
+4. **Recursos gráficos:** logo e isotipo oficiales ya incorporados desde los PDF del usuario, incluidos los iconos de instalación. Las 39 ilustraciones de frutas y verduras del PDF del usuario están incorporadas. La mascota definitiva sigue pendiente.
 5. **Producción:** requieren configuración HTTPS, límites/observabilidad, backups y restauración probada, revisión de seguridad, análisis de privacidad y revisión legal. Los textos legales son borradores explícitos. El usuario publicó la aplicación en Vercel; este entorno no verificó el estado ni la configuración de su producción.
 
 ## Límites de esta entrega
@@ -51,7 +51,7 @@ Esta entrega es una implementación funcional de los módulos principales con pe
 - La pantalla muestra semana en curso en grande y semanas completas/días aparte, con los casos 4+6 → 5, 5+0 → 5 y 5+1 → 6 probados.
 - Migración aditiva `20261102050000_weekly_editorial`, incluida explícitamente en el manifiesto de despliegue. Conserva datos existentes.
 - 42 textos cargados y publicados editorialmente en PostgreSQL local; ninguno marcado con revisión médica registrada. El seed se verifica repetible y preserva modificaciones, citas y archivos. Su ejecución en producción depende del próximo build de Vercel y no se declara comprobada.
-- 39 marcadores PNG transparentes, identificados como ilustraciones pendientes. Faltan los originales de frutas.
+- 39 ilustraciones PNG transparentes extraídas del PDF original del usuario, asignadas a las semanas 4–42.
 - Fuentes médicas específicas, medidas, hitos y cambios maternos pendientes de revisión/redacción profesional; la biblioteca pública identifica de forma visible la revisión pendiente.
 
 ## Identidad y verificación de producción

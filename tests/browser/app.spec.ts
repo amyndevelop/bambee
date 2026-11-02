@@ -80,6 +80,21 @@ test("registro, onboarding, dashboard y diario en móvil", async ({
   await expect(
     page.getByRole("heading", { name: "Zanahoria", exact: true }),
   ).toBeVisible();
+  const carrot = page
+    .getByRole("img", { name: "Zanahoria", exact: true })
+    .first();
+  await expect(carrot).toHaveAttribute(
+    "src",
+    "/assets/pregnancy/fruits/carrot.png",
+  );
+  await expect
+    .poll(() =>
+      carrot.evaluate((image) => (image as HTMLImageElement).naturalWidth),
+    )
+    .toBeGreaterThan(0);
+  await expect(page.getByText("Ilustración específica pendiente")).toHaveCount(
+    0,
+  );
   const library = await page.request.get("/api/data?kind=weeks");
   const allWeeks = await library.json();
   expect(allWeeks).toHaveLength(42);

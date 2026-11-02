@@ -22,6 +22,6 @@ Vercel ejecuta el seed después de las migraciones del manifiesto de esta entreg
 
 ## Imágenes
 
-Hay 39 PNG transparentes de 512×512, en rutas distintas para las comparaciones de semanas 4–42. Son marcadores neutros, no ilustraciones anatómicas o de frutas, y se identifican visualmente como «Ilustración específica pendiente». No están presentados como arte terminado. No contienen texto integrado ni marcas de agua. Las semanas 1–3 no simulan una fruta.
+Las 39 ilustraciones originales del PDF `design/fruits/fyv.pdf` se extraen como PNG con transparencia para las semanas 4–42. `design/fruits/sources.json` registra el hash del original, la correspondencia por semana y las regiones de extracción. El seed sustituye únicamente los marcadores conocidos que aún conservan la misma fruta; preserva arte personalizado, textos, revisiones y decisiones de ocultar. Las semanas 1–3 no simulan una fruta. Los archivos `-pending.png` se conservan por compatibilidad con ediciones históricas.
 
 Un administrador puede cargar un original autorizado y seleccionarlo como ilustración de la semana; los recursos originales publicados tienen prioridad sobre el marcador. Los marcadores no deben aprobarse como ilustraciones definitivas.

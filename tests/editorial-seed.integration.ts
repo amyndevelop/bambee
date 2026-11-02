@@ -66,6 +66,42 @@ test("seed de 42 textos educativos: persistencia, idempotencia y preservación d
           w.reviewedBy === null,
       ),
     );
+    await db.weeklyDevelopment.update({
+      where: { week: 6 },
+      data: {
+        title: "Texto propio conservado al actualizar el arte",
+        editorialPublished: false,
+        fruitImage: "/assets/pregnancy/fruits/lentil-pending.png",
+        fruitImageIsPlaceholder: true,
+      },
+    });
+    await db.weeklyDevelopment.update({
+      where: { week: 7 },
+      data: {
+        fruitImage: "/assets/pregnancy/fruits/custom-art.png",
+        fruitImageIsPlaceholder: false,
+      },
+    });
+    await seedWeeklyDevelopment(db);
+    const refreshed = await db.weeklyDevelopment.findUniqueOrThrow({
+      where: { week: 6 },
+    });
+    assert.equal(refreshed.fruitImage, "/assets/pregnancy/fruits/lentil.png");
+    assert.equal(refreshed.fruitImageIsPlaceholder, false);
+    assert.equal(
+      refreshed.title,
+      "Texto propio conservado al actualizar el arte",
+    );
+    assert.equal(refreshed.editorialPublished, false);
+    assert.equal(
+      (await db.weeklyDevelopment.findUniqueOrThrow({ where: { week: 7 } }))
+        .fruitImage,
+      "/assets/pregnancy/fruits/custom-art.png",
+    );
+    await db.weeklyDevelopment.update({
+      where: { week: 6 },
+      data: { editorialPublished: true },
+    });
     const custom = await db.weeklyDevelopment.update({
       where: { week: 5 },
       data: {

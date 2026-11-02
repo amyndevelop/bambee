@@ -62,13 +62,14 @@ test("documenta métodos distintos y conserva la comparación de cada semana", (
   assert.ok(measurementLabels.CRL.includes("cabeza a nalgas"));
   assert.ok(measurementLabels.TOTAL_LENGTH.includes("talón"));
 });
-test("cada referencia visual de fruta existe y está identificada como pendiente", () => {
+test("las 39 ilustraciones originales existen y reemplazan los marcadores pendientes", () => {
   const rows = source.filter(
     (r: { fruitImage: string | null }) => r.fruitImage,
   );
   const hashes = new Set();
   for (const row of rows) {
-    assert.equal(row.fruitImageIsPlaceholder, true);
+    assert.equal(row.fruitImageIsPlaceholder, false);
+    assert.ok(!row.fruitImage.includes("-pending"));
     const path = resolve("public", row.fruitImage.slice(1));
     assert.ok(existsSync(path));
     const buffer = readFileSync(path);

@@ -1,0 +1,308 @@
+{
+  "source": "fyv.pdf",
+  "sha256": "968850f7e3498e6b8aaae4ba95ab2cd58b7faf71949e70e48b0d34e7187dd989",
+  "page": 1,
+  "coordinateSystem": "PDF points, origin top-left",
+  "assets": [
+    {
+      "week": 4,
+      "fruit": "Semilla de amapola",
+      "path": "/assets/pregnancy/fruits/poppy-seed.png",
+      "clip": [45, 130, 82, 165]
+    },
+    {
+      "week": 5,
+      "fruit": "Semilla de sésamo",
+      "path": "/assets/pregnancy/fruits/sesame-seed.png",
+      "clip": [138, 123, 182, 165]
+    },
+    {
+      "week": 6,
+      "fruit": "Lenteja",
+      "path": "/assets/pregnancy/fruits/lentil.png",
+      "clip": [248, 121, 302, 164]
+    },
+    {
+      "week": 7,
+      "fruit": "Arándano",
+      "path": "/assets/pregnancy/fruits/blueberry.png",
+      "clip": [350, 90, 428, 168]
+    },
+    {
+      "week": 8,
+      "fruit": "Frambuesa",
+      "path": "/assets/pregnancy/fruits/raspberry.png",
+      "clip": [455, 74, 549, 173]
+    },
+    {
+      "week": 9,
+      "fruit": "Cereza",
+      "path": "/assets/pregnancy/fruits/cherry.png",
+      "clip": [567, 39, 686, 173]
+    },
+    {
+      "week": 10,
+      "fruit": "Frutilla",
+      "path": "/assets/pregnancy/fruits/strawberry.png",
+      "clip": [695, 38, 815, 178]
+    },
+    {
+      "week": 11,
+      "fruit": "Lima pequeña",
+      "path": "/assets/pregnancy/fruits/small-lime.png",
+      "clip": [828, 69, 938, 173]
+    },
+    {
+      "week": 12,
+      "fruit": "Ciruela",
+      "path": "/assets/pregnancy/fruits/plum.png",
+      "clip": [952, 36, 1101, 177]
+    },
+    {
+      "week": 13,
+      "fruit": "Limón",
+      "path": "/assets/pregnancy/fruits/lemon.png",
+      "clip": [20, 224, 163, 352]
+    },
+    {
+      "week": 14,
+      "fruit": "Durazno",
+      "path": "/assets/pregnancy/fruits/peach.png",
+      "clip": [167, 211, 318, 356]
+    },
+    {
+      "week": 15,
+      "fruit": "Pera",
+      "path": "/assets/pregnancy/fruits/pear.png",
+      "clip": [326, 194, 459, 362]
+    },
+    {
+      "week": 16,
+      "fruit": "Palta",
+      "path": "/assets/pregnancy/fruits/avocado.png",
+      "clip": [466, 196, 604, 363]
+    },
+    {
+      "week": 17,
+      "fruit": "Granada",
+      "path": "/assets/pregnancy/fruits/pomegranate.png",
+      "clip": [616, 196, 776, 362]
+    },
+    {
+      "week": 18,
+      "fruit": "Batata",
+      "path": "/assets/pregnancy/fruits/sweet-potato.png",
+      "clip": [775, 216, 945, 354]
+    },
+    {
+      "week": 19,
+      "fruit": "Mango",
+      "path": "/assets/pregnancy/fruits/mango.png",
+      "clip": [943, 193, 1110, 365]
+    },
+    {
+      "week": 20,
+      "fruit": "Banana",
+      "path": "/assets/pregnancy/fruits/banana.png",
+      "clip": [17, 389, 205, 561]
+    },
+    {
+      "week": 21,
+      "fruit": "Zanahoria",
+      "path": "/assets/pregnancy/fruits/carrot.png",
+      "clip": [205, 364, 349, 580],
+      "clipPolygon": [
+        [205, 364],
+        [349, 364],
+        [349, 440],
+        [325, 440],
+        [325, 580],
+        [205, 580]
+      ]
+    },
+    {
+      "week": 22,
+      "fruit": "Papaya pequeña",
+      "path": "/assets/pregnancy/fruits/small-papaya.png",
+      "clip": [329, 387, 508, 576],
+      "clipPolygon": [
+        [349, 387],
+        [508, 387],
+        [508, 576],
+        [329, 576],
+        [329, 460],
+        [349, 440]
+      ]
+    },
+    {
+      "week": 23,
+      "fruit": "Coco",
+      "path": "/assets/pregnancy/fruits/coconut.png",
+      "clip": [506, 394, 704, 576]
+    },
+    {
+      "week": 24,
+      "fruit": "Choclo",
+      "path": "/assets/pregnancy/fruits/corn.png",
+      "clip": [697, 351, 889, 583]
+    },
+    {
+      "week": 25,
+      "fruit": "Coliflor pequeña",
+      "path": "/assets/pregnancy/fruits/small-cauliflower.png",
+      "clip": [882, 384, 1110, 575],
+      "clipPolygon": [
+        [882, 384],
+        [1110, 384],
+        [1110, 567],
+        [882, 567]
+      ]
+    },
+    {
+      "week": 26,
+      "fruit": "Lechuga",
+      "path": "/assets/pregnancy/fruits/lettuce.png",
+      "clip": [18, 624, 200, 798]
+    },
+    {
+      "week": 27,
+      "fruit": "Brócoli grande",
+      "path": "/assets/pregnancy/fruits/large-broccoli.png",
+      "clip": [199, 580, 420, 803]
+    },
+    {
+      "week": 28,
+      "fruit": "Berenjena",
+      "path": "/assets/pregnancy/fruits/aubergine.png",
+      "clip": [411, 588, 559, 813],
+      "clipPolygon": [
+        [420, 588],
+        [559, 588],
+        [559, 813],
+        [420, 813]
+      ]
+    },
+    {
+      "week": 29,
+      "fruit": "Calabaza alargada",
+      "path": "/assets/pregnancy/fruits/long-squash.png",
+      "clip": [562, 584, 724, 819]
+    },
+    {
+      "week": 30,
+      "fruit": "Repollo",
+      "path": "/assets/pregnancy/fruits/cabbage.png",
+      "clip": [725, 601, 956, 814]
+    },
+    {
+      "week": 31,
+      "fruit": "Espárragos grandes",
+      "path": "/assets/pregnancy/fruits/large-asparagus.png",
+      "clip": [947, 568, 1111, 818]
+    },
+    {
+      "week": 32,
+      "fruit": "Ananá",
+      "path": "/assets/pregnancy/fruits/pineapple.png",
+      "clip": [16, 798, 210, 1087]
+    },
+    {
+      "week": 33,
+      "fruit": "Apio grande",
+      "path": "/assets/pregnancy/fruits/large-celery.png",
+      "clip": [214, 806, 425, 1085]
+    },
+    {
+      "week": 34,
+      "fruit": "Melón cantalupo",
+      "path": "/assets/pregnancy/fruits/cantaloupe.png",
+      "clip": [410, 832, 643, 1086],
+      "clipPolygon": [
+        [425, 832],
+        [643, 832],
+        [643, 1086],
+        [410, 1086],
+        [410, 970],
+        [425, 970]
+      ]
+    },
+    {
+      "week": 35,
+      "fruit": "Melón amarillo",
+      "path": "/assets/pregnancy/fruits/yellow-melon.png",
+      "clip": [642, 844, 872, 1084]
+    },
+    {
+      "week": 36,
+      "fruit": "Lechuga romana",
+      "path": "/assets/pregnancy/fruits/romaine-lettuce.png",
+      "clip": [870, 818, 1106, 1086]
+    },
+    {
+      "week": 37,
+      "fruit": "Acelga grande",
+      "path": "/assets/pregnancy/fruits/large-chard.png",
+      "clip": [0, 1087, 187, 1362]
+    },
+    {
+      "week": 38,
+      "fruit": "Puerro grande",
+      "path": "/assets/pregnancy/fruits/large-leek.png",
+      "clip": [183, 1087, 320, 1367],
+      "clipPolygon": [
+        [205, 1087],
+        [320, 1087],
+        [320, 1177],
+        [281, 1177],
+        [281, 1367],
+        [199, 1367],
+        [199, 1220],
+        [205, 1220]
+      ]
+    },
+    {
+      "week": 39,
+      "fruit": "Sandía pequeña",
+      "path": "/assets/pregnancy/fruits/small-watermelon.png",
+      "clip": [280, 1182, 433, 1361],
+      "clipPolygon": [
+        [300, 1182],
+        [433, 1182],
+        [433, 1361],
+        [280, 1361],
+        [280, 1220],
+        [300, 1220]
+      ]
+    },
+    {
+      "week": 40,
+      "fruit": "Zapallo pequeño",
+      "path": "/assets/pregnancy/fruits/small-pumpkin.png",
+      "clip": [430, 1163, 604, 1356],
+      "clipPolygon": [
+        [430, 1163],
+        [596, 1163],
+        [596, 1356],
+        [430, 1356]
+      ]
+    },
+    {
+      "week": 41,
+      "fruit": "Sandía",
+      "path": "/assets/pregnancy/fruits/watermelon.png",
+      "clip": [594, 1101, 837, 1366],
+      "clipPolygon": [
+        [600, 1101],
+        [827, 1101],
+        [827, 1366],
+        [600, 1366]
+      ]
+    },
+    {
+      "week": 42,
+      "fruit": "Zapallo",
+      "path": "/assets/pregnancy/fruits/pumpkin.png",
+      "clip": [827, 1086, 1118, 1367]
+    }
+  ]
+}

@@ -43,6 +43,23 @@ export async function seedWeeklyDevelopment(client: PrismaClient) {
             data: draft,
           });
       }
+      // Replace only the known neutral markers. Preserve custom artwork, text,
+      // review metadata and publication choices, including hidden weeks.
+      for (const draft of drafts) {
+        if (!draft.fruitImage || draft.fruitImageIsPlaceholder) continue;
+        await tx.weeklyDevelopment.updateMany({
+          where: {
+            week: draft.week,
+            fruit: draft.fruit,
+            fruitImage: draft.fruitImage.replace(/\.png$/, "-pending.png"),
+            fruitImageIsPlaceholder: true,
+          },
+          data: {
+            fruitImage: draft.fruitImage,
+            fruitImageIsPlaceholder: false,
+          },
+        });
+      }
     },
     { timeout: 60000, maxWait: 15000 },
   );
