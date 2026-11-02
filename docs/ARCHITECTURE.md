@@ -25,8 +25,10 @@ Las fechas gestacionales son `DATE`, sin hora. Se usan números de días UTC sol
 
 ## Editorial, privacidad y límites
 
-Solo se devuelven semanas con publicación y revisión registrada. Los cambios editoriales deben renovar la revisión. Las referencias clínicas y el texto se administran en PostgreSQL. La primera entrega no incluye contenido médico validado porque no se puede atribuir revisión profesional inexistente.
+Solo se devuelven semanas con publicación y revisión registrada. Los cambios editoriales deben renovar la revisión. Las referencias clínicas y el texto se administran en PostgreSQL. La biblioteca incluye 42 borradores del usuario, sin validación profesional atribuida. El seed es create-only: preserva toda edición existente. La interfaz pública filtra estado APPROVED, publicación y metadatos de revisión.
 
 La traducción inicial está en español argentino; `src/lib/i18n.ts` define idioma/catálogo. Aún debe migrarse el resto de textos de componentes a catálogos para incorporar un segundo idioma. No se afirma cobertura multilingüe terminada.
 
 La app necesita conexión para operar. La PWA incluye manifest, iconos PNG, apple-touch-icon y service worker sin caché de datos. El sistema operativo genera la pantalla de lanzamiento a partir de los metadatos; no hay splash con originales de marca. Web Push y generación de video están fuera de esta versión.
+
+La edad exacta (`completedWeeks`, `days`) se mantiene separada de `currentWeek`. El contenido y la fruta se seleccionan por `currentWeek`; la fecha civil del embarazo usa la zona de la titular para evitar discrepancias entre familiares. La historia de datación mantiene la FPP médica como referencia hasta una corrección explícita.

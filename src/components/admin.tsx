@@ -1,4 +1,5 @@
 "use client";
+import { reviewLabels, measurementLabels } from "@/lib/weekly-content";
 import { api, type Row } from "@/lib/client";
 import { FormEvent, useEffect, useState } from "react";
 import { Field } from "./ui";
@@ -20,6 +21,16 @@ export function Admin() {
         ...d,
         illustrationId: d.illustrationId || null,
         week: Number(d.week),
+        trimester: d.trimester ? Number(d.trimester) : null,
+        lengthCm: d.lengthCm ? Number(d.lengthCm) : null,
+        lengthMinCm: d.lengthMinCm ? Number(d.lengthMinCm) : null,
+        lengthMaxCm: d.lengthMaxCm ? Number(d.lengthMaxCm) : null,
+        measurementMethod: d.measurementMethod || null,
+        maternalChanges: d.maternalChanges || null,
+        developmentHighlights: String(d.developmentHighlights || "")
+          .split("\n")
+          .map((v) => v.trim())
+          .filter(Boolean),
         referenceUrls: String(d.referenceUrls).split("\n").filter(Boolean),
         review: f.has("review"),
         published: f.has("published"),
@@ -115,11 +126,99 @@ export function Admin() {
                   defaultValue={selected?.details}
                 />
               </label>
+              <Field
+                label="Trimestre editorial"
+                type="number"
+                name="trimester"
+                min={1}
+                max={3}
+                defaultValue={selected?.trimester || ""}
+              />
+              <label>
+                Método de medición
+                <select
+                  name="measurementMethod"
+                  defaultValue={selected?.measurementMethod || ""}
+                >
+                  <option value="">Pendiente de especificar</option>
+                  {Object.entries(measurementLabels).map(([value, label]) => (
+                    <option key={value} value={value}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <Field
+                label="Longitud orientativa (cm; vacío = sin medida)"
+                name="lengthCm"
+                type="number"
+                min="0.001"
+                step="any"
+                defaultValue={selected?.lengthCm ?? ""}
+              />
+              <Field
+                label="Rango mínimo (cm)"
+                name="lengthMinCm"
+                type="number"
+                min="0.001"
+                step="any"
+                defaultValue={selected?.lengthMinCm ?? ""}
+              />
+              <Field
+                label="Rango máximo (cm)"
+                name="lengthMaxCm"
+                type="number"
+                min="0.001"
+                step="any"
+                defaultValue={selected?.lengthMaxCm ?? ""}
+              />
+              <label>
+                Hitos, uno por línea
+                <textarea
+                  name="developmentHighlights"
+                  defaultValue={
+                    selected?.developmentHighlights?.join("\n") || ""
+                  }
+                />
+              </label>
+              <label>
+                ¿Qué puede estar pasando en tu cuerpo?
+                <textarea
+                  name="maternalChanges"
+                  defaultValue={selected?.maternalChanges || ""}
+                />
+              </label>
+              <label>
+                Estado del borrador
+                <select
+                  name="reviewStatus"
+                  defaultValue={
+                    selected?.reviewStatus === "DRAFT"
+                      ? "DRAFT"
+                      : "PENDING_REVIEW"
+                  }
+                >
+                  <option value="DRAFT">Borrador</option>
+                  <option value="PENDING_REVIEW">
+                    Pendiente de revisión profesional
+                  </option>
+                </select>
+              </label>
+              {selected && (
+                <p className="full">
+                  {reviewLabels[selected.reviewStatus]} ·{" "}
+                  {selected.published ? "Publicado" : "No publicado"} · Versión:{" "}
+                  {selected.contentVersion || "Edición manual"}. Fuentes
+                  pendientes de contraste:{" "}
+                  {selected.sourceNames?.join(", ") || "Sin fuentes propuestas"}
+                  . Los textos y medidas del adjunto no están validados
+                  médicamente.
+                </p>
+              )}
               <label>
                 Referencias HTTPS, una por línea
                 <textarea
                   name="referenceUrls"
-                  required
                   defaultValue={selected?.referenceUrls?.join("\n")}
                 />
               </label>
@@ -150,7 +249,8 @@ export function Admin() {
             {data.content.map((c: Row) => (
               <p key={c.id}>
                 Semana {c.week} · {c.title} ·{" "}
-                {c.published ? "Publicado" : "Borrador"}
+                {reviewLabels[c.reviewStatus] || "Borrador"} ·{" "}
+                {c.published ? "Publicado" : "No publicado"}
               </p>
             ))}
           </section>

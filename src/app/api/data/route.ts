@@ -1,3 +1,4 @@
+import { publishedWeeklyWhere } from "@/lib/weekly-content";
 import { storage } from "@/lib/storage";
 import { DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { db } from "@/lib/db";
@@ -27,6 +28,7 @@ export async function GET(req: Request) {
         OR: [{ ownerId: u.id }, { members: { some: { userId: u.id } } }],
       },
       orderBy: { createdAt: "desc" },
+      include: { owner: { select: { timezone: true } } },
     });
     const requested = url.searchParams.get("pregnancyId");
     if (requested && !pregnancies.some((p) => p.id === requested))
@@ -46,11 +48,7 @@ export async function GET(req: Request) {
     if (kind === "weeks") {
       return NextResponse.json(
         await db.weeklyDevelopment.findMany({
-          where: {
-            published: true,
-            reviewedAt: { not: null },
-            reviewedBy: { not: null },
-          },
+          where: publishedWeeklyWhere,
           include: {
             illustration: { select: { slug: true, published: true } },
           },
@@ -59,7 +57,12 @@ export async function GET(req: Request) {
     }
     if (!p)
       return NextResponse.json({
-        user: { name: u.name, timezone: u.timezone },
+        user: {
+          name: u.name,
+          timezone: u.timezone,
+          role: u.role,
+          preferences: u.preferences,
+        },
         pregnancy: null,
         pregnancies: [],
       });
@@ -114,15 +117,14 @@ export async function GET(req: Request) {
       );
     const g = gestation(
       p.dueDate.toISOString().slice(0, 10),
-      todayInZone(u.timezone),
+      todayInZone(p.owner.timezone),
     );
     const week = await db.weeklyDevelopment.findFirst({
       where: {
-        week: g.weeks,
-        published: true,
-        reviewedAt: { not: null },
-        reviewedBy: { not: null },
+        ...publishedWeeklyWhere,
+        week: g.currentWeek,
       },
+      include: { illustration: { select: { slug: true, published: true } } },
     });
     const next =
       p.ownerId === u.id ||
@@ -148,6 +150,7 @@ export async function GET(req: Request) {
       pregnancy: p,
       pregnancies,
       gestation: g,
+      pregnancyTimezone: p.owner.timezone,
       week,
       next,
       isOwner: p.ownerId === u.id,

@@ -106,6 +106,21 @@ export function App() {
         <p>Preparando tu espacio…</p>
       </main>
     );
+  if (path === "/admin")
+    return (
+      <main className="administration">
+        <Logo />
+        {["ADMIN", "EDITOR", "REVIEWER"].includes(data?.user.role) ? (
+          <Admin />
+        ) : (
+          <Empty
+            title="Acceso restringido"
+            text="Esta sección requiere permisos administrativos."
+          />
+        )}
+        <Link href="/">Volver a mi espacio</Link>
+      </main>
+    );
   if (!data?.pregnancy && path === "/familia")
     return <AcceptInvitation save={save} error={error} />;
   if (!data?.pregnancy)
@@ -202,7 +217,11 @@ export function App() {
           {path === "/" ? (
             <Dashboard data={data} />
           ) : path === "/bebe" ? (
-            <Weekly current={data.gestation.weeks} />
+            <Weekly
+              key={data.pregnancy.id}
+              current={data.gestation.currentWeek}
+              age={data.gestation}
+            />
           ) : path === "/agenda" ? (
             <Agenda pregnancyId={data.pregnancy.id} save={save} />
           ) : ["/diario", "/salud", "/ecografias", "/pancita"].includes(

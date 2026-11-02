@@ -6,6 +6,8 @@ import {
   gestation,
   todayInZone,
   canAccess,
+  gestationalAgeFromDays,
+  formatGestationalAge,
 } from "../src/lib/gestation";
 test("FPP a 280 días, incluyendo año bisiesto", () => {
   assert.equal(addDays("2024-02-01", 280), "2024-11-07");
@@ -15,6 +17,8 @@ test("semanas y días exactos, sin redondear", () => {
   assert.deepEqual(gestation("2026-12-01", "2026-07-17"), {
     elapsed: 143,
     weeks: 20,
+    completedWeeks: 20,
+    currentWeek: 21,
     days: 3,
     remaining: 137,
     trimester: 2,
@@ -78,4 +82,73 @@ test("las tareas requieren un permiso familiar independiente", () => {
     canAccess("owner", "partner", "task", { appointments: false, tasks: true }),
     true,
   );
+});
+
+test("FUM 29/09: 4+6, 5+0 y 5+1 distinguen edad exacta y semana en curso", () => {
+  const due = addDays("2026-09-29", 280);
+  for (const [today, weeks, days, currentWeek] of [
+    ["2026-11-02", 4, 6, 5],
+    ["2026-11-03", 5, 0, 5],
+    ["2026-11-04", 5, 1, 6],
+  ] as const) {
+    const age = gestation(due, today);
+    assert.equal(age.completedWeeks, weeks);
+    assert.equal(age.weeks, weeks);
+    assert.equal(age.days, days);
+    assert.equal(age.currentWeek, currentWeek);
+  }
+});
+test("de 0 a 6 días siempre muestra semana 1, y los múltiplos exactos respetan semanas completas", () => {
+  for (let day = 0; day <= 6; day++)
+    assert.equal(gestationalAgeFromDays(day).currentWeek, 1);
+  for (const days of [7, 14, 28, 35, 140, 280, 294])
+    assert.equal(gestationalAgeFromDays(days).currentWeek, days / 7);
+  assert.equal(gestationalAgeFromDays(8).currentWeek, 2);
+  assert.equal(gestationalAgeFromDays(-1).currentWeek, 1);
+});
+test("el cambio de día usa el calendario de Buenos Aires para avanzar de 5+0 a 5+1", () => {
+  const due = addDays("2026-09-29", 280),
+    zone = "America/Argentina/Buenos_Aires";
+  const before = gestation(
+    due,
+    todayInZone(zone, new Date("2026-11-04T02:59:59Z")),
+  );
+  const after = gestation(
+    due,
+    todayInZone(zone, new Date("2026-11-04T03:00:00Z")),
+  );
+  assert.equal(before.currentWeek, 5);
+  assert.equal(before.days, 0);
+  assert.equal(after.currentWeek, 6);
+  assert.equal(after.days, 1);
+});
+test("los días con 23 o 25 horas siguen siendo un solo día gestacional", () => {
+  const zone = "America/New_York";
+  for (const [start, before, after] of [
+    ["2026-02-01", "2026-03-09T03:59:59Z", "2026-03-09T04:00:00Z"],
+    ["2026-09-27", "2026-11-02T04:59:59Z", "2026-11-02T05:00:00Z"],
+  ]) {
+    const due = addDays(start, 280);
+    const a = gestation(due, todayInZone(zone, new Date(before))),
+      b = gestation(due, todayInZone(zone, new Date(after)));
+    assert.equal(b.elapsed - a.elapsed, 1);
+    assert.equal(
+      b.completedWeeks * 7 + b.days,
+      a.completedWeeks * 7 + a.days + 1,
+    );
+  }
+});
+test("la FPP profesional corregida prevalece sin reconstruir ni reemplazar la FUM", () => {
+  const today = "2026-11-02",
+    lmpDue = addDays("2026-09-29", 280),
+    professionalDue = addDays(lmpDue, 7);
+  assert.equal(gestation(lmpDue, today).currentWeek, 5);
+  assert.equal(gestation(professionalDue, today).currentWeek, 4);
+  assert.equal(gestation(professionalDue, today).completedWeeks, 3);
+  assert.equal(professionalDue, addDays(lmpDue, 7));
+});
+test("formato de edad gestacional exacta mantiene ambas unidades, incluso en 5+0", () => {
+  assert.equal(formatGestationalAge(4, 6), "4 semanas y 6 días");
+  assert.equal(formatGestationalAge(5, 0), "5 semanas y 0 días");
+  assert.equal(formatGestationalAge(5, 1), "5 semanas y 1 día");
 });

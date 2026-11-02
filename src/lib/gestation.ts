@@ -23,13 +23,26 @@ export function todayInZone(zone: string, now = new Date()) {
   const v = (t: string) => parts.find((p) => p.type === t)!.value;
   return `${v("year")}-${v("month")}-${v("day")}`;
 }
+/** Exact age and display week use calendar days, never elapsed clock hours. */
+export function gestationalAgeFromDays(elapsed: number) {
+  const daysSinceStart = Math.max(0, elapsed);
+  const completedWeeks = Math.floor(daysSinceStart / 7);
+  const days = daysSinceStart % 7;
+  const currentWeek = Math.max(1, completedWeeks + (days > 0 ? 1 : 0));
+  return { completedWeeks, days, currentWeek };
+}
+export function formatGestationalAge(completedWeeks: number, days: number) {
+  return `${completedWeeks} ${completedWeeks === 1 ? "semana" : "semanas"} y ${days} ${days === 1 ? "día" : "días"}`;
+}
 export function gestation(due: string, today: string) {
   const remaining = dayNumber(due) - dayNumber(today),
     elapsed = 280 - remaining;
+  const age = gestationalAgeFromDays(elapsed);
   return {
     elapsed,
-    weeks: Math.floor(Math.max(0, elapsed) / 7),
-    days: Math.max(0, elapsed) % 7,
+    ...age,
+    // Compatibility for consumers that already use weeks as completed weeks.
+    weeks: age.completedWeeks,
     remaining: Math.max(0, remaining),
     trimester: elapsed < 98 ? 1 : elapsed < 196 ? 2 : 3,
     percent: Math.min(100, Math.max(0, (elapsed / 280) * 100)),

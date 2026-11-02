@@ -1,4 +1,6 @@
 "use client";
+import { FruitComparison } from "./fruit-comparison";
+import { formatGestationalAge } from "@/lib/gestation";
 import { type Row } from "@/lib/client";
 import {
   ArrowRight,
@@ -26,10 +28,10 @@ export function Dashboard({ data: d }: { data: Row }) {
           <div className="pregnancy-content">
             <div>
               <p className="soft-label">Cada día, un poquito más cerca</p>
-              <h2>
-                Semana {g.weeks}
-                <span> + {g.days} días</span>
-              </h2>
+              <h2>Semana {g.currentWeek}</h2>
+              <p className="exact-gestational-age">
+                {formatGestationalAge(g.completedWeeks, g.days)}
+              </p>
               <p>
                 Estás en tu {["", "primer", "segundo", "tercer"][g.trimester]}{" "}
                 trimestre.
@@ -77,17 +79,10 @@ export function Dashboard({ data: d }: { data: Row }) {
           <p className="eyebrow">ASÍ DE PEQUEÑO, ASÍ DE INMENSO</p>
           <h2>El tamaño de tu bebé</h2>
           {d.week ? (
-            <>
-              <h3>
-                {d.user.preferences.size === "measurement"
-                  ? "Medida orientativa"
-                  : d.week.fruit}
-              </h3>
-              <p>{d.week.measurement}</p>
-              <p>
-                Comparación orientativa; no es una medida clínica individual.
-              </p>
-            </>
+            <FruitComparison
+              content={d.week}
+              showFruit={d.user.preferences.size !== "measurement"}
+            />
           ) : (
             <>
               <div className="size-placeholder">
@@ -132,7 +127,7 @@ export function Dashboard({ data: d }: { data: Row }) {
               <h3>{d.week.title}</h3>
               <p>{d.week.summary}</p>
               <Link className="inline-link" href="/bebe">
-                Descubrir esta semana <ArrowRight size={17} />
+                Conocer más sobre mi bebé <ArrowRight size={17} />
               </Link>
             </>
           ) : (

@@ -1225,3 +1225,44 @@ footer {
   font-size: 11px;
   margin-right: 10px;
 }
+
+.pregnancy-content .exact-gestational-age {
+  font-size: 15px;
+  color: var(--cacao);
+  font-weight: 600;
+  margin: 2px 0 8px;
+}
+.current-gestational-age {
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.week-nav button[aria-current="step"] {
+  box-shadow: inset 0 0 0 2px var(--deep);
+}
+
+.fruit-figure {
+  margin: 12px auto;
+  text-align: center;
+}
+.fruit-figure figcaption {
+  font-size: 11px;
+  color: var(--muted);
+}
+.fruit-comparison .measurement-method {
+  font-size: 11px;
+}
+.fruit-comparison .weekly-illustration {
+  max-width: 150px;
+  max-height: 150px;
+}
+.size-card .fruit-comparison p:last-child {
+  margin: 0 auto;
+}
+.card li {
+  font-size: 13px;
+  margin: 8px 0;
+  line-height: 1.8;
+}
+.card ul {
+  padding-left: 20px;
+}

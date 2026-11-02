@@ -4,7 +4,7 @@ import { randomBytes, createHash } from "node:crypto";
 import { db } from "../src/lib/db";
 import { tick } from "../scripts/worker";
 import { addDays, todayInZone } from "../src/lib/gestation";
-const base = "http://localhost:3000";
+const base = process.env.TEST_BASE_URL || "http://localhost:3000";
 const password = randomBytes(20).toString("hex");
 const emails = [0, 1].map((i) => `integration-${Date.now()}-${i}@example.test`);
 const jars = [new Map<string, string>(), new Map<string, string>()];
@@ -122,8 +122,46 @@ test("Flujo integrado sobre HTTP, Auth.js y PostgreSQL", async (t) => {
         const r = await request("/api/data");
         const data = await r.json();
         assert.equal(data.gestation.weeks, 20);
+        assert.equal(data.gestation.completedWeeks, 20);
+        assert.equal(data.gestation.currentWeek, 21);
         assert.equal(data.gestation.days, 3);
         assert.equal(data.pregnancy.datingSource, "MEDICAL");
+      },
+    );
+    await t.test(
+      "dashboard y fruta consultan la semana en curso, no las semanas completas",
+      async () => {
+        const owner = await db.user.findUniqueOrThrow({
+          where: { email: emails[0] },
+        });
+        const ids: string[] = [];
+        try {
+          for (const week of [20, 21]) {
+            const row = await db.weeklyDevelopment.create({
+              data: {
+                week,
+                title: "Fixture de semana " + week,
+                summary: "Fixture sin afirmaciones clínicas",
+                details: "Fixture sin afirmaciones clínicas",
+                fruit: "Comparación de prueba " + week,
+                measurement: "Sin medida clínica",
+                referenceUrls: ["https://www.nhs.uk/pregnancy/week-by-week/"],
+                reviewStatus: "APPROVED",
+                reviewedBy: owner.id,
+                reviewedAt: new Date(),
+                published: true,
+              },
+            });
+            ids.push(row.id);
+          }
+          const data = await (await request("/api/data")).json();
+          assert.equal(data.gestation.completedWeeks, 20);
+          assert.equal(data.gestation.currentWeek, 21);
+          assert.equal(data.week.week, 21);
+          assert.equal(data.week.fruit, "Comparación de prueba 21");
+        } finally {
+          await db.weeklyDevelopment.deleteMany({ where: { id: { in: ids } } });
+        }
       },
     );
     await t.test(
@@ -317,6 +355,42 @@ test("Flujo integrado sobre HTTP, Auth.js y PostgreSQL", async (t) => {
           (await request("/api/data", { action: "accept", token }, 1)).status,
           400,
         );
+      },
+    );
+    await t.test(
+      "la pareja usa el mismo día civil del embarazo aunque su zona horaria difiera",
+      async () => {
+        const owner = await db.user.findUniqueOrThrow({
+          where: { email: emails[0] },
+        });
+        await db.user.update({
+          where: { id: owner.id },
+          data: { timezone: "Etc/GMT+12" },
+        });
+        await db.user.update({
+          where: { email: emails[1] },
+          data: { timezone: "Pacific/Kiritimati" },
+        });
+        try {
+          const a = await (
+              await request("/api/data?pregnancyId=" + pregnancyId)
+            ).json(),
+            b = await (
+              await request(
+                "/api/data?pregnancyId=" + pregnancyId,
+                undefined,
+                1,
+              )
+            ).json();
+          assert.equal(a.pregnancyTimezone, "Etc/GMT+12");
+          assert.equal(b.pregnancyTimezone, "Etc/GMT+12");
+          assert.deepEqual(a.gestation, b.gestation);
+        } finally {
+          await db.user.update({
+            where: { id: owner.id },
+            data: { timezone: owner.timezone },
+          });
+        }
       },
     );
     await t.test(

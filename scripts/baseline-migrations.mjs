@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { createHash } from "node:crypto";
 
-/** Deployment only initializes this reviewed baseline; future migrations require a separate rollout. */
+/** Deployment only initializes this reviewed release manifest; future migrations require a separate rollout. */
 export function baselineMigrations(baseDir) {
   const manifest = JSON.parse(
     readFileSync(

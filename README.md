@@ -20,6 +20,7 @@ npm ci
 npm run dev:services
 npm run db:generate
 npm run db:migrate
+npm run db:seed
 npm run dev
 ```
 
@@ -62,7 +63,7 @@ npm run admin:grant -- profesional@tu-dominio ADMIN
 
 No hay credenciales administrativas predeterminadas. `/admin` autoriza cada operación en backend. EDITOR mantiene borradores; REVIEWER y ADMIN pueden registrar revisión y publicar. La asignación de REVIEWER requiere verificar las credenciales profesionales fuera de la aplicación. Modificar contenido invalida la revisión anterior salvo que un revisor lo vuelva a aprobar explícitamente. La base impide publicar sin referencias/revisión.
 
-La biblioteca no contiene afirmaciones médicas generadas. Consultar [proceso editorial](docs/EDITORIAL.md). Sin contenido revisado para una semana, la interfaz presenta un estado neutral. No se muestran medidas o frutas inventadas.
+La biblioteca incorpora los 42 textos aportados por el usuario como borradores no publicados y sin revisión médica atribuida. Ver [fuente y política del seed](content/pregnancy/README.md). Consultar [proceso editorial](docs/EDITORIAL.md). Sin contenido revisado para una semana, la interfaz presenta un estado neutral. No se muestran medidas o frutas inventadas.
 
 Los originales de marca no estaban disponibles como archivos en el checkout. El administrador permite cargar los originales aprobados con identificadores `logo` y `bee`; se muestran automáticamente en bienvenida y mensajes. Los recursos publicados son gráficos de marca visibles a todas las personas, nunca archivos médicos. Los iconos de instalación actuales y el texto de marca deben reemplazarse por los originales aprobados antes de publicar.
 
@@ -87,4 +88,12 @@ Desplegar `npm run build` y `npm start`, junto con `npm run worker` supervisado,
 
 ## Vercel
 
-Ver [publicación en GitHub y Vercel](docs/DEPLOYMENT.md). El build de Vercel genera Prisma, aplica únicamente las cinco migraciones iniciales verificadas de v0.1.0 y compila. Es idempotente y no aplica automáticamente migraciones futuras. El programador serverless utiliza un endpoint autenticado; los procesos locales y la base de Docker no se trasladan al alojamiento.
+Ver [publicación en GitHub y Vercel](docs/DEPLOYMENT.md). El build de Vercel genera Prisma, aplica únicamente las seis migraciones verificadas del manifiesto de esta entrega, carga los borradores faltantes sin sobrescribir ediciones y compila. Es idempotente y no aplica automáticamente migraciones futuras. El programador serverless utiliza un endpoint autenticado; los procesos locales y la base de Docker no se trasladan al alojamiento.
+
+## Edad gestacional y semana en curso
+
+`completedWeeks` y `days` representan la edad exacta. `currentWeek` sigue la regla solicitada: si hay días adicionales, suma uno a las semanas completas; en múltiplos exactos de siete conserva las semanas completas. El intervalo 0–6 muestra semana 1. Por compatibilidad, `weeks` sigue significando semanas completas. Con FUM 29/09/2026: 02/11 → 4+6, semana 5; 03/11 → 5+0, semana 5; 04/11 → 5+1, semana 6.
+
+El día civil se obtiene en la zona configurada por la titular del embarazo, también al verlo desde una cuenta familiar. La FPP guardada conserva la datación médica confirmada. Dashboard, biblioteca, fruta, navegador, recuerdos y notificaciones usan `currentWeek` para el rótulo y conservan la edad exacta aparte. Navegar otras semanas no altera la datación.
+
+Con PostgreSQL local y el build preparado, `npm run test:weekly-workflow` crea una base temporal separada, comprueba el seed y los permisos, ejecuta las pruebas HTTP y de navegador, y elimina únicamente esa base al finalizar. Rechaza bases remotas.

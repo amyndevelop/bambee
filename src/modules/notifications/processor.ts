@@ -39,18 +39,18 @@ export async function tick() {
     );
     if (
       g.elapsed < 0 ||
-      g.weeks > 42 ||
+      g.currentWeek > 42 ||
       (p.owner.preferences as Record<string, boolean>).weekly === false
     )
       continue;
-    const key = `week:${p.id}:${g.weeks}`;
+    const key = `week:${p.id}:${g.currentWeek}`;
     await db.notification.upsert({
       where: { dedupe: key },
       create: {
         dedupe: key,
         userId: p.ownerId,
         category: "weekly",
-        title: `Ya estás en la semana ${g.weeks}. Te acompañamos en cada paso.`,
+        title: `Ya estás en la semana ${g.currentWeek}. Te acompañamos en cada paso.`,
       },
       update: {},
     });

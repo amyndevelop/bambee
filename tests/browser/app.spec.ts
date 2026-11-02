@@ -30,6 +30,30 @@ test("registro, onboarding, dashboard y diario en móvil", async ({
     page.getByRole("heading", { name: "Tu pequeño gran comienzo" }),
   ).toBeVisible();
   await expect(page.getByText("¡Hola, Lucía!")).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Semana 21", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("20 semanas y 3 días", { exact: true }),
+  ).toBeVisible();
+  await page.locator('a[href="/bebe"]:visible').first().click();
+  await expect(
+    page.getByRole("button", { name: "Sem 21 · Hoy", exact: true }),
+  ).toHaveAttribute("aria-current", "step");
+  await expect(
+    page.getByRole("button", { name: "Sem 21 · Hoy", exact: true }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await page.getByRole("button", { name: "Sem 19", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Sem 19", exact: true }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await expect(
+    page.getByText("20 semanas y 3 días", { exact: false }),
+  ).toBeVisible();
+  await page.locator('a[href="/"]:visible').first().click();
+  await expect(
+    page.getByRole("heading", { name: "Semana 21", exact: true }),
+  ).toBeVisible();
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth,

@@ -2,7 +2,7 @@ import { defineConfig } from "@playwright/test";
 export default defineConfig({
   testDir: "tests/browser",
   use: {
-    baseURL: "http://localhost:3000",
+    baseURL: process.env.TEST_BASE_URL || "http://localhost:3000",
     launchOptions: {
       executablePath:
         process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE || "/usr/bin/chromium",

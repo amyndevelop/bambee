@@ -150,6 +150,18 @@ model ConsentRecord {
  createdAt DateTime @default(now())
 }
 model WeeklyDevelopment {
+ trimester Int?
+ lengthCm Float?
+ lengthMinCm Float?
+ lengthMaxCm Float?
+ measurementMethod String?
+ developmentHighlights String[] @default([])
+ maternalChanges String?
+ fruitImage String?
+ fruitImageIsPlaceholder Boolean @default(false)
+ sourceNames String[] @default([])
+ reviewStatus String @default("PENDING_REVIEW")
+ contentVersion String?
  id String @id @default(cuid())
  week Int @unique
  title String

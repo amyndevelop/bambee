@@ -1,4 +1,5 @@
 "use client";
+import { gestationalAgeFromDays, formatGestationalAge } from "@/lib/gestation";
 import { api, type Row } from "@/lib/client";
 import { BookOpen, Plus, Search } from "lucide-react";
 import { FormEvent, useEffect, useState } from "react";
@@ -304,8 +305,12 @@ export function Entries({
                 ))}
                 <p className="eyebrow">
                   {r.date.slice(0, 10)} · Semana{" "}
-                  {Math.floor(Math.max(0, r.gestationalDays) / 7)} +{" "}
-                  {Math.max(0, r.gestationalDays) % 7}
+                  {gestationalAgeFromDays(r.gestationalDays).currentWeek}
+                  <br />
+                  {formatGestationalAge(
+                    gestationalAgeFromDays(r.gestationalDays).completedWeeks,
+                    gestationalAgeFromDays(r.gestationalDays).days,
+                  )}
                 </p>
                 <h3>{r.title}</h3>
                 {r.mood && <span className="pill">{r.mood}</span>}
