@@ -29,8 +29,4 @@ export async function pregnancyAccess(
     throw new Error("FORBIDDEN");
   return p;
 }
-export function sameOrigin(req: Request) {
-  const expected = new URL(process.env.NEXTAUTH_URL || "http://localhost:3000")
-    .origin;
-  if (req.headers.get("origin") !== expected) throw new Error("FORBIDDEN");
-}
+export { assertSameOrigin as sameOrigin } from "./origin";

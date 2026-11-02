@@ -31,3 +31,14 @@ Configurar un programador confiable que lo invoque cada minuto o con la frecuenc
 - Confirmar carga/descarga privada y correo real solo tras configurar sus proveedores.
 - Confirmar una invocación autorizada del programador y su deduplicación.
 - Consultar `STATUS.md`: revisión médica/editorial, arte original y revisión legal continúan siendo requisitos del lanzamiento comercial.
+
+## Dominio de producción
+
+Para el dominio actual, configurar en Production:
+
+```text
+NEXTAUTH_URL=https://bambee-eta.vercel.app
+APP_URL=https://bambee-eta.vercel.app
+```
+
+Luego redeployar para aplicar las variables. Si cambia el dominio, actualizar ambas. La validación de origen también permite los hosts exactos de `VERCEL_PROJECT_PRODUCTION_URL` y `VERCEL_URL` provistos por la plataforma. No confía en `Host`, `X-Forwarded-Host` ni en todos los subdominios de vercel.app. Las solicitudes sin un origen permitido continúan rechazadas.

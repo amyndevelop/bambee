@@ -1,5 +1,7 @@
 import { ZodError } from "zod";
 export function publicError(error: unknown) {
+  if (error instanceof Error && error.message === "ORIGIN_NOT_ALLOWED")
+    return "La dirección de esta página no está habilitada. Abrí la dirección oficial de BAMBEE.";
   if (error instanceof ZodError) return "Revisá los campos ingresados.";
   if (
     error &&
