@@ -153,6 +153,28 @@ test("registro, onboarding, dashboard y diario en móvil", async ({
     path: `/tmp/bambee-dashboard-${testInfo.project.name}.png`,
     fullPage: true,
   });
+  if (testInfo.project.name === "desktop") {
+    for (const viewport of [
+      { width: 1366, height: 641 },
+      { width: 1024, height: 600 },
+      { width: 1440, height: 900 },
+    ]) {
+      await page.setViewportSize(viewport);
+      const sidebar = page.locator("aside");
+      expect(
+        await sidebar.evaluate(
+          (element) => element.scrollHeight <= element.clientHeight,
+        ),
+      ).toBe(true);
+      for (const control of await sidebar.locator("nav a, button").all()) {
+        const bounds = await control.boundingBox();
+        expect(bounds).not.toBeNull();
+        expect(bounds!.y).toBeGreaterThanOrEqual(0);
+        expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(viewport.height);
+      }
+    }
+    await page.setViewportSize({ width: 1440, height: 1000 });
+  }
   await page.getByRole("link", { name: "Diario", exact: true }).last().click();
   await page.getByRole("button", { name: "Nuevo registro" }).click();
   await page.getByLabel("Título", { exact: true }).fill("Primer recuerdo");
