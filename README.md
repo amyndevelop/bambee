@@ -87,4 +87,4 @@ Desplegar `npm run build` y `npm start`, junto con `npm run worker` supervisado,
 
 ## Vercel
 
-Ver [publicación en GitHub y Vercel](docs/DEPLOYMENT.md). El build de Vercel genera Prisma y el programador serverless utiliza un endpoint autenticado; los procesos locales y la base de Docker no se trasladan al alojamiento.
+Ver [publicación en GitHub y Vercel](docs/DEPLOYMENT.md). El build de Vercel genera Prisma, aplica únicamente las cinco migraciones iniciales verificadas de v0.1.0 y compila. Es idempotente y no aplica automáticamente migraciones futuras. El programador serverless utiliza un endpoint autenticado; los procesos locales y la base de Docker no se trasladan al alojamiento.

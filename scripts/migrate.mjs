@@ -1,3 +1,4 @@
+import { baselineMigrations } from "./baseline-migrations.mjs";
 import "dotenv/config";
 import {
   readFileSync,
@@ -19,6 +20,10 @@ const instance = await WebAssembly.instantiate(readFileSync(wasmPath), {
 runtime.__wbg_set_wasm(instance.instance.exports);
 instance.instance.exports.__wbindgen_start();
 const schema = readFileSync("prisma/schema.prisma", "utf8");
+if (!process.argv.includes("--initial") && !process.env.DATABASE_URL)
+  throw new Error(
+    "Falta DATABASE_URL: conectá PostgreSQL al entorno de este deployment antes de inicializarlo.",
+  );
 const engine = await runtime.SchemaEngine.new(
   { datamodels: [["schema.prisma", schema]] },
   () => {},
@@ -49,22 +54,24 @@ try {
     console.log("Migración inicial generada por Prisma WASM");
   } else {
     const baseDir = resolve("prisma/migrations");
-    const migrationDirectories = readdirSync(baseDir, { withFileTypes: true })
-      .filter((d) => d.isDirectory())
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .map((d) => ({
-        path: d.name,
-        migrationFile: {
-          path: "migration.sql",
-          content: {
-            tag: "ok",
-            value: readFileSync(
-              resolve(baseDir, d.name, "migration.sql"),
-              "utf8",
-            ),
-          },
-        },
-      }));
+    const migrationDirectories = process.argv.includes("--baseline")
+      ? baselineMigrations(baseDir)
+      : readdirSync(baseDir, { withFileTypes: true })
+          .filter((d) => d.isDirectory())
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((d) => ({
+            path: d.name,
+            migrationFile: {
+              path: "migration.sql",
+              content: {
+                tag: "ok",
+                value: readFileSync(
+                  resolve(baseDir, d.name, "migration.sql"),
+                  "utf8",
+                ),
+              },
+            },
+          }));
     const result = await engine.applyMigrations({
       migrationsList: {
         baseDir,
@@ -82,6 +89,14 @@ try {
     });
     console.log("Migraciones aplicadas:", result.appliedMigrationNames);
   }
+} catch (error) {
+  const message = error instanceof Error ? error.message : "";
+  const code = message.match(/\bP\d{4}\b/)?.[0];
+  console.error(
+    "No se pudieron aplicar las migraciones de BAMBEE." +
+      (code ? " Código: " + code : ""),
+  );
+  process.exitCode = 1;
 } finally {
   engine.free();
 }
