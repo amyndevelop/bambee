@@ -1,0 +1,209 @@
+generator client {
+ provider = "prisma-client-js"
+}
+datasource db {
+ provider = "postgresql"
+
+}
+model User {
+ id String @id @default(cuid())
+ name String
+ email String @unique
+ passwordHash String
+ sessionVersion Int @default(0)
+ role String @default("USER")
+ timezone String @default("America/Argentina/Buenos_Aires")
+ preferences Json @default("{}")
+ createdAt DateTime @default(now())
+ pregnancies Pregnancy[]
+ memberships PregnancyMember[]
+ notifications Notification[]
+ files UploadedFile[]
+ tokens ActionToken[]
+ consents ConsentRecord[]
+}
+model Pregnancy {
+ id String @id @default(cuid())
+ ownerId String
+ owner User @relation(fields:[ownerId],references:[id],onDelete:Cascade)
+ babyName String?
+ partnerName String?
+ dueDate DateTime @db.Date
+ datingSource String
+ archived Boolean @default(false)
+ createdAt DateTime @default(now())
+ members PregnancyMember[]
+ datingHistory PregnancyDatingHistory[]
+ entries Entry[]
+ appointments Appointment[]
+ tasks Task[]
+ invitations Invitation[]
+ @@index([ownerId,archived])
+}
+model PregnancyMember {
+ id String @id @default(cuid())
+ pregnancyId String
+ pregnancy Pregnancy @relation(fields:[pregnancyId],references:[id],onDelete:Cascade)
+ userId String
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ appointments Boolean @default(false)
+ tasks Boolean @default(false)
+ @@unique([pregnancyId,userId])
+}
+model PregnancyDatingHistory {
+ id String @id @default(cuid())
+ pregnancyId String
+ pregnancy Pregnancy @relation(fields:[pregnancyId],references:[id],onDelete:Cascade)
+ dueDate DateTime @db.Date
+ source String
+ createdAt DateTime @default(now())
+}
+model Entry {
+ id String @id @default(cuid())
+ pregnancyId String
+ pregnancy Pregnancy @relation(fields:[pregnancyId],references:[id],onDelete:Cascade)
+ attachments EntryAttachment[]
+ kind String
+ title String
+ text String
+ mood String?
+ date DateTime @db.Date
+ gestationalDays Int
+ fileId String? @unique
+ file UploadedFile? @relation(fields:[fileId],references:[id],onDelete:SetNull)
+ appointmentId String?
+ appointment Appointment? @relation(fields:[appointmentId],references:[id],onDelete:SetNull)
+ createdAt DateTime @default(now())
+ @@index([pregnancyId,kind,date])
+}
+model Appointment {
+ id String @id @default(cuid())
+ pregnancyId String
+ pregnancy Pregnancy @relation(fields:[pregnancyId],references:[id],onDelete:Cascade)
+ title String
+ type String
+ at DateTime
+ professional String
+ location String
+ address String?
+ notes String
+ completed Boolean @default(false)
+ reminders AppointmentReminder[]
+ entries Entry[]
+ @@index([pregnancyId,at])
+}
+model AppointmentReminder {
+ id String @id @default(cuid())
+ appointmentId String
+ appointment Appointment @relation(fields:[appointmentId],references:[id],onDelete:Cascade)
+ dueAt DateTime
+ sentAt DateTime?
+ @@index([sentAt,dueAt])
+}
+model UploadedFile {
+ id String @id @default(cuid())
+ ownerId String
+ owner User @relation(fields:[ownerId],references:[id],onDelete:Cascade)
+ key String @unique
+ mime String
+ size Int
+ name String
+ entry Entry?
+ attachment EntryAttachment?
+ graphic GraphicAsset?
+ createdAt DateTime @default(now())
+}
+model Notification {
+ id String @id @default(cuid())
+ userId String
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ category String
+ title String
+ read Boolean @default(false)
+ dedupe String @unique
+ createdAt DateTime @default(now())
+ @@index([userId,createdAt])
+}
+model Invitation {
+ id String @id @default(cuid())
+ pregnancyId String
+ pregnancy Pregnancy @relation(fields:[pregnancyId],references:[id],onDelete:Cascade)
+ email String
+ tokenHash String @unique
+ appointments Boolean
+ tasks Boolean @default(false)
+ expiresAt DateTime
+ acceptedAt DateTime?
+}
+model ActionToken {
+ id String @id @default(cuid())
+ userId String
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ hash String @unique
+ expiresAt DateTime
+}
+model ConsentRecord {
+ id String @id @default(cuid())
+ userId String
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ version String
+ createdAt DateTime @default(now())
+}
+model WeeklyDevelopment {
+ id String @id @default(cuid())
+ week Int @unique
+ title String
+ summary String
+ details String
+ fruit String
+ measurement String
+ referenceUrls String[]
+ illustrationId String?
+ illustration GraphicAsset? @relation(fields:[illustrationId],references:[id],onDelete:SetNull)
+ reviewedBy String?
+ reviewedAt DateTime?
+ published Boolean @default(false)
+ updatedAt DateTime @updatedAt
+}
+model AuditLog {
+ id String @id @default(cuid())
+ actorId String?
+ action String
+ targetId String?
+ createdAt DateTime @default(now())
+}
+model LoginAttempt {
+ key String @id
+ count Int
+ resetAt DateTime
+}
+
+model GraphicAsset {
+ id String @id @default(cuid())
+ slug String @unique
+ fileId String @unique
+ file UploadedFile @relation(fields:[fileId],references:[id],onDelete:Cascade)
+ published Boolean @default(false)
+ createdAt DateTime @default(now())
+ weeks WeeklyDevelopment[]
+}
+
+model Task {
+ id String @id @default(cuid())
+ pregnancyId String
+ pregnancy Pregnancy @relation(fields:[pregnancyId],references:[id],onDelete:Cascade)
+ title String
+ dueDate DateTime? @db.Date
+ completed Boolean @default(false)
+ createdAt DateTime @default(now())
+ @@index([pregnancyId,completed])
+}
+
+model EntryAttachment {
+ id String @id @default(cuid())
+ entryId String
+ entry Entry @relation(fields:[entryId],references:[id],onDelete:Cascade)
+ fileId String @unique
+ file UploadedFile @relation(fields:[fileId],references:[id],onDelete:Cascade)
+ @@index([entryId])
+}

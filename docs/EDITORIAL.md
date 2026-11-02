@@ -1,0 +1,15 @@
+# Proceso editorial médico
+
+No se cargaron 42 semanas de afirmaciones generadas ni se atribuyó una revisión médica ficticia. Cada semana puede guardar título, resumen, desarrollo detallado, comparación y medida orientativa, referencias HTTPS, revisión identificada, fecha y publicación.
+
+El desarrollo detallado debe estructurarse por sistema nervioso/cerebro, órganos, extremidades/movimientos, sentidos, cambios maternos e información relevante. Diferenciar etapa embrionaria y fetal. No atribuir a un día exacto procesos que abarcan semanas. Explicar el tipo de medida (longitud cráneo-rabadilla u otra) y no combinar medidas incompatibles. La comparación de fruta es orientativa y nunca una medida individual.
+
+Fuentes iniciales para investigación y revisión humana:
+
+- NHS: https://www.nhs.uk/pregnancy/week-by-week/
+- ACOG: https://www.acog.org/womens-health/faqs/how-your-fetus-grows-during-pregnancy
+- MedlinePlus: https://medlineplus.gov/pregnancy.html
+
+Estos enlaces son una bibliografía inicial, no prueba de que un texto específico haya sido revisado. Verificar vigencia y contenido de cada página antes de citar. Un profesional autorizado revisa exactitud, lenguaje, unidades, etapa y referencias antes de habilitar publicación en `/admin`. La asignación del rol por sí sola no certifica acreditación médica. Mantener un registro de revisión real fuera del sistema si es necesario para el cumplimiento local.
+
+La biblioteca de señales de alarma requiere el mismo proceso profesional. Mientras tanto se muestra una indicación neutral para contactar al equipo de salud o emergencias cuando se necesita atención urgente; no se clasifica ningún síntoma como seguro.

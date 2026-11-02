@@ -1,0 +1,63 @@
+import { test, expect } from "@playwright/test";
+import { randomBytes } from "node:crypto";
+test("registro, onboarding, dashboard y diario en móvil", async ({
+  page,
+}, testInfo) => {
+  const email = `browser-${Date.now()}@example.test`,
+    password = randomBytes(20).toString("hex");
+  await page.goto("/acceso");
+  await page.getByRole("button", { name: "Crear mi cuenta" }).click();
+  await page.getByLabel("Tu nombre").fill("Lucía");
+  await page.getByLabel("Correo electrónico").fill(email);
+  await page.getByLabel("Contraseña ·").fill(password);
+  await page.getByLabel("Confirmá tu contraseña").fill(password);
+  await page.getByRole("checkbox").check();
+  await page.getByRole("button", { name: "Crear mi cuenta" }).click();
+  await expect(
+    page.getByRole("heading", { name: "Cada historia tiene un comienzo" }),
+  ).toBeVisible();
+  await page.locator("select").selectOption("MEDICAL");
+  const due = new Date();
+  due.setUTCDate(due.getUTCDate() + 137);
+  await page
+    .getByLabel("Fecha probable de parto", { exact: true })
+    .fill(due.toISOString().slice(0, 10));
+  await page.getByRole("button", { name: "Continuar" }).click();
+  await page.getByLabel("Nombre o apodo").fill("Nuestro bebé");
+  await page.getByRole("button", { name: "Continuar" }).click();
+  await page.getByRole("button", { name: "Comenzar mi recorrido" }).click();
+  await expect(
+    page.getByRole("heading", { name: "Tu pequeño gran comienzo" }),
+  ).toBeVisible();
+  await expect(page.getByText("¡Hola, Lucía!")).toBeVisible();
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+  await page.screenshot({
+    path: `/tmp/bambee-dashboard-${testInfo.project.name}.png`,
+    fullPage: true,
+  });
+  await page.getByRole("link", { name: "Diario", exact: true }).last().click();
+  await page.getByRole("button", { name: "Nuevo registro" }).click();
+  await page.getByLabel("Título", { exact: true }).fill("Primer recuerdo");
+  await page.getByLabel("Fecha", { exact: true }).fill("2026-11-02");
+  await page.getByLabel("Tu recuerdo").fill("Un día para recordar.");
+  await page.getByRole("button", { name: "Guardar registro" }).click();
+  await expect(
+    page.getByRole("heading", { name: "Primer recuerdo" }),
+  ).toBeVisible();
+  await page.reload();
+  await expect(
+    page.getByRole("heading", { name: "Primer recuerdo" }),
+  ).toBeVisible();
+  await page.goto("/configuracion");
+  page.on("dialog", (d) => d.accept("ELIMINAR"));
+  await page
+    .getByRole("button", { name: "Eliminar mi cuenta y mis datos" })
+    .click();
+  await expect(
+    page.getByRole("button", { name: "Iniciar sesión" }),
+  ).toBeVisible();
+});

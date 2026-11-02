@@ -1,0 +1,10 @@
+ALTER TABLE "User" ADD CONSTRAINT "User_role_check" CHECK ("role" IN ('USER','ADMIN','EDITOR','REVIEWER'));
+ALTER TABLE "Pregnancy" ADD CONSTRAINT "Pregnancy_datingSource_check" CHECK ("datingSource" IN ('LMP','MEDICAL'));
+ALTER TABLE "PregnancyDatingHistory" ADD CONSTRAINT "DatingHistory_source_check" CHECK ("source" IN ('LMP','MEDICAL'));
+ALTER TABLE "Entry" ADD CONSTRAINT "Entry_kind_check" CHECK ("kind" IN ('journal','symptom','ultrasound','belly'));
+ALTER TABLE "UploadedFile" ADD CONSTRAINT "UploadedFile_size_check" CHECK ("size" > 0 AND "size" <= 10000000);
+ALTER TABLE "WeeklyDevelopment" ADD CONSTRAINT "WeeklyDevelopment_week_check" CHECK ("week" BETWEEN 1 AND 42);
+ALTER TABLE "WeeklyDevelopment" ADD CONSTRAINT "WeeklyDevelopment_review_check" CHECK (NOT "published" OR ("reviewedAt" IS NOT NULL AND "reviewedBy" IS NOT NULL AND cardinality("referenceUrls") > 0));
+CREATE INDEX "ActionToken_expiresAt_idx" ON "ActionToken" ("expiresAt");
+CREATE INDEX "Invitation_email_idx" ON "Invitation" ("email");
+CREATE INDEX "AuditLog_createdAt_idx" ON "AuditLog" ("createdAt");

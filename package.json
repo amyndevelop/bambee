@@ -1,0 +1,64 @@
+{
+  "name": "bambee",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start --hostname 0.0.0.0",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test tests/gestation.test.ts tests/cron-auth.test.ts",
+    "db:generate": "node scripts/generate.cjs",
+    "db:migrate": "node scripts/migrate.mjs",
+    "worker": "tsx --env-file=.env scripts/worker.ts",
+    "test:integration": "tsx --env-file=.env --test tests/integration.test.ts",
+    "test:browser": "playwright test",
+    "dev:services": "node scripts/dev-services.mjs",
+    "admin:grant": "tsx --env-file=.env scripts/create-admin.ts",
+    "vercel-build": "npm run db:generate && npm run build"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.0.0",
+    "@aws-sdk/s3-request-presigner": "^3.0.0",
+    "@fontsource/nunito": "^5.0.0",
+    "@fontsource/plus-jakarta-sans": "^5.0.0",
+    "@prisma/adapter-pg": "7.10.1",
+    "@prisma/client": "7.10.1",
+    "bcryptjs": "^3.0.0",
+    "file-type": "^21.0.0",
+    "lucide-react": "1.66.0",
+    "next": "16.4.4",
+    "next-auth": "4.24.15",
+    "nodemailer": "10.3.1",
+    "pg": "^8.16.0",
+    "prisma": "7.10.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sharp": "0.35.5",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@prisma/client-generator-registry": "7.10.1",
+    "@prisma/internals": "7.10.1",
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^24.0.0",
+    "@types/nodemailer": "^7.0.0",
+    "@types/pg": "^8.15.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "prettier": "^3.9.10",
+    "tailwindcss": "^4.1.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  },
+  "overrides": {
+    "next-auth": {
+      "nodemailer": "10.3.1"
+    }
+  },
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  }
+}
