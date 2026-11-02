@@ -61,9 +61,9 @@ npm run admin:grant -- profesional@tu-dominio ADMIN
 # También: EDITOR o REVIEWER
 ```
 
-No hay credenciales administrativas predeterminadas. `/admin` autoriza cada operación en backend. EDITOR mantiene borradores; REVIEWER y ADMIN pueden registrar revisión y publicar. La asignación de REVIEWER requiere verificar las credenciales profesionales fuera de la aplicación. Modificar contenido invalida la revisión anterior salvo que un revisor lo vuelva a aprobar explícitamente. La base impide publicar sin referencias/revisión.
+No hay credenciales administrativas predeterminadas. `/admin` autoriza cada operación en backend. EDITOR mantiene borradores; REVIEWER y ADMIN pueden registrar revisión y publicar. La asignación de REVIEWER requiere verificar las credenciales profesionales fuera de la aplicación. Modificar contenido invalida la revisión anterior salvo que un revisor lo vuelva a aprobar explícitamente. La publicación con revisión médica registrada requiere referencias y metadatos de revisión. ADMIN puede publicar contenido educativo pendiente de revisión, con aviso visible, mediante un control independiente.
 
-La biblioteca incorpora los 42 textos aportados por el usuario como borradores no publicados y sin revisión médica atribuida. Ver [fuente y política del seed](content/pregnancy/README.md). Consultar [proceso editorial](docs/EDITORIAL.md). Sin contenido revisado para una semana, la interfaz presenta un estado neutral. No se muestran medidas o frutas inventadas.
+La biblioteca publica los 42 textos educativos aportados por el usuario, sin atribuirles revisión médica. Ver [fuente y política del seed](content/pregnancy/README.md). Consultar [proceso editorial](docs/EDITORIAL.md). El contenido editorial público muestra un aviso de revisión pendiente; las semanas no publicadas conservan su estado vacío. No se muestran medidas o frutas inventadas.
 
 El logo y el isotipo oficiales provienen de los PDF suministrados por el usuario: se conservan en `design/brand/` y se exportaron a SVG sin redibujar. La identidad está en `public/brand/` y no depende de S3 ni de una consulta a la base. El isotipo también se utiliza en favicon, iconos PWA y apple-touch-icon. La interfaz usa Inter variable, con Regular 400, Medium 500, SemiBold 600, Bold 700 y ExtraBold 800, más variante itálica; el wordmark conserva sus trazos originales. Los recursos editoriales y la mascota pueden administrarse por separado. Ver [procedencia de la marca](design/brand/README.md).
 
@@ -88,7 +88,7 @@ Desplegar `npm run build` y `npm start`, junto con `npm run worker` supervisado,
 
 ## Vercel
 
-Ver [publicación en GitHub y Vercel](docs/DEPLOYMENT.md). El build de Vercel genera Prisma, aplica únicamente las seis migraciones verificadas del manifiesto de esta entrega, carga los borradores faltantes sin sobrescribir ediciones y compila. Es idempotente y no aplica automáticamente migraciones futuras. El programador serverless utiliza un endpoint autenticado; los procesos locales y la base de Docker no se trasladan al alojamiento.
+Ver [publicación en GitHub y Vercel](docs/DEPLOYMENT.md). El build de Vercel genera Prisma, aplica únicamente las siete migraciones verificadas del manifiesto de esta entrega, carga los textos faltantes y aplica la publicación editorial autorizada sin sobrescribir ediciones propias y compila. Es idempotente y no aplica automáticamente migraciones futuras. El programador serverless utiliza un endpoint autenticado; los procesos locales y la base de Docker no se trasladan al alojamiento.
 
 ## Edad gestacional y semana en curso
 
@@ -100,4 +100,4 @@ Con PostgreSQL local y el build preparado, `npm run test:weekly-workflow` crea u
 
 ## Verificar esta entrega en producción
 
-Después de que el deployment de main quede Ready, abrir `/api/health`. El alcance del verificador es la identidad de esta entrega y la biblioteca semanal: debe devolver `status: "ok"`, `weeklyContent.total: 42`, `weeklyContent.complete: true`, `release.font: "Inter"` y `release.brand: "original-pdf-2026-11-02"`. Cuando Vercel expone `VERCEL_GIT_COMMIT_SHA`, también informa el commit desplegado. No devuelve usuarios, embarazos ni archivos personales. El número de textos publicados se informa por separado: cargar los 42 borradores no los aprueba médicamente. Este endpoint no certifica SMTP, S3 ni la totalidad del producto.
+Después de que el deployment de main quede Ready, abrir `/api/health`. El alcance del verificador es la identidad de esta entrega y la biblioteca semanal: debe devolver `status: "ok"`, `weeklyContent.total: 42`, `weeklyContent.complete: true`, `weeklyContent.published: 42`, `weeklyContent.publicationComplete: true`, `release.font: "Inter"` y `release.brand: "original-pdf-2026-11-02"`. Cuando Vercel expone `VERCEL_GIT_COMMIT_SHA`, también informa el commit desplegado. No devuelve usuarios, embarazos ni archivos personales. `published` cuenta textos visibles; `medicallyReviewed` informa por separado cuántos tienen revisión médica registrada. Publicar contenido educativo no atribuye revisión profesional. Este endpoint no certifica SMTP, S3 ni la totalidad del producto.

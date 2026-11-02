@@ -1,4 +1,5 @@
 "use client";
+import { EditorialNotice } from "./editorial-notice";
 import { FruitComparison } from "./fruit-comparison";
 import { formatGestationalAge } from "@/lib/gestation";
 import { type Row } from "@/lib/client";
@@ -17,6 +18,7 @@ export function Dashboard({ data: d }: { data: Row }) {
   const g = d.gestation;
   return (
     <>
+      <EditorialNotice content={d.week} />
       <div className="dashboard-grid">
         <section className="pregnancy-card">
           <div className="card-top">

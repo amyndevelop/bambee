@@ -8,6 +8,7 @@ export async function GET() {
     const u = await currentUser();
     if (!["ADMIN", "EDITOR", "REVIEWER"].includes(u.role)) throw new Error();
     return NextResponse.json({
+      role: u.role,
       assets: await db.graphicAsset.findMany({
         where: { published: true },
         select: { id: true, slug: true },
@@ -75,9 +76,12 @@ export async function POST(req: Request) {
           .enum(["DRAFT", "PENDING_REVIEW"])
           .default("PENDING_REVIEW"),
         published: z.boolean(),
+        editorialPublished: z.boolean().optional(),
         review: z.boolean(),
       })
       .parse(b);
+    if (d.editorialPublished === true && u.role !== "ADMIN")
+      throw new Error("La publicación editorial requiere rol administrador.");
     if ((d.published || d.review) && !["ADMIN", "REVIEWER"].includes(u.role))
       throw new Error("Se requiere rol de revisión médica");
     if ((d.review || d.published) && !d.referenceUrls.length)
@@ -106,6 +110,8 @@ export async function POST(req: Request) {
       where: { week: d.week },
       create: {
         ...data,
+        editorialPublished: d.editorialPublished ?? false,
+        editorialPublicationRelease: "admin-managed",
         reviewStatus: review ? "APPROVED" : reviewStatus,
         reviewedBy: review ? u.id : null,
         reviewedAt: review ? new Date() : null,
@@ -113,6 +119,8 @@ export async function POST(req: Request) {
       },
       update: {
         ...data,
+        editorialPublished: d.editorialPublished ?? false,
+        editorialPublicationRelease: "admin-managed",
         reviewStatus: review ? "APPROVED" : reviewStatus,
         reviewedBy: review ? u.id : null,
         reviewedAt: review ? new Date() : null,

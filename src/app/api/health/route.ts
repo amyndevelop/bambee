@@ -1,3 +1,4 @@
+import { hasMedicalReview, isWeeklyContentVisible } from "@/lib/weekly-content";
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 export const runtime = "nodejs";
@@ -15,6 +16,7 @@ export async function GET() {
         week: true,
         reviewStatus: true,
         published: true,
+        editorialPublished: true,
         reviewedAt: true,
         reviewedBy: true,
         contentVersion: true,
@@ -25,28 +27,27 @@ export async function GET() {
       Array.from({ length: 42 }, (_, i) => i + 1).every((week) =>
         rows.some((row) => row.week === week),
       );
-    const published = rows.filter(
-      (r) =>
-        r.published &&
-        r.reviewStatus === "APPROVED" &&
-        r.reviewedAt &&
-        r.reviewedBy,
+    const published = rows.filter(isWeeklyContentVisible).length;
+    const medicallyReviewed = rows.filter(
+      (row) => row.published && hasMedicalReview(row),
     ).length;
     return NextResponse.json(
       {
-        status: complete ? "ok" : "pending",
+        status: complete && published === 42 ? "ok" : "pending",
         scope: "branding-and-weekly-library",
         release,
         weeklyContent: {
           total: rows.length,
           complete,
           published,
+          publicationComplete: published === 42,
+          medicallyReviewed,
           pendingReview: rows.filter((r) => r.reviewStatus !== "APPROVED")
             .length,
         },
       },
       {
-        status: complete ? 200 : 503,
+        status: complete && published === 42 ? 200 : 503,
         headers: { "Cache-Control": "no-store" },
       },
     );

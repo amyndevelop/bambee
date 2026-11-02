@@ -5,7 +5,7 @@
 - Proyecto real con PostgreSQL/Prisma, migraciones versionadas y dependencias fijadas por lockfile.
 - Registro con consentimiento explícito, contraseñas bcrypt, Auth.js, limitación atómica de intentos, recuperación por token y revocación global de sesiones.
 - Configuración del embarazo por última menstruación o FPP profesional; historia de correcciones explícitas, embarazos archivados y selección de zona horaria.
-- Dashboard calculado, navegador de semanas 1–42, biblioteca clínica administrable que no expone borradores ni contenido sin revisión.
+- Dashboard calculado, navegador de semanas 1–42, biblioteca administrable con publicación educativa explícita y revisión médica separadas.
 - Agenda con lista y calendario mensual alineado por días, CRUD, estado realizada, notas y recordatorios internos persistentes procesados por un worker independiente.
 - Diario y síntomas con edición, borrado y búsqueda; fotos opcionales en el diario. Registro de ecografías (imagen/PDF), pancita, comparación de dos fotografías y progresión secuencial. Vinculación de ecografías con citas realizadas.
 - Servicio S3 privado con validación real de formato, límites de bytes/píxeles, eliminación de EXIF, verificación de propiedad y URLs de 60 segundos. Galerías con descarga, apertura y eliminación confirmada.
@@ -22,7 +22,7 @@
 - Generación del cliente con herramientas oficiales Prisma WASM.
 - Migraciones aplicadas y segunda ejecución sin cambios.
 - `npm run typecheck` y compilación de producción.
-- 36 pruebas unitarias aprobadas de aritmética civil, FPP, semanas/días, zonas horarias/DST, datación y permisos.
+- 38 pruebas unitarias aprobadas de aritmética civil, FPP, semanas/días, zonas horarias/DST, datación y permisos.
 - 20 subpruebas de integración aprobadas (21 resultados del runner con la prueba contenedora) sobre HTTP real contra Auth.js y PostgreSQL: consentimiento, cuentas/sesiones, CSRF, datación/historial, CRUD de diario y síntomas, agenda, recordatorios con deduplicación, tokens familiares, aislamiento de datos/archivos, tareas compartidas, roles editoriales, recuperación por token, exportación y revocación.
 - 8 pruebas de Chromium aprobadas (flujo de embarazo y edición de borradores): registro, onboarding de cinco pantallas, dashboard sin desbordamiento horizontal, creación/persistencia de diario y eliminación de cuenta, en 390, 412, 768 y 1440 píxeles. Son pruebas por viewport; no equivalen a pruebas físicas de iOS/Safari o Android.
 - Auditoría npm sin vulnerabilidades reportadas tras actualizar dependencias y quitar una dependencia opcional insegura. Esto no reemplaza una auditoría de seguridad del producto.
@@ -31,7 +31,7 @@
 
 1. **S3 privado:** no hay endpoint, bucket ni credenciales configurados. Los intentos de obtener MinIO desde Docker Hub y Quay fueron rechazados. El código está implementado, pero carga/descarga/borrado extremo a extremo de objetos reales no se validaron. La prueba de propiedad de archivos sí se ejecutó con metadatos de prueba en PostgreSQL. Configurar el servicio y ejecutar esa validación antes de usar archivos reales.
 2. **SMTP:** faltan transporte y remitente. No se enviaron correos. El canje de tokens sí se probó, con tokens temporales creados en la base de pruebas; eso no demuestra entrega de invitaciones o recuperación por correo.
-3. **Contenido clínico:** hay 42 borradores del usuario, pero no hay semanas ni señales de alerta con revisión médica real. Se muestran explicaciones neutrales. Un profesional debe preparar y aprobar el contenido siguiendo `EDITORIAL.md`. Las frutas, medidas y textos provienen del adjunto y están pendientes de contraste; no se presentaron como clínicamente validados.
+3. **Contenido clínico:** hay 42 textos educativos publicados con aviso de revisión profesional pendiente; no se atribuye revisión médica real. Un profesional debe preparar y aprobar el contenido siguiendo `EDITORIAL.md`. Las frutas, medidas y textos provienen del adjunto y están pendientes de contraste; no se presentaron como clínicamente validados.
 4. **Recursos gráficos:** logo e isotipo oficiales ya incorporados desde los PDF del usuario, incluidos los iconos de instalación. Las ilustraciones de frutas y la mascota definitiva siguen pendientes como recursos separados; no se presentan sus marcadores como arte final.
 5. **Producción:** requieren configuración HTTPS, límites/observabilidad, backups y restauración probada, revisión de seguridad, análisis de privacidad y revisión legal. Los textos legales son borradores explícitos. El usuario publicó la aplicación en Vercel; este entorno no verificó el estado ni la configuración de su producción.
 
@@ -50,12 +50,16 @@ Esta entrega es una implementación funcional de los módulos principales con pe
 
 - La pantalla muestra semana en curso en grande y semanas completas/días aparte, con los casos 4+6 → 5, 5+0 → 5 y 5+1 → 6 probados.
 - Migración aditiva `20261102050000_weekly_editorial`, incluida explícitamente en el manifiesto de despliegue. Conserva datos existentes.
-- 42 borradores cargados en PostgreSQL local; ninguno publicado. El seed se verifica repetible y preserva modificaciones, citas y archivos. Su ejecución en producción depende del próximo build de Vercel y no se declara comprobada.
+- 42 textos cargados y publicados editorialmente en PostgreSQL local; ninguno marcado con revisión médica registrada. El seed se verifica repetible y preserva modificaciones, citas y archivos. Su ejecución en producción depende del próximo build de Vercel y no se declara comprobada.
 - 39 marcadores PNG transparentes, identificados como ilustraciones pendientes. Faltan los originales de frutas.
-- Fuentes médicas específicas, medidas, hitos y cambios maternos pendientes de revisión/redacción profesional; la biblioteca pública mantiene estados neutrales hasta aprobación.
+- Fuentes médicas específicas, medidas, hitos y cambios maternos pendientes de revisión/redacción profesional; la biblioteca pública identifica de forma visible la revisión pendiente.
 
 ## Identidad y verificación de producción
 
 Se reemplazaron las marcas provisionales por los originales vectoriales de los PDF suministrados. Inter variable reemplaza las familias anteriores en toda la interfaz; el wordmark es una imagen vectorial y conserva el diseño aprobado. Las pruebas de navegador verifican la carga de los SVG, la fuente Inter realmente cargada y los pesos 500/600/800 en roles distintos.
 
 `/api/health` permite verificar las 42 semanas y el commit de Vercel sin datos personales. Las pruebas locales comprueban un estado pendiente con biblioteca vacía y un estado correcto con las 42 semanas cargadas. El acceso HTTP de este entorno al dominio publicado sigue bloqueado por el proxy y no hay una sesión de Vercel disponible: no se afirma una comprobación remota de producción.
+
+## Publicación editorial autorizada
+
+La migración `20261102060000_editorial_publication` agrega la visibilidad editorial sin debilitar las restricciones de aprobación médica existentes. Se publican las 42 semanas de origen, conservando ediciones ajenas al origen y posteriores decisiones de ocultar. Los textos de término se expresan con semanas completas. La interfaz distingue publicación de revisión y evita mostrar fechas ficticias de revisión. `/api/health` solo indica `ok` cuando existen y están visibles las 42 semanas; la comprobación remota sigue pendiente por el acceso de red del entorno.

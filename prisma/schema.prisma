@@ -150,6 +150,8 @@ model ConsentRecord {
  createdAt DateTime @default(now())
 }
 model WeeklyDevelopment {
+ editorialPublished Boolean @default(false)
+ editorialPublicationRelease String?
  trimester Int?
  lengthCm Float?
  lengthMinCm Float?

@@ -25,7 +25,7 @@ Las fechas gestacionales son `DATE`, sin hora. Se usan números de días UTC sol
 
 ## Editorial, privacidad y límites
 
-Solo se devuelven semanas con publicación y revisión registrada. Los cambios editoriales deben renovar la revisión. Las referencias clínicas y el texto se administran en PostgreSQL. La biblioteca incluye 42 borradores del usuario, sin validación profesional atribuida. El seed es create-only: preserva toda edición existente. La interfaz pública filtra estado APPROVED, publicación y metadatos de revisión.
+Se devuelven semanas con publicación editorial explícita o con publicación médica y revisión registrada. Los cambios editoriales deben renovar la revisión. Las referencias clínicas y el texto se administran en PostgreSQL. La biblioteca incluye 42 textos educativos del usuario publicados con aviso de revisión pendiente. `editorialPublished` es independiente de `published` (contenido con revisión médica registrada). El seed reconoce el origen anterior intacto para una transición de publicación única; el marcador impide republicar decisiones privadas posteriores. Los textos y las revisiones personalizados se preservan.
 
 La traducción inicial está en español argentino; `src/lib/i18n.ts` define idioma/catálogo. Aún debe migrarse el resto de textos de componentes a catálogos para incorporar un segundo idioma. No se afirma cobertura multilingüe terminada.
 

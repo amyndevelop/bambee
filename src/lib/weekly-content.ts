@@ -15,12 +15,38 @@ export const measurementLabels: Record<string, string> = {
   CRL: "CRL: cabeza a nalgas",
   TOTAL_LENGTH: "Longitud total: cabeza a talón",
 };
-export const publishedWeeklyWhere = {
+export const reviewedWeeklyWhere = {
   published: true,
   reviewStatus: "APPROVED",
   reviewedAt: { not: null },
   reviewedBy: { not: null },
 } as const;
+export const publishedWeeklyWhere = {
+  OR: [reviewedWeeklyWhere, { editorialPublished: true }],
+};
+export function hasMedicalReview(content: {
+  reviewStatus?: string;
+  reviewedAt?: unknown;
+  reviewedBy?: unknown;
+}) {
+  return (
+    content.reviewStatus === "APPROVED" &&
+    !!content.reviewedAt &&
+    !!content.reviewedBy
+  );
+}
+export function isWeeklyContentVisible(content: {
+  editorialPublished?: boolean;
+  published?: boolean;
+  reviewStatus?: string;
+  reviewedAt?: unknown;
+  reviewedBy?: unknown;
+}) {
+  return (
+    content.editorialPublished === true ||
+    (content.published === true && hasMedicalReview(content))
+  );
+}
 const length = z.number().positive().max(100).nullable();
 export const weeklyDraftSchema = z.object({
   week: z.number().int().min(1).max(42),
@@ -47,6 +73,8 @@ export const weeklyDraftSchema = z.object({
   sourceNames: z.array(z.string()),
   reviewStatus: z.literal("PENDING_REVIEW"),
   published: z.literal(false),
+  editorialPublished: z.literal(true),
+  editorialPublicationRelease: z.literal("public-editorial-v2"),
   reviewedBy: z.null(),
   reviewedAt: z.null(),
   contentVersion: z.string().min(1),

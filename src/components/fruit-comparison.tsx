@@ -42,6 +42,12 @@ export function FruitComparison({
           {measurementLabels[content.measurementMethod]}
         </p>
       )}
+      {content.week === 14 && (
+        <p className="measurement-method">
+          Esta tabla cambia de CRL a longitud total entre las semanas 13 y 14.
+          Las dos medidas no son directamente comparables.
+        </p>
+      )}
       <p>
         Comparación orientativa; no representa una medición clínica individual.
       </p>

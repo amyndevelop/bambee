@@ -1,5 +1,7 @@
 "use client";
 import { FruitComparison } from "./fruit-comparison";
+import { EditorialNotice } from "./editorial-notice";
+import { hasMedicalReview } from "@/lib/weekly-content";
 import { reviewLabels } from "@/lib/weekly-content";
 import { api, type Row } from "@/lib/client";
 import { useEffect, useState, useRef } from "react";
@@ -46,6 +48,7 @@ export function Weekly({
           </button>
         ))}
       </div>
+      <EditorialNotice content={content} />
       <section className="card">
         <p className="eyebrow">SEMANA {week}</p>
         {content ? (
@@ -82,7 +85,18 @@ export function Weekly({
               contenido educativo no evalúa tu embarazo ni reemplaza la consulta
               con tu equipo de salud.
             </p>
-            <h3>Referencias</h3>
+            <h3>
+              {content.referenceUrls.length
+                ? "Referencias"
+                : "Referencias específicas pendientes"}
+            </h3>
+            {!content.referenceUrls.length && (
+              <p>
+                Todavía no se incorporaron referencias específicas verificadas.
+                Fuentes propuestas para contrastar el contenido:{" "}
+                {content.sourceNames?.join(", ") || "pendientes de selección"}.
+              </p>
+            )}
             {content.referenceUrls.map((url: string) => (
               <p key={url}>
                 <a href={url} rel="noreferrer" target="_blank">
@@ -92,15 +106,20 @@ export function Weekly({
             ))}
             <small>
               {reviewLabels[content.reviewStatus]} · Actualizado:{" "}
-              {new Date(content.updatedAt).toLocaleDateString("es-AR")} ·
-              Revisión registrada:{" "}
-              {new Date(content.reviewedAt).toLocaleDateString("es-AR")}
+              {new Date(content.updatedAt).toLocaleDateString("es-AR")}
+              {hasMedicalReview(content) && (
+                <>
+                  {" "}
+                  · Revisión registrada:{" "}
+                  {new Date(content.reviewedAt).toLocaleDateString("es-AR")}
+                </>
+              )}
             </small>
           </>
         ) : (
           <Empty
             title="Información en preparación"
-            text="Todavía no hay contenido clínico publicado y revisado para esta semana. Tu edad gestacional no cambia al explorar otras semanas."
+            text="Todavía no hay contenido publicado para esta semana. Tu edad gestacional no cambia al explorar otras semanas."
           />
         )}
       </section>

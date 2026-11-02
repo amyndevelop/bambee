@@ -73,6 +73,23 @@ test("registro, onboarding, dashboard y diario en móvil", async ({
   ).toBeVisible();
   await expect(page.getByText("¡Hola, Lucía!")).toBeVisible();
   await expect(
+    page.getByText("Contenido educativo · Revisión profesional pendiente", {
+      exact: true,
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Zanahoria", exact: true }),
+  ).toBeVisible();
+  const library = await page.request.get("/api/data?kind=weeks");
+  const allWeeks = await library.json();
+  expect(allWeeks).toHaveLength(42);
+  expect(
+    allWeeks
+      .map((row: { week: number }) => row.week)
+      .sort((a: number, b: number) => a - b),
+  ).toEqual(Array.from({ length: 42 }, (_, i) => i + 1));
+
+  await expect(
     page.getByRole("heading", { name: "Semana 21", exact: true }),
   ).toBeVisible();
   await expect(
@@ -85,6 +102,22 @@ test("registro, onboarding, dashboard y diario en móvil", async ({
   await expect(
     page.getByRole("button", { name: "Sem 21 · Hoy", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
+  await expect(
+    page.getByRole("heading", {
+      name: "Practica movimientos de succión.",
+      exact: true,
+    }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Sem 42", exact: true }).click();
+  await expect(
+    page.getByRole("heading", {
+      name: "Seguimiento obstétrico según la edad exacta.",
+      exact: true,
+    }),
+  ).toBeVisible();
+  expect(await page.locator("small").filter({ hasText: "1970" }).count()).toBe(
+    0,
+  );
   await page.getByRole("button", { name: "Sem 19", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Sem 19", exact: true }),

@@ -34,9 +34,16 @@ export function Admin() {
         referenceUrls: String(d.referenceUrls).split("\n").filter(Boolean),
         review: f.has("review"),
         published: f.has("published"),
+        editorialPublished:
+          data?.role === "ADMIN" && f.has("editorialPublished"),
       });
       setErr("Contenido guardado");
-      setData(await api("/api/admin"));
+      const refreshed = await api("/api/admin");
+      setData(refreshed);
+      setSelected(
+        refreshed.content.find((row: Row) => row.week === Number(d.week)) ||
+          null,
+      );
     } catch (e) {
       setErr((e as Error).message);
     }
@@ -89,7 +96,7 @@ export function Admin() {
             <form
               className="form-grid"
               onSubmit={submit}
-              key={selected?.id || "new"}
+              key={selected ? selected.id + ":" + selected.updatedAt : "new"}
             >
               <Field
                 label="Semana"
@@ -207,9 +214,11 @@ export function Admin() {
               {selected && (
                 <p className="full">
                   {reviewLabels[selected.reviewStatus]} ·{" "}
-                  {selected.published ? "Publicado" : "No publicado"} · Versión:{" "}
-                  {selected.contentVersion || "Edición manual"}. Fuentes
-                  pendientes de contraste:{" "}
+                  {selected.published || selected.editorialPublished
+                    ? "Visible en la aplicación"
+                    : "No publicado"}{" "}
+                  · Versión: {selected.contentVersion || "Edición manual"}.
+                  Fuentes pendientes de contraste:{" "}
                   {selected.sourceNames?.join(", ") || "Sin fuentes propuestas"}
                   . Los textos y medidas del adjunto no están validados
                   médicamente.
@@ -241,8 +250,29 @@ export function Admin() {
                 profesional con mi usuario
               </label>
               <label className="check">
-                <input name="published" type="checkbox" /> Publicar contenido
-                revisado
+                <input
+                  name="editorialPublished"
+                  type="checkbox"
+                  disabled={data.role !== "ADMIN"}
+                  defaultChecked={
+                    data.role === "ADMIN" && !!selected?.editorialPublished
+                  }
+                />{" "}
+                Publicar como contenido educativo con aviso de revisión
+                pendiente
+              </label>
+              <p className="full">
+                La publicación editorial es independiente de la aprobación
+                médica. Una edición de contenido aprobado requiere registrar su
+                revisión nuevamente.
+              </p>
+              <label className="check">
+                <input
+                  name="published"
+                  type="checkbox"
+                  defaultChecked={selected?.published}
+                />{" "}
+                Publicar contenido revisado
               </label>
               <button className="primary">Guardar contenido semanal</button>
             </form>
@@ -250,7 +280,9 @@ export function Admin() {
               <p key={c.id}>
                 Semana {c.week} · {c.title} ·{" "}
                 {reviewLabels[c.reviewStatus] || "Borrador"} ·{" "}
-                {c.published ? "Publicado" : "No publicado"}
+                {c.published || c.editorialPublished
+                  ? "Visible en la aplicación"
+                  : "No publicado"}
               </p>
             ))}
           </section>

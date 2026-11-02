@@ -12,20 +12,46 @@ export async function seedWeeklyDevelopment(client: PrismaClient) {
       ),
     ),
   );
+  const previous = JSON.parse(
+    readFileSync(
+      new URL("../content/pregnancy/weeks.es-AR.v1.json", import.meta.url),
+      "utf8",
+    ),
+  ) as Record<string, unknown>[];
   await client.$transaction(
     async (tx) => {
-      for (const draft of drafts)
-        await tx.weeklyDevelopment.upsert({
+      for (const draft of drafts) {
+        const row = await tx.weeklyDevelopment.upsert({
           where: { week: draft.week },
           create: draft,
           update: {},
         });
+        if (row.editorialPublicationRelease !== null) continue;
+        const original = previous.find((item) => item.week === draft.week);
+        // Publish this supplied baseline once only. An edited/custom record is preserved.
+        const unchanged =
+          original &&
+          Object.keys(original).every(
+            (key) =>
+              JSON.stringify(
+                (row as unknown as Record<string, unknown>)[key],
+              ) === JSON.stringify(original[key]),
+          );
+        if (unchanged)
+          await tx.weeklyDevelopment.update({
+            where: { id: row.id },
+            data: draft,
+          });
+      }
     },
     { timeout: 60000, maxWait: 15000 },
   );
   return {
     available: await client.weeklyDevelopment.count(),
     sourceDrafts: drafts.length,
+    editorialPublished: await client.weeklyDevelopment.count({
+      where: { editorialPublished: true },
+    }),
   };
 }
 async function main() {
@@ -35,7 +61,7 @@ async function main() {
   try {
     const result = await seedWeeklyDevelopment(db);
     console.log(
-      `Biblioteca semanal: ${result.available} registros; ${result.sourceDrafts} borradores de origen. Se conservaron los registros existentes.`,
+      `Biblioteca semanal: ${result.available} registros; ${result.sourceDrafts} textos editoriales de origen. ${result.editorialPublished} semanas con publicación editorial. Se conservaron las ediciones propias.`,
     );
   } finally {
     await db.$disconnect();

@@ -64,6 +64,7 @@ test("administración: 42 borradores editables sin publicar ni exigir un embaraz
     });
     expect(updated.title).toBe("Fixture de edición editorial");
     expect(updated.published).toBe(false);
+    expect(updated.editorialPublished).toBe(true);
     expect(updated.reviewStatus).toBe("PENDING_REVIEW");
     expect(updated.reviewedAt).toBeNull();
     const health = await page.request.get("/api/health");
@@ -71,11 +72,37 @@ test("administración: 42 borradores editables sin publicar ni exigir un embaraz
     const readiness = await health.json();
     expect(readiness.weeklyContent.total).toBe(42);
     expect(readiness.weeklyContent.complete).toBe(true);
-    expect(readiness.weeklyContent.published).toBe(0);
+    expect(readiness.weeklyContent.published).toBe(42);
+    expect(readiness.weeklyContent.medicallyReviewed).toBe(0);
     expect(readiness.release.font).toBe("Inter");
     expect(readiness.release.brand).toBe("original-pdf-2026-11-02");
     const publicWeeks = await page.request.get("/api/data?kind=weeks");
-    expect(await publicWeeks.json()).toEqual([]);
+    const visible = await publicWeeks.json();
+    expect(visible).toHaveLength(42);
+    expect(
+      visible.every(
+        (row: { reviewStatus: string }) =>
+          row.reviewStatus === "PENDING_REVIEW",
+      ),
+    ).toBe(true);
+    await page
+      .getByRole("checkbox", {
+        name: "Publicar como contenido educativo con aviso de revisión pendiente",
+      })
+      .uncheck();
+    await page
+      .getByRole("button", { name: "Guardar contenido semanal" })
+      .click();
+    await expect
+      .poll(async () => {
+        const row = await db.weeklyDevelopment.findUniqueOrThrow({
+          where: { week: 5 },
+        });
+        return row.editorialPublished;
+      })
+      .toBe(false);
+    const remaining = await page.request.get("/api/data?kind=weeks");
+    expect(await remaining.json()).toHaveLength(41);
   } finally {
     await db.weeklyDevelopment.update({
       where: { week: 5 },
@@ -86,6 +113,8 @@ test("administración: 42 borradores editables sin publicar ni exigir un embaraz
         reviewedAt: original.reviewedAt,
         reviewedBy: original.reviewedBy,
         published: original.published,
+        editorialPublished: original.editorialPublished,
+        editorialPublicationRelease: original.editorialPublicationRelease,
       },
     });
     if (userId) await db.user.delete({ where: { id: userId } });

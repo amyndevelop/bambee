@@ -6,6 +6,8 @@ import { createHash } from "node:crypto";
 import {
   validateWeeklyDrafts,
   measurementLabels,
+  hasMedicalReview,
+  isWeeklyContentVisible,
 } from "../src/lib/weekly-content";
 const source = JSON.parse(
   readFileSync("content/pregnancy/weeks.es-AR.json", "utf8"),
@@ -22,10 +24,12 @@ test("la biblioteca contiene las 42 semanas únicas y textos persistibles", () =
     assert.ok(row.developmentHighlights.length);
   }
 });
-test("ningún borrador declara revisión profesional ni publicación", () => {
+test("la publicación editorial no atribuye aprobación profesional", () => {
   for (const row of validateWeeklyDrafts(source)) {
     assert.equal(row.reviewStatus, "PENDING_REVIEW");
     assert.equal(row.published, false);
+    assert.equal(row.editorialPublished, true);
+    assert.equal(row.editorialPublicationRelease, "public-editorial-v2");
     assert.equal(row.reviewedBy, null);
     assert.equal(row.reviewedAt, null);
     assert.deepEqual(row.referenceUrls, []);
@@ -84,4 +88,39 @@ test("rechaza duplicados y la publicación accidental de la fuente de borradores
   const zero = structuredClone(source);
   zero[4].lengthCm = 0;
   assert.throws(() => validateWeeklyDrafts(zero));
+});
+
+test("la publicación educativa es visible y mantiene el aviso hasta una revisión real", () => {
+  const pending = {
+    editorialPublished: true,
+    published: false,
+    reviewStatus: "PENDING_REVIEW",
+    reviewedAt: null,
+    reviewedBy: null,
+  };
+  assert.equal(isWeeklyContentVisible(pending), true);
+  assert.equal(hasMedicalReview(pending), false);
+  assert.equal(
+    isWeeklyContentVisible({ ...pending, editorialPublished: false }),
+    false,
+  );
+  const reviewed = {
+    ...pending,
+    editorialPublished: false,
+    published: true,
+    reviewStatus: "APPROVED",
+    reviewedAt: new Date(),
+    reviewedBy: "reviewer",
+  };
+  assert.equal(isWeeklyContentVisible(reviewed), true);
+  assert.equal(hasMedicalReview(reviewed), true);
+  assert.equal(hasMedicalReview({ ...reviewed, reviewedAt: null }), false);
+});
+test("los textos de término exigen semanas completas y no diagnostican por el rótulo en curso", () => {
+  for (const week of [37, 39, 41, 42]) {
+    const row = source[week - 1];
+    assert.match(row.details, /semanas completas/);
+  }
+  assert.doesNotMatch(source[38].title, /Ya está a término/);
+  assert.match(source[41].details, /no significa haber alcanzado/);
 });

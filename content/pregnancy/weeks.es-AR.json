@@ -31,7 +31,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 2,
@@ -65,7 +67,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 3,
@@ -99,7 +103,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 4,
@@ -132,7 +138,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 5,
@@ -165,7 +173,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 6,
@@ -198,7 +208,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 7,
@@ -231,7 +243,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 8,
@@ -265,7 +279,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 9,
@@ -299,7 +315,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 10,
@@ -333,7 +351,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 11,
@@ -367,7 +387,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 12,
@@ -400,7 +422,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 13,
@@ -434,7 +458,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 14,
@@ -467,7 +493,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 15,
@@ -500,7 +528,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 16,
@@ -533,7 +563,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 17,
@@ -566,7 +598,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 18,
@@ -600,7 +634,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 19,
@@ -633,7 +669,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 20,
@@ -666,7 +704,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 21,
@@ -699,7 +739,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 22,
@@ -733,7 +775,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 23,
@@ -767,7 +811,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 24,
@@ -800,7 +846,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 25,
@@ -833,7 +881,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 26,
@@ -866,7 +916,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 27,
@@ -899,7 +951,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 28,
@@ -932,7 +986,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 29,
@@ -965,7 +1021,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 30,
@@ -998,7 +1056,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 31,
@@ -1031,7 +1091,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 32,
@@ -1064,7 +1126,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 33,
@@ -1097,7 +1161,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 34,
@@ -1130,7 +1196,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 35,
@@ -1163,7 +1231,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 36,
@@ -1196,17 +1266,20 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 37,
     "trimester": 3,
-    "title": "Comienza el período de término temprano.",
-    "summary": "El bebé continúa acumulando grasa y perfeccionando funciones respiratorias y neurológicas. Puede ubicarse con la cabeza hacia abajo, aunque esto depende de cada embarazo.",
-    "details": "El bebé continúa acumulando grasa y perfeccionando funciones respiratorias y neurológicas. Puede ubicarse con la cabeza hacia abajo, aunque esto depende de cada embarazo.",
+    "title": "Hacia el período de término temprano.",
+    "summary": "A partir de las 37 semanas completas y hasta las 38 semanas y 6 días se habla de término temprano. El desarrollo respiratorio y neurológico continúa durante este período. La posición y la evolución del…",
+    "details": "A partir de las 37 semanas completas y hasta las 38 semanas y 6 días se habla de término temprano. El desarrollo respiratorio y neurológico continúa durante este período. La posición y la evolución del embarazo requieren evaluación individual por el equipo obstétrico.",
     "developmentHighlights": [
-      "El bebé continúa acumulando grasa y perfeccionando funciones respiratorias y neurológicas.",
-      "Puede ubicarse con la cabeza hacia abajo, aunque esto depende de cada embarazo."
+      "A partir de las 37 semanas completas y hasta las 38 semanas y 6 días se habla de término temprano.",
+      "El desarrollo respiratorio y neurológico continúa durante este período.",
+      "La posición y la evolución del embarazo requieren evaluación individual por el equipo obstétrico."
     ],
     "maternalChanges": null,
     "fruit": "Acelga grande",
@@ -1229,7 +1302,9 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 38,
@@ -1262,17 +1337,20 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 39,
     "trimester": 3,
-    "title": "¡Ya está a término completo!",
-    "summary": "A partir de las 39 semanas se considera un embarazo a término completo. Los órganos han alcanzado un grado avanzado de madurez y el bebé continúa preparándose para la vida fuera del útero.",
-    "details": "A partir de las 39 semanas se considera un embarazo a término completo. Los órganos han alcanzado un grado avanzado de madurez y el bebé continúa preparándose para la vida fuera del útero.",
+    "title": "Hacia el término completo.",
+    "summary": "A partir de las 39 semanas completas y hasta las 40 semanas y 6 días se considera un embarazo a término completo. Esta clasificación se basa en la edad gestacional exacta, no en el número…",
+    "details": "A partir de las 39 semanas completas y hasta las 40 semanas y 6 días se considera un embarazo a término completo. Esta clasificación se basa en la edad gestacional exacta, no en el número de semana en curso que muestra la aplicación. El desarrollo y la preparación para el nacimiento continúan.",
     "developmentHighlights": [
-      "A partir de las 39 semanas se considera un embarazo a término completo.",
-      "Los órganos han alcanzado un grado avanzado de madurez y el bebé continúa preparándose para la vida fuera del útero."
+      "A partir de las 39 semanas completas y hasta las 40 semanas y 6 días se considera un embarazo a término completo.",
+      "Esta clasificación se basa en la edad gestacional exacta, no en el número de semana en curso que muestra la aplicación.",
+      "El desarrollo y la preparación para el nacimiento continúan."
     ],
     "maternalChanges": null,
     "fruit": "Sandía pequeña",
@@ -1295,17 +1373,20 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 40,
     "trimester": 3,
-    "title": "Llegó la semana de la fecha probable de parto.",
-    "summary": "El bebé está preparado para nacer, aunque no necesariamente lo hará ese día. Continúa moviéndose y su desarrollo neurológico seguirá después del nacimiento.",
-    "details": "El bebé está preparado para nacer, aunque no necesariamente lo hará ese día. Continúa moviéndose y su desarrollo neurológico seguirá después del nacimiento.",
+    "title": "Cerca de la fecha probable de parto.",
+    "summary": "La fecha probable de parto corresponde a una estimación de 40 semanas completas, no a un día obligatorio de nacimiento. La semana en curso puede comenzar antes de alcanzar esa edad exacta. El seguimiento y…",
+    "details": "La fecha probable de parto corresponde a una estimación de 40 semanas completas, no a un día obligatorio de nacimiento. La semana en curso puede comenzar antes de alcanzar esa edad exacta. El seguimiento y los pasos a seguir se acuerdan con el equipo obstétrico.",
     "developmentHighlights": [
-      "El bebé está preparado para nacer, aunque no necesariamente lo hará ese día.",
-      "Continúa moviéndose y su desarrollo neurológico seguirá después del nacimiento."
+      "La fecha probable de parto corresponde a una estimación de 40 semanas completas, no a un día obligatorio de nacimiento.",
+      "La semana en curso puede comenzar antes de alcanzar esa edad exacta.",
+      "El seguimiento y los pasos a seguir se acuerdan con el equipo obstétrico."
     ],
     "maternalChanges": null,
     "fruit": "Zapallo pequeño",
@@ -1328,18 +1409,20 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 41,
     "trimester": 3,
-    "title": "Un poquito más de tiempo.",
-    "summary": "El embarazo se considera de término tardío. La placenta y el líquido amniótico pueden requerir vigilancia más estrecha, según la evaluación obstétrica. El bebé debe seguir moviéndose.",
-    "details": "El embarazo se considera de término tardío. La placenta y el líquido amniótico pueden requerir vigilancia más estrecha, según la evaluación obstétrica. El bebé debe seguir moviéndose.",
+    "title": "Seguimiento hacia el término tardío.",
+    "summary": "Desde las 41 semanas completas hasta las 41 semanas y 6 días se habla de término tardío. El número de semana en curso no basta para determinar esa clasificación. El equipo obstétrico define la vigilancia…",
+    "details": "Desde las 41 semanas completas hasta las 41 semanas y 6 días se habla de término tardío. El número de semana en curso no basta para determinar esa clasificación. El equipo obstétrico define la vigilancia y las decisiones según la edad exacta y la situación de cada embarazo.",
     "developmentHighlights": [
-      "El embarazo se considera de término tardío.",
-      "La placenta y el líquido amniótico pueden requerir vigilancia más estrecha, según la evaluación obstétrica.",
-      "El bebé debe seguir moviéndose."
+      "Desde las 41 semanas completas hasta las 41 semanas y 6 días se habla de término tardío.",
+      "El número de semana en curso no basta para determinar esa clasificación.",
+      "El equipo obstétrico define la vigilancia y las decisiones según la edad exacta y la situación de cada embarazo."
     ],
     "maternalChanges": null,
     "fruit": "Sandía",
@@ -1362,17 +1445,20 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   },
   {
     "week": 42,
     "trimester": 3,
-    "title": "Seguimiento obstétrico especial.",
-    "summary": "A partir de las 42 semanas, el embarazo se considera postérmino. Se necesita valoración médica específica por el aumento de ciertos riesgos y para determinar la conducta más segura.",
-    "details": "A partir de las 42 semanas, el embarazo se considera postérmino. Se necesita valoración médica específica por el aumento de ciertos riesgos y para determinar la conducta más segura.",
+    "title": "Seguimiento obstétrico según la edad exacta.",
+    "summary": "A partir de las 42 semanas completas se considera un embarazo postérmino. Mostrar «Semana 42» en la aplicación no significa haber alcanzado 42 semanas completas. Si te acercás o superaste tu fecha probable de parto…",
+    "details": "A partir de las 42 semanas completas se considera un embarazo postérmino. Mostrar «Semana 42» en la aplicación no significa haber alcanzado 42 semanas completas. Si te acercás o superaste tu fecha probable de parto, seguí el plan de controles indicado por tu equipo obstétrico.",
     "developmentHighlights": [
-      "A partir de las 42 semanas, el embarazo se considera postérmino.",
-      "Se necesita valoración médica específica por el aumento de ciertos riesgos y para determinar la conducta más segura."
+      "A partir de las 42 semanas completas se considera un embarazo postérmino.",
+      "Mostrar «Semana 42» en la aplicación no significa haber alcanzado 42 semanas completas.",
+      "Si te acercás o superaste tu fecha probable de parto, seguí el plan de controles indicado por tu equipo obstétrico."
     ],
     "maternalChanges": null,
     "fruit": "Zapallo",
@@ -1395,6 +1481,8 @@
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-v1"
+    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "editorialPublished": true,
+    "editorialPublicationRelease": "public-editorial-v2"
   }
 ]

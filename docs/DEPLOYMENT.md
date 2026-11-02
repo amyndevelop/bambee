@@ -6,7 +6,7 @@ Repositorio: `amyndevelop/bambee`. Crear un proyecto Vercel `bambee`, conectado 
 
 Configurar `DATABASE_URL` con PostgreSQL externo y TLS verificado; nunca usar la base de loopback del entorno de desarrollo. Configurar `NEXTAUTH_SECRET`, `NEXTAUTH_URL` y `APP_URL` con el origen HTTPS asignado. Inyectar los valores de forma segura en Vercel, sin copiarlos al repositorio. Preview y Production necesitan configuraciones y bases apropiadas separadas.
 
-El despliegue está autorizado para ejecutar las cinco migraciones iniciales y la migración aditiva `20261102050000_weekly_editorial` sobre la base conectada. `db:bootstrap` verifica el manifiesto y los checksums de esos seis archivos antes de aplicarlos con el historial estándar de Prisma. Los siguientes despliegues los omiten si ya fueron aplicados. No se aplican automáticamente migraciones nuevas agregadas posteriormente. Para migraciones posteriores, usar un proceso operativo autorizado con la `DATABASE_URL` del destino:
+El despliegue está autorizado para ejecutar las cinco migraciones iniciales y las migraciones aditivas `20261102050000_weekly_editorial` y `20261102060000_editorial_publication` sobre la base conectada. `db:bootstrap` verifica el manifiesto y los checksums de esos siete archivos antes de aplicarlos con el historial estándar de Prisma. Los siguientes despliegues los omiten si ya fueron aplicados. No se aplican automáticamente migraciones nuevas agregadas posteriormente. Para migraciones posteriores, usar un proceso operativo autorizado con la `DATABASE_URL` del destino:
 
 ```sh
 npm ci --include=dev
@@ -14,7 +14,7 @@ npm run db:generate
 npm run db:migrate
 ```
 
-El build se detiene si falta DATABASE_URL o falla la inicialización. Mantener bases separadas para Preview y Production. Revisar y respaldar cualquier cambio posterior de esquema antes de aplicarlo. El bootstrap no crea el servicio PostgreSQL: la base debe estar conectada en Vercel primero. Luego `db:seed` completa las semanas faltantes como borradores; conserva cualquier registro editorial existente y nunca publica el contenido por sí solo.
+El build se detiene si falta DATABASE_URL o falla la inicialización. Mantener bases separadas para Preview y Production. Revisar y respaldar cualquier cambio posterior de esquema antes de aplicarlo. El bootstrap no crea el servicio PostgreSQL: la base debe estar conectada en Vercel primero. Luego `db:seed` completa las semanas faltantes y ejecuta la publicación editorial autorizada de los textos de origen. El marcador de publicación conserva ediciones propias y decisiones administrativas de ocultar contenido. No atribuye revisiones médicas.
 
 S3 privado y SMTP requieren las variables documentadas en `.env.example`. Su configuración no se inventa ni se reemplaza por datos de desarrollo. El transporte SMTP debe poder utilizarse desde Vercel. El endpoint de archivos actualmente recibe multipart: verificar el límite de cuerpo del plan de Vercel antes de habilitar el máximo de 10 MB de la app; puede requerirse una carga directa firmada a S3 para archivos grandes.
 
@@ -45,4 +45,4 @@ Luego redeployar para aplicar las variables. Si cambia el dominio, actualizar am
 
 ## Comprobar identidad y biblioteca después del deploy
 
-Abrir `https://bambee-eta.vercel.app/api/health` después de Ready. Debe informar 42 semanas completas, fuente Inter y marca `original-pdf-2026-11-02`; el commit permite distinguir un deployment anterior. Las semanas pendientes de revisión permanecen sin publicar. La verificación del endpoint requiere acceso de red al dominio; una compilación local no demuestra que el deployment remoto finalizó.
+Abrir `https://bambee-eta.vercel.app/api/health` después de Ready. Debe informar 42 semanas completas, fuente Inter y marca `original-pdf-2026-11-02`; el commit permite distinguir un deployment anterior. Las 42 semanas de origen deben aparecer como publicación educativa con aviso de revisión pendiente. `weeklyContent.published` debe ser 42 y `publicationComplete` verdadero. La revisión médica se informa por separado. La verificación del endpoint requiere acceso de red al dominio; una compilación local no demuestra que el deployment remoto finalizó.

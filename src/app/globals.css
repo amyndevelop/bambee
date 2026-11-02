@@ -1294,3 +1294,18 @@ aside nav a {
     max-width: calc(100% - 40px);
   }
 }
+
+.editorial-notice {
+  padding: 15px 18px;
+  margin: 0 0 20px;
+  border: 1px solid #e8d6a7;
+  background: #fff5d9;
+  border-radius: 16px;
+  font-size: 13px;
+}
+.editorial-notice p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--cacao);
+  margin: 5px 0 0;
+}
