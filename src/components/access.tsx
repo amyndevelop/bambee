@@ -123,6 +123,9 @@ export function Access({
           >
             Iniciar sesión
           </button>
+          <Link className="text-button" href="/nombres">
+            Explorar nombres para bebés
+          </Link>
           <Link href="/legal">Privacidad y términos</Link>
         </section>
       </div>

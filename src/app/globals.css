@@ -1580,3 +1580,15 @@ details > summary {
   margin: 0 auto;
   padding: 24px;
 }
+.public-names {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 20px;
+}
+.public-names > .logo {
+  margin-bottom: 24px;
+}
+.name-pagination {
+  flex-direction: row;
+  justify-content: center;
+}

@@ -107,7 +107,12 @@ test("Herramientas: permisos, persistencia, catálogos, exportaciones y sincroni
           "timelapse",
           "contractions",
         ]) {
-          assert.equal((await get(module, 1)).status, 403);
+          if (module === "names") {
+            const publicNames = await ok(await get(module, 1));
+            assert.equal(publicNames.canVote, false);
+            assert.deepEqual(publicNames.choices, []);
+            assert.deepEqual(publicNames.partnerVotes, []);
+          } else assert.equal((await get(module, 1)).status, 403);
           assert.equal((await get(module, 2)).status, 403);
         }
         await ok(
@@ -261,7 +266,9 @@ test("Herramientas: permisos, persistencia, catálogos, exportaciones y sincroni
         const data = await ok(
           await get("names", 0, "&q=Benjamin&gender=M&first=B&min=5&max=10"),
         );
-        assert.equal(data.names.length, 1);
+        assert.ok(
+          data.names.some((row: { name: string }) => row.name === "Benjamín"),
+        );
         const nameId = data.names[0].id;
         await ok(
           await post("names", "choose", {

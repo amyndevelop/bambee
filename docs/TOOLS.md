@@ -28,7 +28,7 @@ Las preguntas son privadas y pertenecen a su creador. Compartir una requiere mar
 
 ## Catálogo de nombres
 
-El seed idempotente incluye 475 nombres de uso habitual y cinco diseños de tarjetas, además de la plantilla de preparativos. No atribuye significados ni etimologías que no se hayan contrastado. Los nombres iniciales tienen origen/significado nulos y estado `PENDING`; se informa expresamente en la interfaz. La verificación documental y ampliación de fuentes quedan para el equipo editorial.
+El seed incorpora los 572 nombres del catálogo aportado, con origen y significado visibles, cinco diseños de tarjetas y la plantilla de preparativos. El estado `editorial_initial` no bloquea la publicación ni oculta definiciones. Conserva los registros anteriores y sus relaciones; una base con los 475 nombres iniciales pasa a 727, incluidos los 572 completos del ZIP. Ver `content/tools/README.md` para procedencia, grafías independientes, búsqueda pública y preservación de correcciones.
 
 La búsqueda normaliza tildes y mayúsculas y combina nombre, inicial, género de uso, longitud y origen disponible. Se conservan favoritos, notas propias, votos y candidatos. El servidor nunca devuelve notas de otras personas. Solo devuelve un voto de pareja cuando ambos votaron ese nombre o la persona autorizó compartirlo antes. La revocación de la membresía o del permiso `names` se aplica en la siguiente solicitud. Los registros de antiguos miembros no participan en coincidencias.
 

@@ -74,6 +74,7 @@ try {
   }
   if (!ready) throw new Error("El servidor temporal no quedó listo");
   run(["--import", "tsx", "--test", "tests/integration.test.ts"]);
+  run(["--import", "tsx", "--test", "tests/names-catalog.integration.ts"]);
   run(["--import", "tsx", "--test", "tests/tools.integration.ts"]);
   run(["--import", "tsx", "scripts/seed-weekly-development.ts"]);
   run(["--import", "tsx", "scripts/seed-tools.ts"]);

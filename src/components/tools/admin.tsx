@@ -155,6 +155,9 @@ export function ToolCatalogAdmin() {
                   source: f.source,
                   sourceUrl: f.sourceUrl || null,
                   verification: f.verification,
+                  published: f.published === "on",
+                  reviewStatus: String(f.reviewStatus || "editorial_initial"),
+                  locale: name?.locale || "es-AR",
                   variants: String(f.variants || "")
                     .split(",")
                     .map((v) => v.trim())
@@ -222,6 +225,19 @@ export function ToolCatalogAdmin() {
               <option value="DISPUTED">Interpretación controvertida</option>
             </select>
           </label>
+          <Field
+            label="Estado editorial (no bloquea la publicación)"
+            name="reviewStatus"
+            defaultValue={name?.reviewStatus || "editorial_initial"}
+          />
+          <label className="check">
+            <input
+              type="checkbox"
+              name="published"
+              defaultChecked={name?.published ?? true}
+            />
+            Publicado en el buscador
+          </label>
           <button>Guardar nombre</button>
         </form>
         <form
@@ -238,7 +254,7 @@ export function ToolCatalogAdmin() {
           }}
         >
           <label>
-            Importar hasta 500 nombres en JSON
+            Importar hasta 2000 nombres en JSON
             <textarea name="names" required rows={5} />
           </label>
           <button>Importar sin duplicar nombres existentes</button>

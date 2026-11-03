@@ -18,6 +18,8 @@ export const publicUrl = z
     (value) => ["https:", "http:"].includes(new URL(value).protocol),
     "La fuente debe usar HTTP o HTTPS",
   );
+export const nameIdentity = (value: string) =>
+  value.normalize("NFC").trim().toLocaleLowerCase("es");
 export const normalizeName = (value: string) =>
   value
     .normalize("NFD")
@@ -115,6 +117,9 @@ export const contractionEventSchema = z
   );
 export const nameSchema = z
   .object({
+    published: z.boolean().default(true),
+    reviewStatus: z.string().min(1).max(80).default("editorial_initial"),
+    locale: z.string().min(2).max(30).default("es-AR"),
     id: identifier.optional(),
     name: z.string().trim().min(1).max(60),
     gender: z.enum(["F", "M", "U"]),

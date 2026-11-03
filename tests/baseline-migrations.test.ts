@@ -16,7 +16,7 @@ function fixture() {
   cpSync(resolve("prisma/migrations"), root, { recursive: true });
   return root;
 }
-test("el bootstrap incluye únicamente las ocho migraciones aprobadas", () => {
+test("el bootstrap incluye únicamente las nueve migraciones aprobadas", () => {
   const root = fixture();
   try {
     mkdirSync(join(root, "20990101000000_future"));
@@ -25,7 +25,7 @@ test("el bootstrap incluye únicamente las ocho migraciones aprobadas", () => {
       'DROP TABLE "User";',
     );
     const result = baselineMigrations(root);
-    assert.equal(result.length, 8);
+    assert.equal(result.length, 9);
     assert.ok(!result.some((m) => m.path.includes("future")));
     assert.equal(result[0].path, "20261102000000_initial");
   } finally {

@@ -1,3 +1,7 @@
+import {
+  importNameCatalog,
+  parseCatalogName,
+} from "@/modules/tools/name-catalog";
 import { boundedJson } from "@/modules/tools/bounded-json";
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
@@ -6,6 +10,7 @@ import { publicError } from "@/lib/errors";
 import {
   nameSchema,
   normalizeName,
+  nameIdentity,
   text,
   identifier,
   publicUrl,
@@ -38,30 +43,37 @@ export async function POST(req: Request) {
   try {
     sameOrigin(req);
     const u = await administrator();
-    if (Number(req.headers.get("content-length") || 0) > 500000)
-      throw new Error("Máximo 500 KB");
-    const b = await boundedJson(req, 500000);
+    if (Number(req.headers.get("content-length") || 0) > 1500000)
+      throw new Error("Máximo 1,5 MB");
+    const b = await boundedJson(req, 1500000);
     if (b.op === "names") {
-      const rows = z.array(nameSchema).min(1).max(500).parse(b.data);
-      for (const { id, ...v } of rows) {
+      const rows = z
+        .array(z.unknown())
+        .min(1)
+        .max(2000)
+        .parse(b.data)
+        .map(parseCatalogName);
+      for (const row of rows) {
         if (
-          v.verification !== "PENDING" &&
+          row.verification !== "PENDING" &&
           !["ADMIN", "REVIEWER"].includes(u.role)
         )
           throw new Error("Se requiere revisión");
-        const normalized = normalizeName(v.name);
-        if (id) {
-          await db.babyName.update({
-            where: { id },
-            data: { ...v, normalized },
-          });
-        } else
-          await db.babyName.upsert({
-            where: { normalized },
-            create: { ...v, normalized },
-            update: {},
-          });
       }
+      const edits = rows.filter((row) => row.id),
+        imports = rows.filter((row) => !row.id);
+      for (const { id, ...values } of edits)
+        await db.babyName.update({
+          where: { id },
+          data: {
+            ...values,
+            nameKey: nameIdentity(values.name),
+            normalized: normalizeName(values.name),
+            nameLength: [...values.name].length,
+            adminEdited: true,
+          },
+        });
+      if (imports.length) await importNameCatalog(db, imports);
     } else if (b.op === "template") {
       const v = z
         .object({

@@ -2,7 +2,7 @@ import "dotenv/config";
 import { readFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import type { PrismaClient } from "@prisma/client";
-import { nameSchema, normalizeName } from "../src/modules/tools/validation";
+import { importNameCatalog } from "../src/modules/tools/name-catalog";
 export async function seedTools(client: PrismaClient) {
   const catalog = JSON.parse(
     readFileSync(
@@ -10,11 +10,17 @@ export async function seedTools(client: PrismaClient) {
       "utf8",
     ),
   );
-  const names = catalog.map((entry: unknown) => {
-    const v = nameSchema.parse(entry);
-    return { ...v, normalized: normalizeName(v.name) };
+  const legacy = JSON.parse(
+    readFileSync(
+      new URL("../content/tools/baby-names.legacy.es-AR.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const imported = await importNameCatalog(client, catalog, {
+    catalogId: "bambee-572",
+    legacy,
   });
-  await client.babyName.createMany({ data: names, skipDuplicates: true });
+  console.log("Catálogo editorial importado:", imported);
   const categories = [
     {
       key: "mother",

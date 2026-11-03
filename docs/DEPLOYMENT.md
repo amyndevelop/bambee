@@ -6,7 +6,7 @@ Repositorio: `amyndevelop/bambee`. Crear un proyecto Vercel `bambee`, conectado 
 
 Configurar `DATABASE_URL` con PostgreSQL externo y TLS verificado; nunca usar la base de loopback del entorno de desarrollo. Configurar `NEXTAUTH_SECRET`, `NEXTAUTH_URL` y `APP_URL` con el origen HTTPS asignado. Inyectar los valores de forma segura en Vercel, sin copiarlos al repositorio. Preview y Production necesitan configuraciones y bases apropiadas separadas.
 
-El despliegue está autorizado para ejecutar las cinco migraciones iniciales y las migraciones aditivas `20261102050000_weekly_editorial` y `20261102060000_editorial_publication` sobre la base conectada. `db:bootstrap` verifica el manifiesto y los checksums de esos siete archivos antes de aplicarlos con el historial estándar de Prisma. Los siguientes despliegues los omiten si ya fueron aplicados. No se aplican automáticamente migraciones nuevas agregadas posteriormente. Para migraciones posteriores, usar un proceso operativo autorizado con la `DATABASE_URL` del destino:
+El manifiesto de despliegue incluye las nueve migraciones autorizadas de esta entrega: las cinco iniciales, las dos editoriales, `20261103120000_family_tools` y `20261103140000_names_public_catalog`. `db:bootstrap` verifica sus checksums antes de aplicarlas con el historial estándar de Prisma. Los siguientes despliegues los omiten si ya fueron aplicados. No se aplican automáticamente migraciones nuevas agregadas posteriormente. Para migraciones posteriores, usar un proceso operativo autorizado con la `DATABASE_URL` del destino:
 
 ```sh
 npm ci --include=dev
@@ -56,3 +56,7 @@ Abrir `https://bambee-eta.vercel.app/api/health` después de Ready. Debe informa
 ## Ampliación de herramientas
 
 Este release agrega la migración aditiva octava `20261103120000_family_tools` al manifiesto autorizado. El build carga catálogos mediante `db:seed` sin sobrescribir registros editados. Ver `TOOLS.md` para permisos, variables, cronómetro offline y despliegue del trabajador MP4. El worker multimedia requiere un host persistente; dejar `MEDIA_WORKER_ENABLED=false` hasta que esté funcionando. La compilación de Vercel por sí sola no habilita el procesamiento de video.
+
+## Catálogo de 572 nombres
+
+El release incorpora la novena migración aditiva `20261103140000_names_public_catalog`. Conserva los IDs y favoritos existentes, agrega publicación y separa la identidad exacta de la búsqueda sin tildes. `db:seed` importa el JSON suministrado y publica inicialmente sus 572 registros sin aprobación manual. Las correcciones y despublicaciones posteriores se conservan. El buscador y su API de catálogo son públicos; los votos y las notas siguen autenticados y privados.

@@ -140,6 +140,14 @@ export function App() {
         <Contractions {...offlineTimer} />
       </main>
     );
+  if (path === "/nombres" && !loading && !data?.pregnancy)
+    return (
+      <main className="public-names">
+        <Logo />
+        <h1>Encontrá un nombre para tu bebé</h1>
+        <BabyNames signInUrl={data?.user ? "/" : "/acceso?next=/nombres"} />
+      </main>
+    );
   if (path === "/acceso" || (!loading && !data))
     return (
       <Access
@@ -153,7 +161,12 @@ export function App() {
           setData(authenticated);
           setError("");
           setLoading(false);
-          router.replace("/");
+          router.replace(
+            new URLSearchParams(window.location.search).get("next") ===
+              "/nombres"
+              ? "/nombres"
+              : "/",
+          );
         }}
       />
     );

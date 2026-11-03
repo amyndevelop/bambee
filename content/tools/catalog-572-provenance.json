@@ -1,0 +1,12 @@
+{
+  "sourceFile": "BAMBEE_Catalogo_Nombres.zip",
+  "zipSha256": "8747929e9c4b814a1729634d42d86b7a63ba8ca2029a80c92391f05a371b9947",
+  "jsonEntry": "bambee_nombres.json",
+  "jsonSha256": "14152849e7d5572c8ed76707fe64976a808b516a2b64f89cf768371694d95f9d",
+  "records": 572,
+  "genders": {
+    "femenino": 321,
+    "masculino": 234,
+    "unisex": 17
+  }
+}

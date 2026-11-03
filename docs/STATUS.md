@@ -73,3 +73,7 @@ Se incorporan preparativos sobre Task, nombres/favoritos/votos privados, configu
 ## Cambios corporales orientativos
 
 Las 42 semanas incluyen cambios posibles en el cuerpo y lecturas complementarias externas de NHS y MedlinePlus. Se publican como orientación general sin revisión clínica atribuida, con variabilidad individual y recomendación de consulta. No son predicciones ni referencias específicas verificadas. La carga v3 conserva textos propios, revisiones reales, referencias personalizadas y decisiones de ocultar contenido.
+
+## Catálogo ampliado de nombres
+
+572 registros del ZIP con publicación inmediata, origen y significado literales, y estado editorial sin bloqueo. Se mantienen las grafías con y sin tilde como registros distintos. El buscador público tiene filtros, orden y paginación de servidor. Se preservan los 475 registros iniciales y sus favoritos/votos: 727 nombres en una base actualizada, de los cuales 572 corresponden al archivo. La administración puede publicar o despublicar sin que el seed revierta la decisión.

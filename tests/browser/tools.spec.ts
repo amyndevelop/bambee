@@ -82,9 +82,14 @@ test("herramientas: preparativos, preguntas, nombres, tarjeta PNG y cronómetro 
   await expect(
     page.getByRole("heading", { name: "Benjamín", exact: true }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "Favorito", exact: true }).click();
+  const chosenName = page.locator("article").filter({
+    has: page.getByRole("heading", { name: "Benjamín", exact: true }),
+  });
+  await chosenName
+    .getByRole("button", { name: "Favorito", exact: true })
+    .click();
   await expect(
-    page.getByRole("button", { name: "Quitar favorito" }),
+    chosenName.getByRole("button", { name: "Quitar favorito" }),
   ).toBeVisible();
   await page.goto("/compartir");
   await page

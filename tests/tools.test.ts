@@ -10,6 +10,7 @@ import {
   timelapseSchema,
   normalizeName,
   nameSchema,
+  nameIdentity,
 } from "../src/modules/tools/validation";
 import {
   contractionStats,
@@ -17,20 +18,27 @@ import {
   contractionCsv,
 } from "../src/modules/tools/contraction-math";
 import { renderVideo } from "../src/modules/tools/video-renderer";
+import { parseCatalogName } from "../src/modules/tools/name-catalog";
 import { renderCard } from "../src/modules/tools/card-renderer";
-test("catálogo con más de 300 nombres reales únicos y sin significados inventados", () => {
+test("catálogo de 572 registros completos y publicados, con variantes gráficas independientes", () => {
   const names = JSON.parse(
     readFileSync("content/tools/baby-names.es-AR.json", "utf8"),
   );
-  assert.ok(names.length >= 300);
+  assert.equal(names.length, 572);
   assert.equal(
-    new Set(names.map((n: { name: string }) => normalizeName(n.name))).size,
-    names.length,
+    new Set(names.map((row: { name: string }) => nameIdentity(row.name))).size,
+    572,
   );
-  for (const n of names) {
-    nameSchema.parse(n);
-    assert.equal(n.meaning, null);
+  for (const row of names) {
+    const parsed = parseCatalogName(row);
+    assert.equal(parsed.meaning, row.meaning);
+    assert.equal(parsed.origin, row.origin);
+    assert.ok(parsed.meaning && parsed.origin);
+    assert.equal(parsed.published, true);
+    assert.equal(parsed.reviewStatus, "editorial_initial");
   }
+  assert.notEqual(nameIdentity("Mía"), nameIdentity("Mia"));
+  assert.equal(normalizeName("Mía"), normalizeName("Mia"));
   assert.equal(normalizeName("Benjamín"), "benjamin");
 });
 test("cronómetro usa timestamps, intervalos entre inicios y rechaza duración negativa", () => {

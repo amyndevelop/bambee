@@ -1,3 +1,4 @@
+import { searchNameCatalog } from "./name-catalog";
 import type { User } from "@prisma/client";
 import { db } from "../../lib/db";
 import { z } from "zod";
@@ -24,7 +25,15 @@ export async function readTools(
   module: string,
   params: URLSearchParams,
 ) {
-  const { pregnancy: p, owner } = await toolContext(user, pregnancyId, module);
+  const {
+    pregnancy: p,
+    owner,
+    member,
+  } = await toolContext(
+    user,
+    pregnancyId,
+    module === "names" ? "overview" : module,
+  );
   if (module === "overview") {
     const taskAccess =
       owner || p.members.some((m) => m.userId === user.id && m.tasks);
@@ -100,33 +109,13 @@ export async function readTools(
       }),
     };
   if (module === "names") {
-    const gender = z
-        .enum(["F", "M", "U"])
-        .optional()
-        .parse(params.get("gender") || undefined),
-      q = normalizeName(params.get("q") || ""),
-      first = normalizeName(params.get("first") || "");
-    const min = z.coerce
-        .number()
-        .int()
-        .min(0)
-        .max(60)
-        .parse(params.get("min") || 0),
-      max = z.coerce
-        .number()
-        .int()
-        .min(1)
-        .max(60)
-        .parse(params.get("max") || 60);
-    const catalog = await db.babyName.findMany({
-      where: {
-        normalized: { contains: q, startsWith: first },
-        ...(gender ? { gender } : {}),
-        ...(params.get("origin") ? { origin: params.get("origin")! } : {}),
-      },
-      orderBy: { normalized: "asc" },
-      take: 2000,
-    });
+    if (!owner && !member?.names)
+      return {
+        ...(await searchNameCatalog(params)),
+        choices: [],
+        partnerVotes: [],
+        canVote: false,
+      };
     const choices = await db.babyNameChoice.findMany({
       where: {
         pregnancyId,
@@ -141,12 +130,25 @@ export async function readTools(
     });
     const mine = choices.filter((c) => c.userId === user.id);
     return {
-      names: catalog
-        .filter((n) => [...n.name].length >= min && [...n.name].length <= max)
-        .map((n) => ({
-          ...n,
-          meaning: n.verification === "PENDING" ? null : n.meaning,
-        })),
+      ...(await searchNameCatalog(params, {
+        ...(params.get("favorites") === "true"
+          ? {
+              choices: {
+                some: { pregnancyId, userId: user.id, favorite: true },
+              },
+            }
+          : {}),
+        ...(params.get("discover") === "true"
+          ? {
+              NOT: {
+                choices: {
+                  some: { pregnancyId, userId: user.id, vote: { not: null } },
+                },
+              },
+            }
+          : {}),
+      })),
+      canVote: true,
       choices: mine,
       partnerVotes: choices
         .filter(
@@ -161,13 +163,6 @@ export async function readTools(
           finalist: c.finalist,
           person: c.user.name,
         })),
-      origins: (
-        await db.babyName.findMany({
-          where: { origin: { not: null } },
-          distinct: ["origin"],
-          select: { origin: true },
-        })
-      ).map((n) => n.origin),
     };
   }
   if (module === "cards")

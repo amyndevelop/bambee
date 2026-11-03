@@ -275,7 +275,15 @@ model ToolTemplate {
 model BabyName {
  id String @id @default(cuid())
  name String
- normalized String @unique
+ nameKey String @unique
+ normalized String
+ nameLength Int @default(0)
+ published Boolean @default(true)
+ locale String @default("es-AR")
+ reviewStatus String @default("editorial_initial")
+ catalogKey String? @unique
+ catalogHash String?
+ adminEdited Boolean @default(false)
  gender String
  origin String?
  meaning String?
@@ -287,6 +295,7 @@ model BabyName {
  choices BabyNameChoice[]
  updatedAt DateTime @updatedAt
  @@index([gender,origin])
+ @@index([published,normalized])
 }
 model BabyNameChoice {
  id String @id @default(cuid())
