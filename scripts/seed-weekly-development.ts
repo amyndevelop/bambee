@@ -60,6 +60,34 @@ export async function seedWeeklyDevelopment(client: PrismaClient) {
           },
         });
       }
+      // Fill the previously empty section once, retaining custom text, reviews,
+      // references and every visibility decision. Never re-fill a v3 edit.
+      for (const draft of drafts) {
+        const row = await tx.weeklyDevelopment.findUnique({
+          where: { week: draft.week },
+        });
+        if (
+          !row ||
+          row.contentVersion !== "user-editorial-2026-11-02-public-v2" ||
+          row.maternalChanges !== null ||
+          row.published ||
+          row.reviewStatus !== "PENDING_REVIEW"
+        )
+          continue;
+        await tx.weeklyDevelopment.update({
+          where: { id: row.id },
+          data: {
+            maternalChanges: draft.maternalChanges,
+            contentVersion: draft.contentVersion,
+            ...(row.referenceUrls.length === 0
+              ? {
+                  referenceUrls: draft.referenceUrls,
+                  sourceNames: draft.sourceNames,
+                }
+              : {}),
+          },
+        });
+      }
     },
     { timeout: 60000, maxWait: 15000 },
   );

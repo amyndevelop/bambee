@@ -66,6 +66,47 @@ test("seed de 42 textos educativos: persistencia, idempotencia y preservación d
           w.reviewedBy === null,
       ),
     );
+    // Upgrade the empty v2 section without replacing an edited title or hiding choice.
+    await db.weeklyDevelopment.update({
+      where: { week: 9 },
+      data: {
+        contentVersion: "user-editorial-2026-11-02-public-v2",
+        maternalChanges: null,
+        referenceUrls: [],
+        title: "Título propio",
+        editorialPublished: false,
+      },
+    });
+    await seedWeeklyDevelopment(db);
+    const expanded = await db.weeklyDevelopment.findUniqueOrThrow({
+      where: { week: 9 },
+    });
+    assert.ok(expanded.maternalChanges);
+    assert.equal(expanded.referenceUrls.length, 2);
+    assert.equal(expanded.title, "Título propio");
+    assert.equal(expanded.editorialPublished, false);
+    assert.equal(expanded.published, false);
+    const customized = await db.weeklyDevelopment.update({
+      where: { week: 9 },
+      data: {
+        maternalChanges: "Texto personalizado",
+        referenceUrls: ["https://example.com/fuente-propia"],
+      },
+    });
+    await seedWeeklyDevelopment(db);
+    const kept = await db.weeklyDevelopment.findUniqueOrThrow({
+      where: { week: 9 },
+    });
+    assert.equal(kept.maternalChanges, "Texto personalizado");
+    assert.deepEqual(kept.referenceUrls, ["https://example.com/fuente-propia"]);
+    assert.equal(
+      kept.updatedAt.toISOString(),
+      customized.updatedAt.toISOString(),
+    );
+    await db.weeklyDevelopment.update({
+      where: { week: 9 },
+      data: { editorialPublished: true },
+    });
     await db.weeklyDevelopment.update({
       where: { week: 6 },
       data: {

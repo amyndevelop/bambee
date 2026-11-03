@@ -32,8 +32,8 @@ test("la publicación editorial no atribuye aprobación profesional", () => {
     assert.equal(row.editorialPublicationRelease, "public-editorial-v2");
     assert.equal(row.reviewedBy, null);
     assert.equal(row.reviewedAt, null);
-    assert.deepEqual(row.referenceUrls, []);
-    assert.equal(row.maternalChanges, null);
+    assert.equal(row.referenceUrls.length, 2);
+    assert.ok(row.maternalChanges && row.maternalChanges.length > 100);
   }
 });
 test("las semanas iniciales no afirman un embrión formado ni medidas cero", () => {

@@ -69,3 +69,7 @@ La migración `20261102060000_editorial_publication` agrega la visibilidad edito
 Se incorporan preparativos sobre Task, nombres/favoritos/votos privados, configuraciones de tarjetas con PNG real, preguntas vinculadas a citas, proyectos timelapse con cola durable y motor FFmpeg, y sesiones de contracciones con cola cifrada y recuperación offline. La integración incluye Inicio, Herramientas, Familia, Agenda, Mi pancita, Configuración, administración de catálogos y exportación de datos propios.
 
 `TOOLS.md` documenta las rutas, nueve modelos nuevos, migración aditiva, semillas, permisos y dependencias operativas. La exportación de video en producción requiere desplegar un trabajador persistente con S3 y PostgreSQL; no se simula si falta. La revisión real de guías clínicas y significados está pendiente. El catálogo inicial permite buscar nombres sin atribuir etimologías no verificadas.
+
+## Cambios corporales orientativos
+
+Las 42 semanas incluyen cambios posibles en el cuerpo y lecturas complementarias externas de NHS y MedlinePlus. Se publican como orientación general sin revisión clínica atribuida, con variabilidad individual y recomendación de consulta. No son predicciones ni referencias específicas verificadas. La carga v3 conserva textos propios, revisiones reales, referencias personalizadas y decisiones de ocultar contenido.

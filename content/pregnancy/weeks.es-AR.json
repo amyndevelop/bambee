@@ -10,7 +10,7 @@
       "El cuerpo atraviesa la menstruación y comienza un nuevo ciclo reproductivo.",
       "El útero se prepara para una posible gestación."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "La edad gestacional se cuenta desde el primer día de la última menstruación, aunque todavía no haya ocurrido una fecundación. En esta etapa podés estar menstruando y sentir los cambios habituales de tu ciclo. El sangrado o las molestias, por sí solos, no indican si habrá un embarazo.",
     "fruit": "Sin comparación; no hay embrión",
     "measurement": "—",
     "lengthCm": null,
@@ -19,19 +19,19 @@
     "measurementMethod": "NOT_APPLICABLE",
     "fruitImage": null,
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -46,7 +46,7 @@
       "Un óvulo madura en el ovario y puede ser liberado hacia el final de esta etapa, dependiendo de la duración del ciclo.",
       "Todavía no existe un embrión."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "A lo largo del ciclo pueden cambiar el flujo vaginal y las sensaciones en la zona pélvica. La ovulación no ocurre el mismo día en todas las personas ni en todos los ciclos. Estos cambios no permiten confirmar por sí solos que haya ocurrido una ovulación o un embarazo.",
     "fruit": "Sin comparación; no hay embrión",
     "measurement": "—",
     "lengthCm": null,
@@ -55,19 +55,19 @@
     "measurementMethod": "NOT_APPLICABLE",
     "fruitImage": null,
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -82,7 +82,7 @@
       "Se forma el cigoto, que comienza a dividirse mientras avanza hacia el útero.",
       "Sus células contienen una combinación genética única."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Si hubo fecundación, es posible que todavía no notes ningún cambio. La sensibilidad mamaria, el cansancio o las molestias leves también pueden aparecer antes de la menstruación y no confirman un embarazo. La presencia o ausencia de síntomas no permite conocer cómo está evolucionando.",
     "fruit": "Desarrollo microscópico",
     "measurement": "—",
     "lengthCm": null,
@@ -91,19 +91,19 @@
     "measurementMethod": "MICROSCOPIC",
     "fruitImage": null,
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -117,7 +117,7 @@
       "El blastocisto se implanta en el revestimiento uterino.",
       "Comienzan a establecerse las estructuras que darán origen al embrión y a parte de la placenta, fundamental para el intercambio de nutrientes y oxígeno."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Puede acercarse la fecha esperada de la menstruación. Algunas personas notan cansancio, sensibilidad en los pechos o cambios en el olfato, mientras que otras no perciben nada distinto. Para confirmar un embarazo y orientar el seguimiento hacen falta las pruebas y la evaluación que correspondan a tu caso.",
     "fruit": "Semilla de amapola",
     "measurement": "1–2 mm",
     "lengthCm": null,
@@ -126,19 +126,19 @@
     "measurementMethod": "CRL",
     "fruitImage": "/assets/pregnancy/fruits/poppy-seed.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -152,7 +152,7 @@
       "Se diferencian tres capas celulares de las que surgirán los tejidos y órganos.",
       "Comienza la formación del sistema nervioso y de las estructuras cardíacas primitivas, junto con los futuros sistemas digestivo y respiratorio."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Podrían aparecer atraso menstrual, pechos sensibles, más cansancio o necesidad de orinar con mayor frecuencia. También es posible no tener síntomas claros. Ninguna de estas sensaciones permite determinar por sí sola la ubicación, la edad exacta o la evolución del embarazo.",
     "fruit": "Semilla de sésamo",
     "measurement": "2 mm",
     "lengthCm": 0.2,
@@ -161,19 +161,19 @@
     "measurementMethod": "CRL",
     "fruitImage": "/assets/pregnancy/fruits/sesame-seed.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -187,7 +187,7 @@
       "El tubo neural, del que se desarrollarán el cerebro y la médula espinal, está cerrándose.",
       "El corazón primitivo comienza su actividad rítmica y aparecen pequeños brotes que darán lugar a los brazos."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Algunas personas comienzan a sentir náuseas, rechazo a ciertos olores o cambios en el apetito. Las náuseas pueden presentarse a cualquier hora, no solamente por la mañana. Si te impiden beber o comer, o te encontrás mal, consultá para que evalúen tu situación.",
     "fruit": "Lenteja",
     "measurement": "4–6 mm",
     "lengthCm": null,
@@ -196,19 +196,19 @@
     "measurementMethod": "CRL",
     "fruitImage": "/assets/pregnancy/fruits/lentil.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -222,7 +222,7 @@
       "El cerebro crece rápidamente y la cabeza es proporcionalmente muy grande.",
       "Comienzan a distinguirse estructuras relacionadas con los ojos, la nariz y las piernas, mientras los brazos siguen desarrollándose."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "El cansancio y la necesidad de dormir más pueden hacerse notorios. Los pechos pueden sentirse más sensibles y el tránsito intestinal puede volverse más lento. La intensidad varía mucho: tener pocos síntomas no permite concluir que exista un problema, y tener muchos tampoco confirma una evolución determinada.",
     "fruit": "Arándano",
     "measurement": "1 cm",
     "lengthCm": 1.0,
@@ -231,19 +231,19 @@
     "measurementMethod": "CRL",
     "fruitImage": "/assets/pregnancy/fruits/blueberry.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -258,7 +258,7 @@
       "Se desarrollan el labio superior, la nariz y las estructuras externas de las orejas.",
       "Los principales sistemas orgánicos ya están en formación, aunque todavía son inmaduros."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Podés notar hinchazón abdominal, gases, estreñimiento o variaciones en el apetito. La panza de esta etapa no refleja de manera directa el tamaño del embrión. Si una molestia es intensa, persistente o te preocupa, no la atribuyas automáticamente al embarazo sin consultar.",
     "fruit": "Frambuesa",
     "measurement": "1,6 cm",
     "lengthCm": 1.6,
@@ -267,19 +267,19 @@
     "measurementMethod": "CRL",
     "fruitImage": "/assets/pregnancy/fruits/raspberry.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -294,7 +294,7 @@
       "Se forman los párpados.",
       "Los músculos y las conexiones nerviosas continúan desarrollándose y permiten movimientos iniciales que todavía no se perciben."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Las náuseas, la sensibilidad a los olores y el cansancio pueden continuar. También pueden cambiar tus emociones y tus ganas de comer ciertos alimentos. Estos cambios no son obligatorios ni exclusivos de esta semana; si afectan tu bienestar, conversalos con tu equipo de salud.",
     "fruit": "Cereza",
     "measurement": "2,3 cm",
     "lengthCm": 2.3,
@@ -303,19 +303,19 @@
     "measurementMethod": "CRL",
     "fruitImage": "/assets/pregnancy/fruits/cherry.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -330,7 +330,7 @@
       "Continúan desarrollándose las orejas y los párpados.",
       "La cabeza adquiere una forma más redondeada."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Algunas personas notan más saliva, acidez o sensación de digestión lenta, junto con los síntomas del comienzo del embarazo. Otras siguen sin notar cambios importantes. Antes de usar medicamentos, suplementos o productos naturales para aliviar molestias, consultá cuáles son adecuados para vos.",
     "fruit": "Frutilla",
     "measurement": "3 cm",
     "lengthCm": 3.0,
@@ -339,19 +339,19 @@
     "measurementMethod": "CRL",
     "fruitImage": "/assets/pregnancy/fruits/strawberry.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -366,7 +366,7 @@
       "Empiezan a desarrollarse los genitales externos y los futuros dientes.",
       "El hígado participa en la producción de células sanguíneas y la cara continúa adquiriendo sus rasgos."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "La ropa puede sentirse más ajustada por la hinchazón y los cambios del cuerpo. Podés notar modificaciones en los pechos o en el flujo vaginal. Un cambio con dolor, mal olor, picazón o que te genere dudas merece una consulta y no puede identificarse a partir de esta descripción.",
     "fruit": "Lima pequeña",
     "measurement": "4,1 cm",
     "lengthCm": 4.1,
@@ -375,19 +375,19 @@
     "measurementMethod": "CRL",
     "fruitImage": "/assets/pregnancy/fruits/small-lime.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -401,7 +401,7 @@
       "Se forman las primeras uñas y el rostro tiene un perfil más reconocible.",
       "Los intestinos se encuentran dentro del abdomen y los órganos continúan su proceso de crecimiento y especialización."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Hacia el final del primer trimestre algunas personas empiezan a sentirse con más energía o menos náuseas, pero otras continúan con molestias. No hay una fecha obligatoria para que desaparezcan. Los controles y los estudios indicados, no la comparación con síntomas ajenos, orientan el seguimiento.",
     "fruit": "Ciruela",
     "measurement": "5,4 cm",
     "lengthCm": 5.4,
@@ -410,19 +410,19 @@
     "measurementMethod": "CRL",
     "fruitImage": "/assets/pregnancy/fruits/plum.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -437,7 +437,7 @@
       "Se desarrollan las cuerdas vocales y el cuerpo va creciendo en proporción a la cabeza.",
       "El aparato urinario ya participa en la producción de orina."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Puede comenzar una etapa con cambios más visibles en la cintura o el abdomen. La energía y el apetito pueden variar, y los síntomas del primer trimestre pueden persistir. Cada cuerpo cambia a su ritmo; el tamaño de la panza no permite evaluar por sí solo el crecimiento del bebé.",
     "fruit": "Limón",
     "measurement": "7,4 cm",
     "lengthCm": 7.4,
@@ -446,19 +446,19 @@
     "measurementMethod": "CRL",
     "fruitImage": "/assets/pregnancy/fruits/lemon.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -472,7 +472,7 @@
       "Los músculos faciales permiten realizar gestos y movimientos.",
       "El cuello está más definido, aparecen patrones de huellas digitales y continúa el crecimiento de los huesos."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Algunas personas notan menos náuseas y otras siguen sintiéndolas. Pueden aparecer cambios en la piel, como pigmentación más marcada o una línea oscura en el abdomen. No todas las personas los presentan y su presencia no permite predecir características del bebé.",
     "fruit": "Durazno",
     "measurement": "14,7 cm",
     "lengthCm": 14.7,
@@ -481,19 +481,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/peach.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -507,7 +507,7 @@
       "Los brazos y piernas se mueven de manera más coordinada.",
       "El bebé realiza movimientos respiratorios con líquido amniótico, mientras sus pulmones continúan desarrollándose."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Con el crecimiento del útero pueden cambiar la postura y las sensaciones al moverte. También pueden notarse congestión nasal o encías más sensibles durante el embarazo. Un dolor importante o un sangrado repetido necesita valoración; no puede considerarse explicado solamente por esta etapa.",
     "fruit": "Pera",
     "measurement": "16,7 cm",
     "lengthCm": 16.7,
@@ -516,19 +516,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/pear.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -542,7 +542,7 @@
       "Los ojos pueden realizar movimientos detrás de los párpados cerrados.",
       "Las estructuras auditivas siguen madurando y comienzan a desarrollarse respuestas a estímulos."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "La panza puede empezar a notarse más, aunque esto varía según cada cuerpo y cada embarazo. Es posible que todavía no distingas movimientos del bebé. No existe un calendario de sensaciones idéntico para todas las personas: preguntá en tus controles qué esperar en tu situación.",
     "fruit": "Palta",
     "measurement": "18,6 cm",
     "lengthCm": 18.6,
@@ -551,19 +551,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/avocado.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -577,7 +577,7 @@
       "Aparecen depósitos de tejido adiposo que más adelante ayudarán a regular la temperatura corporal.",
       "Se desarrollan las uñas de los pies y la piel continúa siendo muy delgada."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Algunas personas empiezan a reconocer sensaciones de aleteo o burbujas que después identificarán como movimientos, y otras todavía no. La experiencia puede diferir entre un primer embarazo y los siguientes. Estas percepciones no permiten medir el crecimiento ni reemplazan los controles.",
     "fruit": "Granada",
     "measurement": "20,4 cm",
     "lengthCm": 20.4,
@@ -586,19 +586,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/pomegranate.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -613,7 +613,7 @@
       "Puede tener períodos de actividad y descanso.",
       "Su cuerpo está cubierto por un vello fino llamado lanugo."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Pueden sentirse cambios en el equilibrio o molestias de espalda al cambiar la postura. La percepción de movimientos puede hacerse más reconocible de forma gradual, sin que esto ocurra necesariamente en esta semana. Si algo te preocupa, consultá en lugar de compararte con una descripción general.",
     "fruit": "Batata",
     "measurement": "22,2 cm",
     "lengthCm": 22.2,
@@ -622,19 +622,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/sweet-potato.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -648,7 +648,7 @@
       "La piel comienza a cubrirse de vérnix caseosa, una sustancia protectora.",
       "Los movimientos se intensifican y algunas personas empiezan a notar sensaciones parecidas a burbujas o aleteos."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "La piel del abdomen y los pechos puede estirarse y cambiar de aspecto. Pueden aparecer estrías o mayor pigmentación, con mucha variación entre personas. La picazón intensa o persistente no debe atribuirse sin evaluación únicamente al estiramiento de la piel.",
     "fruit": "Mango",
     "measurement": "24 cm",
     "lengthCm": 24.0,
@@ -657,19 +657,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/mango.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -683,7 +683,7 @@
       "Siguen organizándose las áreas cerebrales relacionadas con el procesamiento sensorial.",
       "El bebé se mueve con mayor fuerza y pueden comenzar a percibirse pataditas, aunque el momento varía mucho."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "El abdomen puede hacerse más evidente y algunas actividades o posiciones pueden resultar menos cómodas. Podés percibir movimientos con más claridad, aunque el momento de reconocerlos varía. Tu equipo de salud puede orientarte sobre qué cambios observar y cuándo consultar.",
     "fruit": "Banana",
     "measurement": "25,6 cm",
     "lengthCm": 25.6,
@@ -692,19 +692,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/banana.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -718,7 +718,7 @@
       "Puede llevarse las manos a la boca y realizar movimientos de succión.",
       "Las extremidades están más coordinadas y la médula ósea participa cada vez más en la producción de células sanguíneas."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Podrían aparecer acidez, digestión más lenta o sensación de llenura después de comer. Los movimientos pueden empezar a formar parte de tu experiencia cotidiana, sin un patrón universal para esta semana. No uses la comparación con otras personas para decidir si necesitás una consulta.",
     "fruit": "Zanahoria",
     "measurement": "26,7 cm",
     "lengthCm": 26.7,
@@ -727,19 +727,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/carrot.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -754,7 +754,7 @@
       "El bebé puede percibir sonidos internos, como el latido cardíaco y la respiración materna.",
       "Su capacidad de agarrar objetos también progresa."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Los cambios de postura y la carga del cuerpo pueden asociarse a molestias lumbares o pélvicas. También pueden cambiar las posiciones en las que te resulta cómodo descansar. El dolor no se puede diagnosticar por una aplicación: si es intenso, persistente o limita tus actividades, consultá.",
     "fruit": "Papaya pequeña",
     "measurement": "28 cm",
     "lengthCm": 28.0,
@@ -763,19 +763,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/small-papaya.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -790,7 +790,7 @@
       "También avanza la formación de tejido adiposo.",
       "Todavía necesitaría cuidados intensivos especializados si naciera prematuramente."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Algunas personas notan un endurecimiento ocasional del abdomen, pero no siempre resulta fácil identificar su causa. Una descripción general no permite distinguir contracciones preparatorias de otras situaciones. Si aparecen dolor, repetición de episodios o dudas, contactá a tu equipo de salud.",
     "fruit": "Coco",
     "measurement": "29 cm",
     "lengthCm": 29.0,
@@ -799,19 +799,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/coconut.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -825,7 +825,7 @@
       "Continúa la formación de los pequeños espacios pulmonares que participarán en el intercambio de gases después del nacimiento.",
       "La piel sigue siendo delgada y el sistema respiratorio permanece inmaduro."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Puede costar más encontrar una postura cómoda para dormir y pueden aparecer calambres en las piernas. No todas las personas tienen estas molestias y no se puede indicar un suplemento o tratamiento solo por estar en esta semana. Comentá lo que sentís en tus controles.",
     "fruit": "Choclo",
     "measurement": "30 cm",
     "lengthCm": 30.0,
@@ -834,19 +834,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/corn.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -860,7 +860,7 @@
       "Las conexiones nerviosas siguen madurando y los movimientos pueden volverse más variados.",
       "Empieza a aumentar el tejido graso debajo de la piel."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "El crecimiento del abdomen puede acompañarse de tirantez en la piel, cambios de postura o más cansancio al final del día. Los síntomas pueden ir y venir. No es posible evaluar la evolución del embarazo por el tamaño aparente de la panza o por cuánto cansancio sentís.",
     "fruit": "Coliflor pequeña",
     "measurement": "34,6 cm",
     "lengthCm": 34.6,
@@ -869,19 +869,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/small-cauliflower.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -895,7 +895,7 @@
       "Comienza a aumentar la producción de surfactante pulmonar, que ayuda a evitar que los pequeños sacos de aire colapsen después del nacimiento.",
       "Su cantidad todavía es insuficiente para garantizar una respiración independiente."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Los pechos pueden seguir cambiando y algunas personas observan pequeñas pérdidas de calostro; otras no las tienen durante el embarazo. La presencia o ausencia de esas pérdidas no predice por sí sola cómo será la lactancia. Un cambio que te preocupe puede conversarse con el equipo de salud.",
     "fruit": "Lechuga",
     "measurement": "35,6 cm",
     "lengthCm": 35.6,
@@ -904,19 +904,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/lettuce.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -930,7 +930,7 @@
       "Los párpados ya pueden abrirse y cerrarse.",
       "Se desarrollan respuestas a la luz y continúa la maduración de las estructuras cerebrales relacionadas con el movimiento y los sentidos."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Con el avance del embarazo pueden aumentar la acidez, las dificultades para dormir o las molestias de espalda. La experiencia es muy variable y no implica que debas soportar molestias importantes sin ayuda. Tu equipo puede evaluar causas y opciones de alivio apropiadas para vos.",
     "fruit": "Brócoli grande",
     "measurement": "36,6 cm",
     "lengthCm": 36.6,
@@ -939,19 +939,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/large-broccoli.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -965,7 +965,7 @@
       "El sistema nervioso central puede participar en la regulación de la temperatura y de movimientos respiratorios.",
       "Los ojos pueden abrirse parcialmente y responder a la luz."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Podés notar más necesidad de hacer pausas, cambiar de postura o descansar. Los movimientos del bebé pueden resultarte más familiares, pero una aplicación no puede comprobar su bienestar. Si notás una disminución o un cambio que te preocupa, contactá a tu equipo y no esperes a completar registros.",
     "fruit": "Berenjena",
     "measurement": "37,6 cm",
     "lengthCm": 37.6,
@@ -974,19 +974,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/aubergine.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -1000,7 +1000,7 @@
       "Los músculos siguen desarrollándose y los movimientos pueden sentirse más definidos.",
       "El bebé acumula grasa y sus órganos continúan madurando."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "El abdomen puede hacer que algunas posiciones o movimientos cotidianos resulten más incómodos. Pueden continuar la acidez, el estreñimiento o las molestias lumbares. Ninguno de estos cambios debe utilizarse para explicar sin consulta un síntoma nuevo, intenso o persistente.",
     "fruit": "Calabaza alargada",
     "measurement": "38,6 cm",
     "lengthCm": 38.6,
@@ -1009,19 +1009,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/long-squash.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -1035,7 +1035,7 @@
       "La superficie cerebral se vuelve progresivamente más compleja, con surcos y circunvoluciones.",
       "El control de la temperatura mejora, aunque todavía necesita seguir madurando."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "La necesidad de orinar con frecuencia y las interrupciones del sueño pueden hacerse más notorias. También puede aumentar el cansancio por distintas razones. Sentirte así no permite saber si existe anemia u otra causa: eso requiere una evaluación individual y, cuando corresponda, estudios.",
     "fruit": "Repollo",
     "measurement": "39,9 cm",
     "lengthCm": 39.9,
@@ -1044,19 +1044,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/cabbage.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -1070,7 +1070,7 @@
       "Los períodos de descanso y actividad pueden hacerse más reconocibles.",
       "El cerebro procesa estímulos y continúa el desarrollo de las conexiones nerviosas."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "La panza puede cambiar tu manera de sentarte, levantarte o encontrar una posición para descansar. Algunas personas notan sensación de falta de espacio después de comer. La dificultad para respirar no debe atribuirse automáticamente al embarazo; si aparece o te preocupa, buscá valoración médica.",
     "fruit": "Espárragos grandes",
     "measurement": "41,1 cm",
     "lengthCm": 41.1,
@@ -1079,19 +1079,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/large-asparagus.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -1105,7 +1105,7 @@
       "El aumento del tejido graso hace que la piel se vea menos translúcida.",
       "La mayoría de los órganos están bien formados, aunque el cerebro y los pulmones todavía necesitan madurar."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Podés sentir movimientos de distinta forma a medida que cambia la posición del bebé. Eso no significa que deba moverse menos por tener menos espacio. Ante una disminución o un cambio que te preocupe, contactá a tu equipo de salud en lugar de esperar a la próxima semana de la aplicación.",
     "fruit": "Ananá",
     "measurement": "42,4 cm",
     "lengthCm": 42.4,
@@ -1114,19 +1114,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/pineapple.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -1140,7 +1140,7 @@
       "Continúa la mineralización de los huesos.",
       "Los del cráneo conservan cierta flexibilidad y sus suturas permiten la adaptación durante el nacimiento y el crecimiento cerebral posterior."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "El descanso puede interrumpirse por la necesidad de orinar, la acidez o las molestias posturales. También pueden aparecer dudas o ansiedad ante el nacimiento. Si el malestar físico o emocional afecta tu día a día, podés pedir acompañamiento profesional sin esperar al parto.",
     "fruit": "Apio grande",
     "measurement": "43,7 cm",
     "lengthCm": 43.7,
@@ -1149,19 +1149,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/large-celery.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -1175,7 +1175,7 @@
       "El vérnix que recubre la piel puede hacerse más abundante.",
       "Continúa ganando peso y avanzan la maduración pulmonar y el desarrollo cerebral."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Podrías notar mayor presión en la zona pélvica o más dificultad para encontrar una postura cómoda. No ocurre igual en todos los embarazos y estas sensaciones no indican por sí solas que el nacimiento sea inminente. Si las molestias cambian o te preocupan, consultá.",
     "fruit": "Melón cantalupo",
     "measurement": "45 cm",
     "lengthCm": 45.0,
@@ -1184,19 +1184,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/cantaloupe.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -1210,7 +1210,7 @@
       "El desarrollo cerebral continúa a gran velocidad.",
       "Los depósitos de grasa aumentan y contribuyen a preparar la regulación de la temperatura después del nacimiento."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Pueden continuar la presión pélvica, el cansancio y las dificultades para dormir. Los endurecimientos del abdomen no se pueden clasificar como preparatorios o de parto únicamente por una descripción o un cronómetro. Seguí las indicaciones específicas que te haya dado tu equipo obstétrico.",
     "fruit": "Melón amarillo",
     "measurement": "46,2 cm",
     "lengthCm": 46.2,
@@ -1219,19 +1219,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/yellow-melon.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -1245,7 +1245,7 @@
       "Gran parte del lanugo comienza a desprenderse y muchos bebés ya tienen cabello visible.",
       "Los pulmones siguen madurando y el peso continúa aumentando."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "En algunas personas el bebé cambia de posición o se ubica más abajo, y en otras esto no ocurre todavía. Puede modificarse la presión sobre la pelvis o la vejiga. Que la panza parezca más baja no permite calcular cuánto falta para el nacimiento.",
     "fruit": "Lechuga romana",
     "measurement": "47,4 cm",
     "lengthCm": 47.4,
@@ -1254,19 +1254,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/romaine-lettuce.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -1281,7 +1281,7 @@
       "El desarrollo respiratorio y neurológico continúa durante este período.",
       "La posición y la evolución del embarazo requieren evaluación individual por el equipo obstétrico."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Podés notar más cansancio, presión pélvica o cambios en el descanso. El rótulo de semana en curso no sustituye la edad gestacional exacta ni permite clasificar por sí solo si el embarazo llegó a término. Los síntomas aislados tampoco permiten confirmar que empezó el trabajo de parto.",
     "fruit": "Acelga grande",
     "measurement": "48,6 cm",
     "lengthCm": 48.6,
@@ -1290,19 +1290,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/large-chard.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -1316,7 +1316,7 @@
       "La acumulación de grasa continúa y su cuerpo se prepara para mantener la temperatura y alimentarse después del nacimiento.",
       "El cerebro y los pulmones siguen madurando."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Hacia el final del embarazo pueden variar las molestias y las sensaciones de presión. Algunas personas observan cambios en el flujo o expulsan parte del tapón mucoso, pero eso no permite fijar cuándo será el nacimiento. Si hay pérdida de líquido, sangrado o dudas sobre lo que observás, consultá.",
     "fruit": "Puerro grande",
     "measurement": "49,8 cm",
     "lengthCm": 49.8,
@@ -1325,19 +1325,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/large-leek.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -1352,7 +1352,7 @@
       "Esta clasificación se basa en la edad gestacional exacta, no en el número de semana en curso que muestra la aplicación.",
       "El desarrollo y la preparación para el nacimiento continúan."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "La espera puede traer cansancio, inquietud o ganas de que llegue el nacimiento. Las sensaciones corporales y los endurecimientos pueden variar sin permitir predecir el día del parto. Para decidir cuándo comunicarte o acercarte a maternidad, usá las indicaciones de tu equipo y no una regla universal de la aplicación.",
     "fruit": "Sandía pequeña",
     "measurement": "50,7 cm",
     "lengthCm": 50.7,
@@ -1361,19 +1361,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/small-watermelon.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -1388,7 +1388,7 @@
       "La semana en curso puede comenzar antes de alcanzar esa edad exacta.",
       "El seguimiento y los pasos a seguir se acuerdan con el equipo obstétrico."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "La fecha probable de parto es una estimación, no una fecha garantizada. Podés sentir cambios de presión, molestias o expectativas sin que eso determine si el parto comenzará ese día. Mantené el seguimiento indicado y consultá ante cambios en los movimientos, pérdida de líquido, sangrado o cualquier preocupación.",
     "fruit": "Zapallo pequeño",
     "measurement": "51,2 cm",
     "lengthCm": 51.2,
@@ -1397,19 +1397,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/small-pumpkin.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -1424,7 +1424,7 @@
       "El número de semana en curso no basta para determinar esa clasificación.",
       "El equipo obstétrico define la vigilancia y las decisiones según la edad exacta y la situación de cada embarazo."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "Si el embarazo continúa cerca o después de la fecha estimada, la espera puede resultar física y emocionalmente exigente. El plan de controles y las decisiones sobre el nacimiento dependen de la edad exacta y de tu situación. No esperes a que cambie la semana de la aplicación para contactar a tu equipo ante una duda.",
     "fruit": "Sandía",
     "measurement": "Sin longitud única",
     "lengthCm": null,
@@ -1433,19 +1433,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/watermelon.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   },
@@ -1460,7 +1460,7 @@
       "Mostrar «Semana 42» en la aplicación no significa haber alcanzado 42 semanas completas.",
       "Si te acercás o superaste tu fecha probable de parto, seguí el plan de controles indicado por tu equipo obstétrico."
     ],
-    "maternalChanges": null,
+    "maternalChanges": "La numeración de la aplicación no determina por sí sola que hayan transcurrido 42 semanas completas. Si el embarazo sigue en esta etapa, el seguimiento y las decisiones deben acordarse con tu equipo obstétrico según la edad exacta. No interpretes que tener pocos síntomas o sentirte bien permite posponer los controles indicados.",
     "fruit": "Zapallo",
     "measurement": "Sin longitud única",
     "lengthCm": null,
@@ -1469,19 +1469,19 @@
     "measurementMethod": "TOTAL_LENGTH",
     "fruitImage": "/assets/pregnancy/fruits/pumpkin.png",
     "fruitImageIsPlaceholder": false,
-    "referenceUrls": [],
+    "referenceUrls": [
+      "https://www.nhs.uk/pregnancy/week-by-week/",
+      "https://medlineplus.gov/spanish/pregnancy.html"
+    ],
     "sourceNames": [
-      "Mayo Clinic",
-      "Cleveland Clinic",
-      "MedlinePlus",
-      "NHS",
-      "ACOG"
+      "NHS: guía general del embarazo",
+      "MedlinePlus: embarazo (en español)"
     ],
     "reviewStatus": "PENDING_REVIEW",
     "published": false,
     "reviewedBy": null,
     "reviewedAt": null,
-    "contentVersion": "user-editorial-2026-11-02-public-v2",
+    "contentVersion": "user-editorial-2026-11-03-maternal-v3",
     "editorialPublished": true,
     "editorialPublicationRelease": "public-editorial-v2"
   }

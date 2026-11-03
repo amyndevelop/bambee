@@ -10,10 +10,10 @@ export function EditorialNotice({
     <div className="editorial-notice" role="note">
       <strong>Contenido educativo · Revisión profesional pendiente</strong>
       <p>
-        Los textos, las comparaciones y las medidas orientativas están
-        publicados para consulta general. Todavía no cuentan con revisión médica
-        registrada y no describen la evolución individual de tu embarazo ni
-        reemplazan la consulta profesional.
+        Estos textos describen posibilidades generales, no certezas sobre tu
+        embarazo. No cuentan con revisión médica de BAMBEE. Las lecturas
+        externas enlazadas amplían la información; para evaluar tu caso,
+        consultá a tu equipo de salud.
       </p>
     </div>
   );

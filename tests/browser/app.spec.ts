@@ -145,6 +145,17 @@ test("registro, onboarding, dashboard y diario en móvil", async ({
     0,
   );
   await page.getByRole("button", { name: "Sem 19", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "Lecturas externas sugeridas" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "MedlinePlus · Embarazo (en español)" }),
+  ).toHaveAttribute("href", "https://medlineplus.gov/spanish/pregnancy.html");
+  await expect(
+    page.getByText("Este apartado está pendiente de revisión profesional.", {
+      exact: true,
+    }),
+  ).toHaveCount(0);
   await expect(page.locator(".week-date-range")).toHaveText(
     formatWeekRange(due.toISOString().slice(0, 10), 19),
   );

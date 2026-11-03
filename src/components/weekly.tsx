@@ -84,18 +84,25 @@ export function Weekly({
             <h3>¿Qué puede estar pasando en tu cuerpo?</h3>
             <p className="preserve">
               {content.maternalChanges ||
-                "Este apartado está pendiente de revisión profesional."}
+                "Cada embarazo se vive de manera diferente. Consultá a tu equipo de salud sobre los cambios que notás."}
             </p>
             <p>
-              No todas las personas experimentan los mismos cambios. Este
-              contenido educativo no evalúa tu embarazo ni reemplaza la consulta
-              con tu equipo de salud.
+              Son cambios posibles, no predicciones ni un diagnóstico. Pueden
+              aparecer antes, después o no ocurrir. Para interpretar síntomas o
+              evaluar tu embarazo, consultá a tu equipo de salud.
             </p>
             <h3>
-              {content.referenceUrls.length
+              {hasMedicalReview(content)
                 ? "Referencias"
-                : "Referencias específicas pendientes"}
+                : "Lecturas externas sugeridas"}
             </h3>
+            {!!content.referenceUrls.length && !hasMedicalReview(content) && (
+              <p>
+                Recursos generales para ampliar información. No implican
+                revisión ni aval del texto de esta semana por esas
+                instituciones.
+              </p>
+            )}
             {!content.referenceUrls.length && (
               <p>
                 Todavía no se incorporaron referencias específicas verificadas.
@@ -106,7 +113,11 @@ export function Weekly({
             {content.referenceUrls.map((url: string) => (
               <p key={url}>
                 <a href={url} rel="noreferrer" target="_blank">
-                  {url}
+                  {url.startsWith("https://www.nhs.uk/")
+                    ? "NHS · Guía del embarazo (en inglés)"
+                    : url.startsWith("https://medlineplus.gov/")
+                      ? "MedlinePlus · Embarazo (en español)"
+                      : url}
                 </a>
               </p>
             ))}
