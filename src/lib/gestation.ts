@@ -28,19 +28,19 @@ export function gestationalAgeFromDays(elapsed: number) {
   const daysSinceStart = Math.max(0, elapsed);
   const completedWeeks = Math.floor(daysSinceStart / 7);
   const days = daysSinceStart % 7;
-  const currentWeek = Math.max(1, completedWeeks + (days > 0 ? 1 : 0));
+  const currentWeek = Math.max(1, completedWeeks + 1);
   return { completedWeeks, days, currentWeek };
 }
 export function formatGestationalAge(completedWeeks: number, days: number) {
   return `${completedWeeks} ${completedWeeks === 1 ? "semana" : "semanas"} y ${days} ${days === 1 ? "día" : "días"}`;
 }
-/** Inclusive dates for the app's display-week convention (exact multiples stay in that week). */
+/** Inclusive calendar ranges: seven days per display week, starting at day zero. */
 export function gestationalWeekRange(due: string, week: number) {
   if (!Number.isInteger(week) || week < 1) throw new Error("Semana inválida");
   const reference = addDays(due, -280);
   return {
-    start: addDays(reference, week === 1 ? 0 : (week - 1) * 7 + 1),
-    end: addDays(reference, week * 7),
+    start: addDays(reference, (week - 1) * 7),
+    end: addDays(reference, week * 7 - 1),
   };
 }
 export function formatWeekRange(due: string, week: number, compact = false) {

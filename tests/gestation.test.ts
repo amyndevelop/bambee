@@ -14,8 +14,8 @@ import {
 test("rangos inclusivos coinciden con cada semana en curso, incluidos 4+6, 5+0 y 5+1", () => {
   const due = addDays("2026-09-29", 280);
   assert.deepEqual(gestationalWeekRange(due, 5), {
-    start: "2026-10-28",
-    end: "2026-11-03",
+    start: "2026-10-27",
+    end: "2026-11-02",
   });
   for (let elapsed = 0; elapsed <= 294; elapsed++) {
     const date = addDays("2026-09-29", elapsed);
@@ -24,14 +24,19 @@ test("rangos inclusivos coinciden con cada semana en curso, incluidos 4+6, 5+0 y
       gestation(due, date).currentWeek,
     );
     assert.ok(date >= start && date <= end);
+    assert.equal(dayNumber(end) - dayNumber(start), 6);
   }
+  assert.deepEqual(gestationalWeekRange(due, 6), {
+    start: "2026-11-03",
+    end: "2026-11-09",
+  });
   assert.deepEqual(gestationalWeekRange(due, 1), {
     start: "2026-09-29",
-    end: "2026-10-06",
+    end: "2026-10-05",
   });
   assert.match(
     formatWeekRange(due, 5),
-    /28 de octubre de 2026.*03 de noviembre de 2026/,
+    /27 de octubre de 2026.*02 de noviembre de 2026/,
   );
 });
 test("rangos calendario atraviesan año, bisiestos y cambios de horario sin desplazar fechas", () => {
@@ -128,7 +133,7 @@ test("FUM 29/09: 4+6, 5+0 y 5+1 distinguen edad exacta y semana en curso", () =>
   const due = addDays("2026-09-29", 280);
   for (const [today, weeks, days, currentWeek] of [
     ["2026-11-02", 4, 6, 5],
-    ["2026-11-03", 5, 0, 5],
+    ["2026-11-03", 5, 0, 6],
     ["2026-11-04", 5, 1, 6],
   ] as const) {
     const age = gestation(due, today);
@@ -138,29 +143,29 @@ test("FUM 29/09: 4+6, 5+0 y 5+1 distinguen edad exacta y semana en curso", () =>
     assert.equal(age.currentWeek, currentWeek);
   }
 });
-test("de 0 a 6 días siempre muestra semana 1, y los múltiplos exactos respetan semanas completas", () => {
+test("cada bloque de siete días inicia una nueva semana en curso", () => {
   for (let day = 0; day <= 6; day++)
     assert.equal(gestationalAgeFromDays(day).currentWeek, 1);
   for (const days of [7, 14, 28, 35, 140, 280, 294])
-    assert.equal(gestationalAgeFromDays(days).currentWeek, days / 7);
+    assert.equal(gestationalAgeFromDays(days).currentWeek, days / 7 + 1);
   assert.equal(gestationalAgeFromDays(8).currentWeek, 2);
   assert.equal(gestationalAgeFromDays(-1).currentWeek, 1);
 });
-test("el cambio de día usa el calendario de Buenos Aires para avanzar de 5+0 a 5+1", () => {
+test("el cambio de día usa el calendario de Buenos Aires para avanzar de 4+6 a 5+0", () => {
   const due = addDays("2026-09-29", 280),
     zone = "America/Argentina/Buenos_Aires";
   const before = gestation(
     due,
-    todayInZone(zone, new Date("2026-11-04T02:59:59Z")),
+    todayInZone(zone, new Date("2026-11-03T02:59:59Z")),
   );
   const after = gestation(
     due,
-    todayInZone(zone, new Date("2026-11-04T03:00:00Z")),
+    todayInZone(zone, new Date("2026-11-03T03:00:00Z")),
   );
   assert.equal(before.currentWeek, 5);
-  assert.equal(before.days, 0);
+  assert.equal(before.days, 6);
   assert.equal(after.currentWeek, 6);
-  assert.equal(after.days, 1);
+  assert.equal(after.days, 0);
 });
 test("los días con 23 o 25 horas siguen siendo un solo día gestacional", () => {
   const zone = "America/New_York";

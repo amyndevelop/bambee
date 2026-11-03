@@ -92,7 +92,7 @@ Ver [publicación en GitHub y Vercel](docs/DEPLOYMENT.md). El build de Vercel ge
 
 ## Edad gestacional y semana en curso
 
-`completedWeeks` y `days` representan la edad exacta. `currentWeek` sigue la regla solicitada: si hay días adicionales, suma uno a las semanas completas; en múltiplos exactos de siete conserva las semanas completas. El intervalo 0–6 muestra semana 1. Por compatibilidad, `weeks` sigue significando semanas completas. Con FUM 29/09/2026: 02/11 → 4+6, semana 5; 03/11 → 5+0, semana 5; 04/11 → 5+1, semana 6.
+`completedWeeks` y `days` representan la edad exacta. `currentWeek` es `floor(días / 7) + 1`: cada semana abarca exactamente siete días, incluidos sus extremos. El intervalo 0–6 muestra semana 1. Por compatibilidad, `weeks` sigue significando semanas completas. Con FUM 29/09/2026: 02/11 → 4+6, semana 5; 03/11 → 5+0, semana 6; 04/11 → 5+1, semana 6.
 
 El día civil se obtiene en la zona configurada por la titular del embarazo, también al verlo desde una cuenta familiar. La FPP guardada conserva la datación médica confirmada. Dashboard, biblioteca, fruta, navegador, recuerdos y notificaciones usan `currentWeek` para el rótulo y conservan la edad exacta aparte. Navegar otras semanas no altera la datación.
 

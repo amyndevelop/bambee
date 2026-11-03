@@ -48,7 +48,7 @@ Esta entrega es una implementación funcional de los módulos principales con pe
 
 ## Corrección de semanas y biblioteca del adjunto
 
-- La pantalla muestra semana en curso en grande y semanas completas/días aparte, con los casos 4+6 → 5, 5+0 → 5 y 5+1 → 6 probados.
+- La pantalla muestra semana en curso en grande y semanas completas/días aparte, con los casos 4+6 → 5, 5+0 → 6 y 5+1 → 6 probados.
 - Migración aditiva `20261102050000_weekly_editorial`, incluida explícitamente en el manifiesto de despliegue. Conserva datos existentes.
 - 42 textos cargados y publicados editorialmente en PostgreSQL local; ninguno marcado con revisión médica registrada. El seed se verifica repetible y preserva modificaciones, citas y archivos. Su ejecución en producción depende del próximo build de Vercel y no se declara comprobada.
 - 39 ilustraciones PNG transparentes extraídas del PDF original del usuario, asignadas a las semanas 4–42.
