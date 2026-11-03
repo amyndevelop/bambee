@@ -73,6 +73,13 @@ test("registro, onboarding, dashboard y diario en móvil", async ({
     page.getByRole("heading", { name: "Tu pequeño gran comienzo" }),
   ).toBeVisible();
   await expect(page.getByText("¡Hola, Lucía!")).toBeVisible();
+  await page.evaluate(() => {
+    const state = window as typeof window & { loadingFlashes: number };
+    state.loadingFlashes = 0;
+    new MutationObserver(() => {
+      if (document.querySelector("main.loading")) state.loadingFlashes++;
+    }).observe(document.body, { childList: true, subtree: true });
+  });
   await expect(
     page.getByText("Contenido educativo · Revisión profesional pendiente", {
       exact: true,
@@ -191,10 +198,34 @@ test("registro, onboarding, dashboard y diario en móvil", async ({
   await expect(
     page.getByRole("heading", { name: "Primer recuerdo" }),
   ).toBeVisible();
+  expect(
+    await page.evaluate(
+      () =>
+        (window as typeof window & { loadingFlashes: number }).loadingFlashes,
+    ),
+  ).toBe(0);
   await page.reload();
   await expect(
     page.getByRole("heading", { name: "Primer recuerdo" }),
   ).toBeVisible();
+  // Reproduce login from the public root URL, where replace("/") alone cannot
+  // change the route or reload the existing unauthenticated app state.
+  await page.evaluate(async () => {
+    const { csrfToken } = await (await fetch("/api/auth/csrf")).json();
+    await fetch("/api/auth/signout", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ csrfToken, json: "true" }),
+    });
+  });
+  await page.goto("/");
+  await page
+    .getByRole("button", { name: "Iniciar sesión", exact: true })
+    .click();
+  await page.getByLabel("Correo electrónico").fill(email);
+  await page.getByLabel("Contraseña ·").fill(password);
+  await page.getByRole("button", { name: "Entrar a mi espacio" }).click();
+  await expect(page.getByText("¡Hola, Lucía!")).toBeVisible();
   await page.goto("/configuracion");
   page.on("dialog", (d) => d.accept("ELIMINAR"));
   await page

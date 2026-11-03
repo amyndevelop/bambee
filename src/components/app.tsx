@@ -1,10 +1,10 @@
 "use client";
-import { api, type Row } from "@/lib/client";
+import { api, ApiError, type Row } from "@/lib/client";
 import { Bell, Heart, LogOut } from "lucide-react";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AcceptInvitation } from "./accept-invitation";
 import { Access } from "./access";
 import { Admin } from "./admin";
@@ -25,15 +25,23 @@ export function App() {
     [error, setError] = useState(""),
     [loading, setLoading] = useState(true),
     [selected, setSelected] = useState("");
+  const refreshVersion = useRef(0);
   const refresh = async () => {
+    const version = ++refreshVersion.current;
     try {
       const d = await api("/api/data?pregnancyId=" + selected);
+      if (version !== refreshVersion.current) return;
       setData(d);
       setError("");
     } catch (e) {
+      if (version !== refreshVersion.current) return;
+      if (e instanceof ApiError && e.status === 403) {
+        setData(null);
+        setSelected("");
+      }
       setError((e as Error).message);
     } finally {
-      setLoading(false);
+      if (version === refreshVersion.current) setLoading(false);
     }
   };
   useEffect(() => {
@@ -98,7 +106,22 @@ export function App() {
       </main>
     );
   if (path === "/acceso" || (!loading && !data))
-    return <Access error={error} />;
+    return (
+      <Access
+        error={error}
+        onAuthenticated={async () => {
+          // Load private data only after the new session has been verified.
+          ++refreshVersion.current;
+          const authenticated = await api("/api/data");
+          ++refreshVersion.current;
+          setSelected("");
+          setData(authenticated);
+          setError("");
+          setLoading(false);
+          router.replace("/");
+        }}
+      />
+    );
   if (loading)
     return (
       <main className="loading">

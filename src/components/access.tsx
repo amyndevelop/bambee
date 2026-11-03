@@ -3,11 +3,15 @@ import { api } from "@/lib/client";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { getSession, signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useState } from "react";
 import { BrandGraphic, BrandIsotype, Field, Logo } from "./ui";
-export function Access({ error }: { error: string }) {
-  const router = useRouter();
+export function Access({
+  error,
+  onAuthenticated,
+}: {
+  error: string;
+  onAuthenticated: () => Promise<void>;
+}) {
   const [mode, setMode] = useState("welcome"),
     [message, setMessage] = useState(error),
     [busy, setBusy] = useState(false);
@@ -65,8 +69,7 @@ export function Access({ error }: { error: string }) {
         });
         if (!r?.ok || r.error || !(await getSession())?.user)
           throw new Error("No pudimos iniciar sesión. Revisá tus datos.");
-        router.push("/");
-        router.refresh();
+        await onAuthenticated();
       }
     } catch (e) {
       if (accountCreated) {

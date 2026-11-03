@@ -9,6 +9,8 @@
 
 ## Datos y acceso
 
+El layout de `(workspace)` conserva la instancia de la aplicación entre cambios de sección. Los datos permanecen únicamente en memoria y se revalidan al navegar, cada minuto y al volver a la pestaña. Las respuestas obsoletas se descartan; una respuesta de acceso denegado limpia los datos. Tras autenticar, se carga explícitamente el espacio privado antes de cambiar la ruta, incluso cuando el formulario estaba en `/`.
+
 `Pregnancy` pertenece a una cuenta y conserva múltiples miembros y una historia inmutable de dataciones. Cada actualización explícita crea una nueva fecha en `PregnancyDatingHistory`. Un embarazo archivado conserva sus registros y puede seleccionarse desde el encabezado. Los permisos consultan el embarazo real de cada recurso; no confían en el ID enviado por el cliente.
 
 Los recuerdos de diario, síntomas, ecografías y pancita comparten un sobre normalizado `Entry`, distinguido por `kind` restringido en la base. Los archivos viven fuera de PostgreSQL; `UploadedFile` contiene metadatos y una clave aleatoria. Los registros privados requieren titularidad. Los miembros solo acceden al progreso y a citas con permiso explícito; ese permiso también autoriza gestionar citas. La revocación se aplica en la siguiente solicitud. Las URLs de archivos ya emitidas pueden seguir siendo válidas hasta 60 segundos.
