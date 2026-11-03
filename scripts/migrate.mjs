@@ -33,7 +33,29 @@ const engine = await runtime.SchemaEngine.new(
 );
 const filters = { externalTables: [], externalEnums: [] };
 try {
-  if (process.argv.includes("--initial")) {
+  const previousSchema = process.argv.find((argument) =>
+    argument.startsWith("--diff-from="),
+  );
+  if (previousSchema) {
+    const previous = readFileSync(
+      previousSchema.slice("--diff-from=".length),
+      "utf8",
+    );
+    const result = await engine.diff({
+      from: {
+        tag: "schemaDatamodel",
+        files: [{ path: "previous.prisma", content: previous }],
+      },
+      to: {
+        tag: "schemaDatamodel",
+        files: [{ path: "schema.prisma", content: schema }],
+      },
+      script: true,
+      exitCode: false,
+      filters,
+    });
+    console.log(result.stdout);
+  } else if (process.argv.includes("--initial")) {
     const result = await engine.diff({
       from: { tag: "empty" },
       to: {

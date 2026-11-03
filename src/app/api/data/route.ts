@@ -1,3 +1,4 @@
+import { writeTools } from "@/modules/tools/service";
 import { publishedWeeklyWhere } from "@/lib/weekly-content";
 import { storage } from "@/lib/storage";
 import { DeleteObjectCommand } from "@aws-sdk/client-s3";
@@ -172,6 +173,7 @@ export async function POST(req: Request) {
           babyName: z.string().max(100).optional(),
           partnerName: z.string().max(100).optional(),
           timezone: z.string(),
+          importPreparations: z.boolean().optional(),
         })
         .parse(b);
       todayInZone(d.timezone);
@@ -197,6 +199,18 @@ export async function POST(req: Request) {
           },
         });
       });
+      if (d.importPreparations) {
+        const template = await db.toolTemplate.findUnique({
+          where: { slug: "preparations-default" },
+        });
+        if (template)
+          await writeTools(u, {
+            module: "preparations",
+            pregnancyId: p.id,
+            op: "import",
+            data: { templateId: template.id },
+          });
+      }
       return NextResponse.json(p);
     }
     if (b.action === "preferences") {
@@ -205,6 +219,8 @@ export async function POST(req: Request) {
           weekly: z.boolean(),
           appointment: z.boolean(),
           family: z.boolean(),
+          preparations: z.boolean().optional(),
+          questions: z.boolean().optional(),
           size: z.enum(["fruit", "measurement"]),
           timezone: z.string().optional(),
         })
@@ -213,7 +229,13 @@ export async function POST(req: Request) {
       if (timezone) todayInZone(timezone);
       await db.user.update({
         where: { id: u.id },
-        data: { preferences, ...(timezone ? { timezone } : {}) },
+        data: {
+          preferences: {
+            ...(u.preferences as Record<string, boolean | string>),
+            ...preferences,
+          },
+          ...(timezone ? { timezone } : {}),
+        },
       });
       return NextResponse.json({ ok: true });
     }

@@ -1,0 +1,11 @@
+.git
+node_modules
+.next
+.env
+.env.*
+test-results
+playwright-report
+*.log
+.aws
+.codex
+attachments

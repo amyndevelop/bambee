@@ -1,4 +1,5 @@
 "use client";
+import { ToolsHub } from "./tools/hub";
 import { Tasks } from "./tasks";
 import { api, type Row } from "@/lib/client";
 import { FormEvent, useEffect, useState } from "react";
@@ -38,6 +39,7 @@ export function Family({
   }
   return (
     <>
+      <ToolsHub pregnancyId={data.pregnancy.id} />
       <Tasks pregnancyId={data.pregnancy.id} save={save} />
       <section className="card">
         <h2>Un camino para compartir</h2>
@@ -120,6 +122,41 @@ export function Family({
             />{" "}
             Compartir tareas
           </label>
+          {(
+            [
+              ["names", "Compartir votos de nombres"],
+              ["questions", "Permitir preguntas compartidas"],
+              ["cards", "Permitir tarjetas compartidas"],
+            ] as const
+          ).map(([key, label]) => (
+            <label key={key} className="check">
+              <input
+                type="checkbox"
+                checked={!!m[key]}
+                onChange={async (e) => {
+                  try {
+                    await api("/api/tools", {
+                      module: "overview",
+                      pregnancyId: data.pregnancy.id,
+                      op: "permissions",
+                      data: {
+                        id: m.id,
+                        names: m.names,
+                        questions: m.questions,
+                        cards: m.cards,
+                        tasks: m.tasks,
+                        [key]: e.target.checked,
+                      },
+                    });
+                    await load();
+                  } catch (error) {
+                    setMessage((error as Error).message);
+                  }
+                }}
+              />
+              {label}
+            </label>
+          ))}
           <button
             onClick={async () => {
               await save({ action: "revokeMember", id: m.id });

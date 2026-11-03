@@ -15,6 +15,16 @@ export async function GET() {
         datingHistory: true,
         entries: { include: { attachments: true } },
         appointments: { include: { reminders: true } },
+        tasks: true,
+        preparationCategories: true,
+        nameChoices: { where: { userId: u.id }, include: { name: true } },
+        shareCards: { where: { userId: u.id } },
+        medicalQuestions: { where: { userId: u.id } },
+        timelapses: { where: { userId: u.id } },
+        contractionSessions: {
+          where: { userId: u.id },
+          include: { records: true },
+        },
       },
     });
     const files = await db.uploadedFile.findMany({
@@ -28,7 +38,21 @@ export async function GET() {
       where: { userId: u.id },
     });
     return NextResponse.json(
-      { user, pregnancies, files, consents, notifications },
+      {
+        user,
+        pregnancies,
+        files,
+        consents,
+        notifications,
+        sharedPregnancyChoices: await db.babyNameChoice.findMany({
+          where: { userId: u.id },
+          include: { name: true },
+        }),
+        ownQuestions: await db.medicalQuestion.findMany({
+          where: { userId: u.id },
+        }),
+        ownCards: await db.shareCard.findMany({ where: { userId: u.id } }),
+      },
       {
         headers: {
           "Content-Disposition": 'attachment; filename="bambee-export.json"',

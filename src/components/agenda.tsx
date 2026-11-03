@@ -1,4 +1,5 @@
 "use client";
+import { Questions } from "./tools/questions";
 import { api, type Row } from "@/lib/client";
 import { Plus } from "lucide-react";
 import { FormEvent, useEffect, useState } from "react";
@@ -6,8 +7,10 @@ import { Empty, Field } from "./ui";
 export function Agenda({
   pregnancyId,
   save,
+  userId,
 }: {
   pregnancyId: string;
+  userId: string;
   save: (d: Row) => Promise<void>;
 }) {
   const [rows, setRows] = useState<Row[]>([]),
@@ -217,6 +220,15 @@ export function Agenda({
                 {r.type} {r.completed ? "· REALIZADA" : ""}
               </p>
               <h3>{r.title}</h3>
+              <details>
+                <summary>Preguntas para esta consulta</summary>
+                <Questions
+                  compact
+                  pregnancyId={pregnancyId}
+                  userId={userId}
+                  appointmentId={r.id}
+                />
+              </details>
               <p>
                 {new Date(r.at).toLocaleString("es-AR")} · {r.professional} ·{" "}
                 {r.location}

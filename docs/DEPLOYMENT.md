@@ -52,3 +52,7 @@ El formulario comprueba `/api/auth/providers` antes de registrar para evitar cre
 ## Comprobar identidad y biblioteca después del deploy
 
 Abrir `https://bambee-eta.vercel.app/api/health` después de Ready. Debe informar 42 semanas completas, fuente Inter y marca `original-pdf-2026-11-02`; el commit permite distinguir un deployment anterior. Las 42 semanas de origen deben aparecer como publicación educativa con aviso de revisión pendiente. `weeklyContent.published` debe ser 42 y `publicationComplete` verdadero. La revisión médica se informa por separado. La verificación del endpoint requiere acceso de red al dominio; una compilación local no demuestra que el deployment remoto finalizó.
+
+## Ampliación de herramientas
+
+Este release agrega la migración aditiva octava `20261103120000_family_tools` al manifiesto autorizado. El build carga catálogos mediante `db:seed` sin sobrescribir registros editados. Ver `TOOLS.md` para permisos, variables, cronómetro offline y despliegue del trabajador MP4. El worker multimedia requiere un host persistente; dejar `MEDIA_WORKER_ENABLED=false` hasta que esté funcionando. La compilación de Vercel por sí sola no habilita el procesamiento de video.

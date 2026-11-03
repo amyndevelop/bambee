@@ -81,6 +81,8 @@ export async function POST(req: Request) {
         ownerId: u.id,
         key,
         mime: type.mime,
+        medical:
+          form.get("kind") === "ultrasound" || type.mime === "application/pdf",
         size: bytes.length,
         name: f.name.slice(0, 150),
       },

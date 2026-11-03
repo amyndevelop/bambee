@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start --hostname 0.0.0.0",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test tests/gestation.test.ts tests/cron-auth.test.ts tests/origin.test.ts tests/database-diagnostics.test.ts tests/baseline-migrations.test.ts tests/weekly-content.test.ts tests/auth-readiness.test.ts",
+    "test": "tsx --test tests/gestation.test.ts tests/cron-auth.test.ts tests/origin.test.ts tests/database-diagnostics.test.ts tests/baseline-migrations.test.ts tests/weekly-content.test.ts tests/auth-readiness.test.ts tests/tools.test.ts",
     "db:generate": "node scripts/generate.cjs",
     "db:migrate": "node scripts/migrate.mjs",
     "worker": "tsx --env-file=.env scripts/worker.ts",
@@ -17,8 +17,9 @@
     "admin:grant": "tsx --env-file=.env scripts/create-admin.ts",
     "vercel-build": "npm run db:generate && npm run db:bootstrap && npm run db:seed && npm run build",
     "db:bootstrap": "node scripts/migrate.mjs --baseline",
-    "db:seed": "tsx scripts/seed-weekly-development.ts",
-    "test:weekly-workflow": "node scripts/verify-weekly-workflow.mjs"
+    "db:seed": "tsx scripts/seed-weekly-development.ts && tsx scripts/seed-tools.ts",
+    "test:weekly-workflow": "node scripts/verify-weekly-workflow.mjs",
+    "worker:media": "tsx --env-file=.env scripts/media-worker.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.0.0",

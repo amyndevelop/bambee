@@ -74,8 +74,14 @@ try {
   }
   if (!ready) throw new Error("El servidor temporal no quedó listo");
   run(["--import", "tsx", "--test", "tests/integration.test.ts"]);
+  run(["--import", "tsx", "--test", "tests/tools.integration.ts"]);
   run(["--import", "tsx", "scripts/seed-weekly-development.ts"]);
-  run(["node_modules/@playwright/test/cli.js", "test"]);
+  run(["--import", "tsx", "scripts/seed-tools.ts"]);
+  run([
+    "node_modules/@playwright/test/cli.js",
+    "test",
+    ...process.argv.slice(2),
+  ]);
   console.log(
     "Verificación completa: seed, API y navegador, sobre una base temporal aislada.",
   );

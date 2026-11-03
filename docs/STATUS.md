@@ -63,3 +63,9 @@ Se reemplazaron las marcas provisionales por los originales vectoriales de los P
 ## Publicación editorial autorizada
 
 La migración `20261102060000_editorial_publication` agrega la visibilidad editorial sin debilitar las restricciones de aprobación médica existentes. Se publican las 42 semanas de origen, conservando ediciones ajenas al origen y posteriores decisiones de ocultar. Los textos de término se expresan con semanas completas. La interfaz distingue publicación de revisión y evita mostrar fechas ficticias de revisión. `/api/health` solo indica `ok` cuando existen y están visibles las 42 semanas; la comprobación remota sigue pendiente por el acceso de red del entorno.
+
+## Ampliación de seis herramientas
+
+Se incorporan preparativos sobre Task, nombres/favoritos/votos privados, configuraciones de tarjetas con PNG real, preguntas vinculadas a citas, proyectos timelapse con cola durable y motor FFmpeg, y sesiones de contracciones con cola cifrada y recuperación offline. La integración incluye Inicio, Herramientas, Familia, Agenda, Mi pancita, Configuración, administración de catálogos y exportación de datos propios.
+
+`TOOLS.md` documenta las rutas, nueve modelos nuevos, migración aditiva, semillas, permisos y dependencias operativas. La exportación de video en producción requiere desplegar un trabajador persistente con S3 y PostgreSQL; no se simula si falta. La revisión real de guías clínicas y significados está pendiente. El catálogo inicial permite buscar nombres sin atribuir etimologías no verificadas.

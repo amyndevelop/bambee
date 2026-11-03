@@ -1,4 +1,5 @@
 "use client";
+import { ToolCatalogAdmin } from "./tools/admin";
 import { reviewLabels, measurementLabels } from "@/lib/weekly-content";
 import { api, type Row } from "@/lib/client";
 import { FormEvent, useEffect, useState } from "react";
@@ -51,6 +52,7 @@ export function Admin() {
   return (
     <>
       <BrandManager />
+      <ToolCatalogAdmin />
       <p role="status">{err}</p>
       {data && (
         <>

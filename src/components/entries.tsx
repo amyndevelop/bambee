@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { gestationalAgeFromDays, formatGestationalAge } from "@/lib/gestation";
 import { api, type Row } from "@/lib/client";
 import { BookOpen, Plus, Search } from "lucide-react";
@@ -108,6 +109,11 @@ export function Entries({
           equipo de salud. La biblioteca de señales de alerta está pendiente de
           revisión profesional.
         </div>
+      )}
+      {kind === "belly" && (
+        <Link className="button primary" href="/pancita/evolucion">
+          Crear mi evolución
+        </Link>
       )}
       <div className="toolbar">
         <label className="search">

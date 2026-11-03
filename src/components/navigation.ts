@@ -9,6 +9,7 @@ import {
   Image as ImageIcon,
   Settings,
   Users,
+  Sparkles,
 } from "lucide-react";
 export const sections = [
   ["/", "Inicio", House],
@@ -21,5 +22,6 @@ export const extra = [
   ["/ecografias", "Ecografías", ImageIcon],
   ["/pancita", "Mi pancita", Camera],
   ["/diario", "Diario", BookOpen],
+  ["/herramientas", "Herramientas", Sparkles],
   ["/configuracion", "Configuración", Settings],
 ] as const;

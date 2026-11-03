@@ -1,0 +1,11 @@
+FROM node:24-bookworm-slim
+RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg fontconfig ca-certificates && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --include=dev
+COPY . .
+RUN npm run db:generate
+RUN mkdir -p /usr/local/share/fonts/bambee && cp public/brand/inter-*.ttf /usr/local/share/fonts/bambee/ && fc-cache -f
+ENV NODE_ENV=production
+USER node
+CMD ["node","--import","tsx","scripts/media-worker.ts"]

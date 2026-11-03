@@ -1,4 +1,5 @@
 "use client";
+import { ToolsHub } from "./tools/hub";
 import { EditorialNotice } from "./editorial-notice";
 import { FruitComparison } from "./fruit-comparison";
 import { formatGestationalAge, formatWeekRange } from "@/lib/gestation";
@@ -122,6 +123,7 @@ export function Dashboard({ data: d }: { data: Row }) {
           ),
         )}
       </div>
+      <ToolsHub compact pregnancyId={d.pregnancy.id} />
       <div className="lower-grid">
         <section className="card">
           <div className="section-title">

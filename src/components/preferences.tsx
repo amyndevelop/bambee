@@ -1,4 +1,5 @@
 "use client";
+import { clearLocalContractions } from "@/modules/tools/offline-contractions";
 import { api, type Row } from "@/lib/client";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
@@ -30,6 +31,8 @@ export function Preferences({
                   weekly: f.has("weekly"),
                   appointment: f.has("appointment"),
                   family: f.has("family"),
+                  preparations: f.has("preparations"),
+                  questions: f.has("questions"),
                   size: f.get("size"),
                   timezone: f.get("timezone"),
                 });
@@ -40,6 +43,8 @@ export function Preferences({
                 ["weekly", "Nueva semana"],
                 ["appointment", "Recordatorios de citas"],
                 ["family", "Invitaciones familiares"],
+                ["preparations", "Recordatorios de preparativos"],
+                ["questions", "Preguntas antes de la consulta"],
               ].map(([key, label]) => (
                 <label className="check" key={key}>
                   <input
@@ -135,6 +140,7 @@ export function Preferences({
             <button
               onClick={async () => {
                 await api("/api/account", { action: "revoke" });
+                await clearLocalContractions();
                 await signOut({ callbackUrl: "/acceso" });
               }}
             >
@@ -149,6 +155,7 @@ export function Preferences({
                 if (confirm === "ELIMINAR") {
                   try {
                     await api("/api/privacy", { confirm }, "DELETE");
+                    await clearLocalContractions();
                     await signOut({ callbackUrl: "/acceso" });
                   } catch (e) {
                     setMessage((e as Error).message);

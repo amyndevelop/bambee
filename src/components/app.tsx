@@ -1,4 +1,16 @@
 "use client";
+import { ToolsHub, toolLinks } from "./tools/hub";
+import { Preparations } from "./tools/preparations";
+import { Questions } from "./tools/questions";
+import { BabyNames } from "./tools/names";
+import { ShareCards } from "./tools/cards";
+import { Timelapse } from "./tools/timelapse";
+import { Contractions } from "./tools/contractions";
+import {
+  clearLocalContractions,
+  latestOfflineContractionScope,
+} from "@/modules/tools/offline-contractions";
+
 import { api, ApiError, type Row } from "@/lib/client";
 import { Bell, Heart, LogOut } from "lucide-react";
 import { signOut } from "next-auth/react";
@@ -25,6 +37,10 @@ export function App() {
     [error, setError] = useState(""),
     [loading, setLoading] = useState(true),
     [selected, setSelected] = useState("");
+  const [offlineTimer, setOfflineTimer] = useState<{
+    userId: string;
+    pregnancyId: string;
+  } | null>(null);
   const refreshVersion = useRef(0);
   const refresh = async () => {
     const version = ++refreshVersion.current;
@@ -32,9 +48,14 @@ export function App() {
       const d = await api("/api/data?pregnancyId=" + selected);
       if (version !== refreshVersion.current) return;
       setData(d);
+      setOfflineTimer(null);
       setError("");
     } catch (e) {
       if (version !== refreshVersion.current) return;
+      if (!navigator.onLine && path === "/contracciones") {
+        const timer = await latestOfflineContractionScope();
+        if (version === refreshVersion.current) setOfflineTimer(timer);
+      } else setOfflineTimer(null);
       if (e instanceof ApiError && e.status === 403) {
         setData(null);
         setSelected("");
@@ -59,9 +80,11 @@ export function App() {
       if (document.visibilityState === "visible") void refresh();
     };
     document.addEventListener("visibilitychange", visible);
+    window.addEventListener("online", visible);
     return () => {
       clearInterval(timer);
       document.removeEventListener("visibilitychange", visible);
+      window.removeEventListener("online", visible);
     };
   }, [path, selected]);
   const save = async (b: Row) => {
@@ -103,6 +126,18 @@ export function App() {
           aceptar usuarios reales.
         </p>
         <Link href="/acceso">Volver</Link>
+      </main>
+    );
+  if (!loading && offlineTimer && path === "/contracciones")
+    return (
+      <main className="offline-timer">
+        <Logo />
+        <p>
+          Sin conexión. Solo se recupera el cronómetro cifrado de este
+          dispositivo. Al reconectar se comprobará tu sesión antes de
+          sincronizar.
+        </p>
+        <Contractions {...offlineTimer} />
       </main>
     );
   if (path === "/acceso" || (!loading && !data))
@@ -151,7 +186,7 @@ export function App() {
   const title =
     path === "/"
       ? "Tu pequeño gran comienzo"
-      : [...sections, ...extra].find((s) => s[0] === path)?.[1] ||
+      : [...sections, ...extra, ...toolLinks].find((s) => s[0] === path)?.[1] ||
         "Administración";
   return (
     <div className="app">
@@ -186,7 +221,14 @@ export function App() {
         </div>
         <button
           className="text-button"
-          onClick={() => signOut({ callbackUrl: "/acceso" })}
+          onClick={async () => {
+            try {
+              await clearLocalContractions();
+              await signOut({ callbackUrl: "/acceso" });
+            } catch (e) {
+              setError((e as Error).message);
+            }
+          }}
         >
           <LogOut size={17} /> Cerrar sesión
         </button>
@@ -239,6 +281,41 @@ export function App() {
           )}
           {path === "/" ? (
             <Dashboard data={data} />
+          ) : path === "/herramientas" ? (
+            <ToolsHub pregnancyId={data.pregnancy.id} />
+          ) : path === "/preparativos" ? (
+            <Preparations
+              key={data.pregnancy.id}
+              pregnancyId={data.pregnancy.id}
+            />
+          ) : path === "/preguntas" ? (
+            <Questions
+              key={data.pregnancy.id}
+              pregnancyId={data.pregnancy.id}
+              userId={data.user.id}
+            />
+          ) : path === "/nombres" ? (
+            <BabyNames
+              key={data.pregnancy.id}
+              pregnancyId={data.pregnancy.id}
+            />
+          ) : path === "/compartir" ? (
+            <ShareCards
+              key={data.pregnancy.id}
+              pregnancyId={data.pregnancy.id}
+              userId={data.user.id}
+            />
+          ) : path === "/pancita/evolucion" ? (
+            <Timelapse
+              key={data.pregnancy.id}
+              pregnancyId={data.pregnancy.id}
+            />
+          ) : path === "/contracciones" ? (
+            <Contractions
+              key={data.pregnancy.id}
+              pregnancyId={data.pregnancy.id}
+              userId={data.user.id}
+            />
           ) : path === "/bebe" ? (
             <Weekly
               key={data.pregnancy.id}
@@ -247,7 +324,11 @@ export function App() {
               dueDate={data.pregnancy.dueDate.slice(0, 10)}
             />
           ) : path === "/agenda" ? (
-            <Agenda pregnancyId={data.pregnancy.id} save={save} />
+            <Agenda
+              pregnancyId={data.pregnancy.id}
+              save={save}
+              userId={data.user.id}
+            />
           ) : ["/diario", "/salud", "/ecografias", "/pancita"].includes(
               path,
             ) ? (

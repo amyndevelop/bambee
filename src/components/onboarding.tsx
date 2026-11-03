@@ -51,6 +51,7 @@ export function Onboarding({
         partnerName: draft.partnerName,
         source,
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        importPreparations: f.has("importPreparations"),
       });
     } catch {
     } finally {
@@ -140,6 +141,10 @@ export function Onboarding({
         ) : (
           <div className="onboarding-celebration">
             <BrandGraphic slug="bee" fallback={<BrandIsotype />} />
+            <label className="check">
+              <input type="checkbox" name="importPreparations" />
+              Importar listas de preparativos editables para este embarazo
+            </label>
             <p>
               {draft.babyName
                 ? `Un espacio para vos y ${draft.babyName}.`

@@ -21,6 +21,12 @@ model User {
  files UploadedFile[]
  tokens ActionToken[]
  consents ConsentRecord[]
+ assignedPreparations Task[] @relation("PreparationAssignee")
+ nameChoices BabyNameChoice[]
+ shareCards ShareCard[]
+ medicalQuestions MedicalQuestion[]
+ timelapses BellyTimelapse[]
+ contractionSessions ContractionSession[]
 }
 model Pregnancy {
  id String @id @default(cuid())
@@ -38,6 +44,12 @@ model Pregnancy {
  appointments Appointment[]
  tasks Task[]
  invitations Invitation[]
+ preparationCategories PreparationCategory[]
+ nameChoices BabyNameChoice[]
+ shareCards ShareCard[]
+ medicalQuestions MedicalQuestion[]
+ timelapses BellyTimelapse[]
+ contractionSessions ContractionSession[]
  @@index([ownerId,archived])
 }
 model PregnancyMember {
@@ -48,6 +60,9 @@ model PregnancyMember {
  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
  appointments Boolean @default(false)
  tasks Boolean @default(false)
+ names Boolean @default(false)
+ questions Boolean @default(false)
+ cards Boolean @default(false)
  @@unique([pregnancyId,userId])
 }
 model PregnancyDatingHistory {
@@ -90,6 +105,7 @@ model Appointment {
  completed Boolean @default(false)
  reminders AppointmentReminder[]
  entries Entry[]
+ medicalQuestions MedicalQuestion[]
  @@index([pregnancyId,at])
 }
 model AppointmentReminder {
@@ -106,10 +122,13 @@ model UploadedFile {
  owner User @relation(fields:[ownerId],references:[id],onDelete:Cascade)
  key String @unique
  mime String
+ medical Boolean @default(false)
  size Int
  name String
  entry Entry?
  attachment EntryAttachment?
+ timelapse BellyTimelapse?
+ shareCards ShareCard[]
  graphic GraphicAsset?
  createdAt DateTime @default(now())
 }
@@ -203,6 +222,16 @@ model GraphicAsset {
 }
 
 model Task {
+ notes String @default("")
+ position Int @default(0)
+ templateItemKey String?
+ categoryId String?
+ category PreparationCategory? @relation(fields:[categoryId],references:[id],onDelete:SetNull)
+ assigneeId String?
+ assignee User? @relation("PreparationAssignee",fields:[assigneeId],references:[id],onDelete:SetNull)
+ reminderAt DateTime?
+ remindedAt DateTime?
+ @@unique([pregnancyId,templateItemKey])
  id String @id @default(cuid())
  pregnancyId String
  pregnancy Pregnancy @relation(fields:[pregnancyId],references:[id],onDelete:Cascade)
@@ -220,4 +249,137 @@ model EntryAttachment {
  fileId String @unique
  file UploadedFile @relation(fields:[fileId],references:[id],onDelete:Cascade)
  @@index([entryId])
+}
+
+model PreparationCategory {
+ id String @id @default(cuid())
+ pregnancyId String
+ pregnancy Pregnancy @relation(fields:[pregnancyId],references:[id],onDelete:Cascade)
+ title String
+ templateKey String?
+ position Int @default(0)
+ tasks Task[]
+ @@unique([pregnancyId,templateKey])
+ @@index([pregnancyId,position])
+}
+model ToolTemplate {
+ id String @id @default(cuid())
+ slug String @unique
+ kind String
+ title String
+ config Json
+ published Boolean @default(false)
+ updatedAt DateTime @updatedAt
+ @@index([kind,published])
+}
+model BabyName {
+ id String @id @default(cuid())
+ name String
+ normalized String @unique
+ gender String
+ origin String?
+ meaning String?
+ variants String[] @default([])
+ pronunciation String?
+ source String
+ sourceUrl String?
+ verification String @default("PENDING")
+ choices BabyNameChoice[]
+ updatedAt DateTime @updatedAt
+ @@index([gender,origin])
+}
+model BabyNameChoice {
+ id String @id @default(cuid())
+ pregnancyId String
+ pregnancy Pregnancy @relation(fields:[pregnancyId],references:[id],onDelete:Cascade)
+ userId String
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ nameId String
+ name BabyName @relation(fields:[nameId],references:[id],onDelete:Cascade)
+ favorite Boolean @default(false)
+ vote String?
+ shared Boolean @default(false)
+ finalist Boolean @default(false)
+ note String @default("")
+ @@unique([pregnancyId,userId,nameId])
+ @@index([userId,pregnancyId])
+}
+model ShareCard {
+ id String @id @default(cuid())
+ pregnancyId String
+ pregnancy Pregnancy @relation(fields:[pregnancyId],references:[id],onDelete:Cascade)
+ userId String
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ templateId String
+ text String
+ background String
+ format String
+ showGestation Boolean @default(false)
+ shared Boolean @default(false)
+ fileId String?
+ file UploadedFile? @relation(fields:[fileId],references:[id],onDelete:SetNull)
+ medicalConsent Boolean @default(false)
+ illustration String @default("brand")
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+ @@index([pregnancyId,userId])
+}
+model MedicalQuestion {
+ id String @id @default(cuid())
+ pregnancyId String
+ pregnancy Pregnancy @relation(fields:[pregnancyId],references:[id],onDelete:Cascade)
+ userId String
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ appointmentId String?
+ appointment Appointment? @relation(fields:[appointmentId],references:[id],onDelete:SetNull)
+ category String
+ question String
+ answer String @default("")
+ answered Boolean @default(false)
+ shared Boolean @default(false)
+ reminder Boolean @default(false)
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+ @@index([pregnancyId,appointmentId,answered])
+}
+model BellyTimelapse {
+ id String @id @default(cuid())
+ pregnancyId String
+ pregnancy Pregnancy @relation(fields:[pregnancyId],references:[id],onDelete:Cascade)
+ userId String
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ config Json
+ status String @default("DRAFT")
+ progress Int @default(0)
+ error String?
+ outputFileId String? @unique
+ outputFile UploadedFile? @relation(fields:[outputFileId],references:[id],onDelete:SetNull)
+ startedAt DateTime?
+ finishedAt DateTime?
+ expiresAt DateTime?
+ createdAt DateTime @default(now())
+ @@index([status,createdAt])
+ @@index([pregnancyId,userId])
+}
+model ContractionSession {
+ id String @id @default(uuid())
+ pregnancyId String
+ pregnancy Pregnancy @relation(fields:[pregnancyId],references:[id],onDelete:Cascade)
+ userId String
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ status String @default("ACTIVE")
+ instructions String @default("")
+ startedAt DateTime
+ endedAt DateTime?
+ records ContractionRecord[]
+ @@index([pregnancyId,userId,startedAt])
+}
+model ContractionRecord {
+ id String @id
+ sessionId String
+ session ContractionSession @relation(fields:[sessionId],references:[id],onDelete:Cascade)
+ startedAt DateTime
+ endedAt DateTime?
+ note String @default("")
+ @@index([sessionId,startedAt])
 }
